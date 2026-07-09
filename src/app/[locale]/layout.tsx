@@ -15,7 +15,7 @@ import { footerSchema, navSchema } from "@/lib/content/schema"
 export const metadata: Metadata = {
   title: { default: "Swiss Controls", template: "%s · Swiss Controls" },
   description:
-    "Independent Swiss engineering for industrial automation, electrical engineering, industrial electrification, and system integration. A brand by RIGITRADE AG.",
+    "Independent Swiss engineering and technology for industrial consulting, electrical engineering, automation, digital transformation, energy management, and system integration. An engineering brand of RIGITRADE AG.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   openGraph: { type: "website", siteName: "Swiss Controls", locale: "en" },
   robots: { index: true, follow: true },
