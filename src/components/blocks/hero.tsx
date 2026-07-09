@@ -62,7 +62,7 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </h1>
             <motion.p variants={fadeUp} className="max-w-[60ch] text-body-l text-paper/85 lg:text-h3">
-              {hero.body}
+              {hero.subheadline}
             </motion.p>
             <motion.p
               variants={fadeUp}
