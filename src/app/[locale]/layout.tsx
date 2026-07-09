@@ -13,17 +13,13 @@ import { loadSharedContent } from "@/lib/content/load"
 import { footerSchema, navSchema } from "@/lib/content/schema"
 
 export const metadata: Metadata = {
-  title: { default: "Rigitrade", template: "%s · Rigitrade" },
+  title: { default: "Swiss Controls", template: "%s · Swiss Controls" },
   description:
-    "Swiss-controlled supply of superalloys for extreme environments — Inconel, Hastelloy, Duplex, Monel.",
+    "Independent Swiss engineering for industrial automation, electrical engineering, industrial electrification, and system integration. A brand by RIGITRADE AG.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  openGraph: {
-    type: "website",
-    siteName: "Rigitrade",
-    locale: "en_US",
-  },
+  openGraph: { type: "website", siteName: "Swiss Controls", locale: "en" },
   robots: { index: true, follow: true },
-  authors: [{ name: "Rigitrade AG" }],
+  authors: [{ name: "RIGITRADE AG" }],
 }
 
 export function generateStaticParams() {
@@ -45,25 +41,27 @@ export default async function LocaleLayout({
   const nav = await loadSharedContent(locale as Locale, "nav", navSchema)
   const footer = await loadSharedContent(locale as Locale, "footer", footerSchema)
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rigitrade.com"
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.swiss-controls.com"
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Rigitrade AG",
+    name: "Swiss Controls",
     url: baseUrl,
     logo: `${baseUrl}/og-default.png`,
+    parentOrganization: { "@type": "Organization", name: "RIGITRADE AG" },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Tannenstrasse 16",
-      addressLocality: "Embrach",
+      streetAddress: "Schaffhauserstrasse 550",
+      addressLocality: "Zürich",
       addressRegion: "ZH",
-      postalCode: "8424",
+      postalCode: "8052",
       addressCountry: "CH",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "Customer Support",
-      email: "info@rigitrade.com",
+      contactType: "Sales",
+      email: "info@swiss-controls.com",
+      telephone: "+41 76 366 66 69",
     },
   }
 
