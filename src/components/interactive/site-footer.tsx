@@ -13,8 +13,48 @@ type SiteFooterProps = {
 
 export function SiteFooter({ locale, content }: SiteFooterProps) {
   return (
-    <Section as="footer" surface="ink" density="loose" className="text-paper">
+    <Section
+      as="footer"
+      surface="ink"
+      density="loose"
+      className="relative isolate text-paper"
+    >
+      {/* Bright top seam — separates the footer from whatever sits above it,
+          including the dark final-CTA section on the home page. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-signal via-volt to-signal"
+      />
+      {/* Cool top sheen lifts the footer's top edge into slate so it reads as a
+          distinct machined plate even against a near-black section above. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-steel/50 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-volt/[0.06] to-transparent"
+      />
       <Container>
+        <div className="mb-8 flex items-center justify-between gap-4 border-b border-paper/10 pb-8">
+          <span className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-paper/40">
+            <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-volt" />
+            A RIGITRADE AG Brand
+          </span>
+          <a
+            href="#main"
+            className="group inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-paper/50 transition-colors hover:text-volt"
+          >
+            Back to top
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
+            >
+              ↑
+            </span>
+          </a>
+        </div>
+
         <div className="mb-16">
           <Wordmark size="xl" className="text-paper" />
           <DisplayHeading
