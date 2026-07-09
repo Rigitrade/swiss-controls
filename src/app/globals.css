@@ -6,12 +6,14 @@
    ============================================================= */
 
 @theme {
-  /* Color tokens */
+  /* Color tokens — Swiss Controls "electric-signal" */
   --color-ink: #0b0f14;
-  --color-paper: #fafaf7;
-  --color-stone: #e8e4dd;
-  --color-forge: #c2410c;
-  --color-steel: #1f2937;
+  --color-paper: #f6f8fb;
+  --color-stone: #e2e8f0;
+  --color-steel: #1e293b;
+  --color-signal: #1d4ed8;
+  --color-signal-bright: #2563eb;
+  --color-volt: #22d3ee;
 
   /* Type families (wired in layout via next/font CSS variables) */
   --font-sans: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
@@ -146,11 +148,11 @@
     line-height: 1.625;
   }
   ::selection {
-    background-color: var(--color-forge);
+    background-color: var(--color-signal);
     color: var(--color-paper);
   }
   *:focus-visible {
-    outline: 2px solid var(--color-forge);
+    outline: 2px solid var(--color-signal);
     outline-offset: 2px;
   }
 }

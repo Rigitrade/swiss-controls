@@ -32,14 +32,14 @@ const CERT_LABELS: Record<(typeof CERTIFICATIONS)[number], string> = {
 }
 
 const inputClass =
-  "flex h-12 w-full border-b border-hairline bg-transparent px-0 py-2 font-sans text-body text-ink placeholder:text-ink/40 focus-visible:border-forge focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+  "flex h-12 w-full border-b border-hairline bg-transparent px-0 py-2 font-sans text-body text-ink placeholder:text-ink/40 focus-visible:border-signal focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
 
 const textareaClass =
-  "flex w-full border border-hairline bg-transparent px-3 py-3 font-sans text-body text-ink placeholder:text-ink/40 focus-visible:border-forge focus-visible:outline-none resize-y"
+  "flex w-full border border-hairline bg-transparent px-3 py-3 font-sans text-body text-ink placeholder:text-ink/40 focus-visible:border-signal focus-visible:outline-none resize-y"
 
 const labelClass = "block font-mono text-micro uppercase tracking-[0.08em] text-ink/70 mb-2"
 
-const errorClass = "mt-1 text-caption text-forge"
+const errorClass = "mt-1 text-caption text-signal"
 
 type QuoteFormProps = {
   formspreeId: string
@@ -216,7 +216,7 @@ export function QuoteForm({ formspreeId }: QuoteFormProps) {
               <label key={m} className="flex cursor-pointer items-center gap-2 text-body">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 accent-forge"
+                  className="h-4 w-4 accent-signal"
                   checked={selectedMaterials.includes(m)}
                   onChange={() => toggleMaterial(m)}
                 />
@@ -295,7 +295,7 @@ export function QuoteForm({ formspreeId }: QuoteFormProps) {
               <label key={c} className="flex cursor-pointer items-center gap-2 text-body">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 accent-forge"
+                  className="h-4 w-4 accent-signal"
                   checked={selectedCerts.includes(c)}
                   onChange={() => toggleCert(c)}
                 />
@@ -322,7 +322,7 @@ export function QuoteForm({ formspreeId }: QuoteFormProps) {
         <label className="flex cursor-pointer items-start gap-3 text-body text-ink/80">
           <input
             type="checkbox"
-            className="mt-1 h-4 w-4 accent-forge"
+            className="mt-1 h-4 w-4 accent-signal"
             checked={!!consentChecked}
             onChange={(e) =>
               setValue("consent" as never, e.target.checked as never, {

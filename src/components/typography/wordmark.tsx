@@ -74,7 +74,7 @@ export function Wordmark({ size = "md", className, href }: WordmarkProps) {
       <motion.span
         aria-hidden="true"
         variants={dotVariants}
-        className="ml-0.5 inline-block font-logo font-black text-forge transition-transform duration-500 group-hover:scale-125"
+        className="ml-0.5 inline-block font-logo font-black text-signal transition-transform duration-500 group-hover:scale-125"
       >
         .
       </motion.span>

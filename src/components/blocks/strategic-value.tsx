@@ -29,7 +29,7 @@ export function StrategicValue({ content }: StrategicValueProps) {
               <p className="font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
                 {content.intro}
               </p>
-              <ul className="space-y-3 border-l border-forge/40 pl-6">
+              <ul className="space-y-3 border-l border-signal/40 pl-6">
                 {content.drivers.map((driver) => (
                   <li key={driver} className="text-h3 font-medium text-ink">
                     {driver}

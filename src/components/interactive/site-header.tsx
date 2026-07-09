@@ -55,7 +55,7 @@ export function SiteHeader({ locale, pathname = "", links, cta }: SiteHeaderProp
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
-                className="font-mono text-micro uppercase tracking-[0.08em] text-ink transition-colors hover:text-forge"
+                className="font-mono text-micro uppercase tracking-[0.08em] text-ink transition-colors hover:text-signal"
               >
                 {link.label}
               </Link>
@@ -121,7 +121,7 @@ export function SiteHeader({ locale, pathname = "", links, cta }: SiteHeaderProp
               key={link.href}
               href={`/${locale}${link.href}`}
               onClick={() => setOpen(false)}
-              className="font-sans text-h3 text-ink hover:text-forge"
+              className="font-sans text-h3 text-ink hover:text-signal"
             >
               {link.label}
             </Link>

@@ -6,13 +6,13 @@ const buttonVariants = cva(
   cn(
     "inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans",
     "transition-colors duration-200 ease-out",
-    "focus-visible:outline-2 focus-visible:outline-forge focus-visible:outline-offset-2",
+    "focus-visible:outline-2 focus-visible:outline-signal focus-visible:outline-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
   ),
   {
     variants: {
       variant: {
-        primary: "bg-forge text-paper hover:bg-forge/90",
+        primary: "bg-signal text-paper hover:bg-signal-bright",
         secondary:
           "border border-ink bg-transparent text-ink hover:bg-ink hover:text-paper",
         link: "h-auto p-0 text-ink underline-offset-4 hover:underline",

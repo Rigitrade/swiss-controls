@@ -81,7 +81,7 @@ export default async function AboutPage({
                   <Stack gap="2">
                     <span className="font-mono text-micro uppercase tracking-[0.16em] text-ink/50">
                       <span
-                        className="mr-2 inline-block h-px w-4 align-middle bg-forge"
+                        className="mr-2 inline-block h-px w-4 align-middle bg-signal"
                         aria-hidden="true"
                       />
                       {String(i + 1).padStart(2, "0")}
@@ -97,7 +97,7 @@ export default async function AboutPage({
                           {stat.value}
                         </span>
                       )}
-                      <span className="pb-2 font-mono text-caption uppercase tracking-[0.16em] text-forge">
+                      <span className="pb-2 font-mono text-caption uppercase tracking-[0.16em] text-signal">
                         {stat.unit}
                       </span>
                     </div>
@@ -141,7 +141,7 @@ export default async function AboutPage({
                 </div>
                 <div className="flex flex-1 flex-col border-x border-b border-hairline p-6">
                   <Stack gap="3" className="flex-1">
-                    <span className="font-mono text-micro uppercase tracking-[0.16em] text-forge">
+                    <span className="font-mono text-micro uppercase tracking-[0.16em] text-signal">
                       {String(i + 1).padStart(2, "0")} — {facility.role}
                     </span>
                     <h3 className="text-h2 font-medium text-ink">
@@ -164,7 +164,7 @@ export default async function AboutPage({
           <div className="mb-12">
             <p className="font-mono text-micro uppercase tracking-[0.16em] text-paper/50">
               <span
-                className="mr-2 inline-block h-1 w-6 align-middle bg-forge"
+                className="mr-2 inline-block h-1 w-6 align-middle bg-signal"
                 aria-hidden="true"
               />
               03 — TIMELINE
@@ -190,11 +190,11 @@ export default async function AboutPage({
                   {/* node dot */}
                   <span
                     aria-hidden="true"
-                    className="absolute left-0 top-10 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-forge md:block"
+                    className="absolute left-0 top-10 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal md:block"
                     style={{ left: 0 }}
                   />
                   <div className="md:pt-20">
-                    <span className="font-mono text-caption uppercase tracking-[0.16em] text-forge">
+                    <span className="font-mono text-caption uppercase tracking-[0.16em] text-signal">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mt-2 text-h3 font-medium text-paper">

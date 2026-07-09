@@ -16,7 +16,7 @@ export function MidPageCta({ text, href }: MidPageCtaProps) {
         <Hairline />
         <Link
           href={href}
-          className="flex items-center justify-between py-8 text-h3 font-medium text-ink hover:text-forge"
+          className="flex items-center justify-between py-8 text-h3 font-medium text-ink hover:text-signal"
         >
           <span>{text}</span>
           <ArrowRight className="h-6 w-6" aria-hidden="true" />

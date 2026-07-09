@@ -138,7 +138,7 @@ export function MaterialComparisonTable({
           <div className="mt-8">
             <Link
               href={`/${locale}/materials`}
-              className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.08em] text-ink hover:text-forge"
+              className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.08em] text-ink hover:text-signal"
             >
               Compare &amp; Select Materials
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

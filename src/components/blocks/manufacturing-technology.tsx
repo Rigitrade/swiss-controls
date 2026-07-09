@@ -18,7 +18,7 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
         {/* Section header */}
         <div className="mb-16">
           <p className="font-mono text-micro uppercase tracking-[0.16em] text-paper/50">
-            <span className="mr-2 inline-block h-1 w-6 align-middle bg-forge" />
+            <span className="mr-2 inline-block h-1 w-6 align-middle bg-signal" />
             {content.number} — {content.label}
           </p>
           <DisplayHeading
@@ -34,7 +34,7 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
         <article className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Stack gap="3">
-              <DataChip tone="accent" className="self-start border-forge/60 text-forge">
+              <DataChip tone="accent" className="self-start border-signal/60 text-signal">
                 AOD Refining
               </DataChip>
               <h3 className="text-h2 font-medium text-paper">{content.aod.title}</h3>
@@ -46,13 +46,13 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
                 <li key={b} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-3 h-px w-5 shrink-0 bg-forge"
+                    className="mt-3 h-px w-5 shrink-0 bg-signal"
                   />
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 font-mono text-caption uppercase tracking-[0.16em] text-forge">
+            <p className="mt-6 font-mono text-caption uppercase tracking-[0.16em] text-signal">
               ▸ {content.aod.benefit}
             </p>
           </div>
@@ -64,7 +64,7 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
         <div>
           <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <DataChip tone="accent" className="self-start border-forge/60 text-forge">
+              <DataChip tone="accent" className="self-start border-signal/60 text-signal">
                 Production Route
               </DataChip>
               <h3 className="mt-3 text-h2 font-medium text-paper">
@@ -78,7 +78,7 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
                     key={b}
                     className="font-mono text-micro uppercase tracking-[0.16em] text-paper/70"
                   >
-                    <span className="mr-2 inline-block h-px w-4 align-middle bg-forge" />
+                    <span className="mr-2 inline-block h-px w-4 align-middle bg-signal" />
                     {b}
                   </li>
                 ))}
@@ -91,10 +91,10 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
             {content.route.steps.map((step, i) => (
               <li key={step.code} className="contents">
                 {/* Step card */}
-                <div className="group relative flex flex-col border border-paper/15 bg-paper/[0.03] p-5 transition-colors duration-300 hover:bg-paper/[0.06] hover:border-forge/40 md:p-6">
+                <div className="group relative flex flex-col border border-paper/15 bg-paper/[0.03] p-5 transition-colors duration-300 hover:bg-paper/[0.06] hover:border-signal/40 md:p-6">
                   <span
                     aria-hidden="true"
-                    className="font-mono text-micro uppercase tracking-[0.2em] text-forge"
+                    className="font-mono text-micro uppercase tracking-[0.2em] text-signal"
                   >
                     Stage · {String(i + 1).padStart(2, "0")}
                   </span>
@@ -114,7 +114,7 @@ export function ManufacturingTechnology({ content }: ManufacturingTechnologyProp
                     className="hidden items-center justify-center md:flex"
                   >
                     <span className="block h-px w-3 bg-paper/30" />
-                    <ChevronRight className="h-4 w-4 text-forge" strokeWidth={2.5} />
+                    <ChevronRight className="h-4 w-4 text-signal" strokeWidth={2.5} />
                     <span className="block h-px w-3 bg-paper/30" />
                   </div>
                 )}

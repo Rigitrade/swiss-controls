@@ -31,7 +31,7 @@ export function ProductionCapacity({ content }: ProductionCapacityProps) {
                 <Stack gap="2">
                   <span className="font-mono text-micro uppercase tracking-[0.16em] text-ink/50">
                     <span
-                      className="mr-2 inline-block h-px w-4 align-middle bg-forge"
+                      className="mr-2 inline-block h-px w-4 align-middle bg-signal"
                       aria-hidden="true"
                     />
                     {String(i + 1).padStart(2, "0")}
@@ -47,7 +47,7 @@ export function ProductionCapacity({ content }: ProductionCapacityProps) {
                         {stat.value}
                       </span>
                     )}
-                    <span className="pb-2 font-mono text-caption uppercase tracking-[0.16em] text-forge">
+                    <span className="pb-2 font-mono text-caption uppercase tracking-[0.16em] text-signal">
                       {stat.unit}
                     </span>
                   </div>
@@ -73,7 +73,7 @@ export function ProductionCapacity({ content }: ProductionCapacityProps) {
                     <li key={b} className="flex gap-3">
                       <span
                         aria-hidden="true"
-                        className="mt-2.5 h-px w-4 shrink-0 bg-forge"
+                        className="mt-2.5 h-px w-4 shrink-0 bg-signal"
                       />
                       <span>{b}</span>
                     </li>

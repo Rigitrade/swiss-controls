@@ -25,7 +25,7 @@ export function ApplicationFocus({ content }: ApplicationFocusProps) {
                 >
                   <span
                     aria-hidden="true"
-                    className="inline-block h-2 w-2 shrink-0 bg-forge"
+                    className="inline-block h-2 w-2 shrink-0 bg-signal"
                   />
                   {industry}
                 </li>

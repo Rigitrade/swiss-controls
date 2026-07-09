@@ -27,7 +27,7 @@ export function FeatureBreak({ src, alt, quote, attribution }: FeatureBreakProps
         <blockquote className="max-w-3xl">
           <span
             aria-hidden="true"
-            className="block font-mono text-micro uppercase tracking-[0.16em] text-forge"
+            className="block font-mono text-micro uppercase tracking-[0.16em] text-signal"
           >
             ▸ Rigitrade
           </span>

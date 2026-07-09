@@ -71,7 +71,7 @@ export function IndustryTiles({ content }: IndustryTilesProps) {
                   className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/35 to-ink/0"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-6 lg:p-8">
-                  <span className="font-mono text-micro uppercase tracking-[0.16em] text-forge">
+                  <span className="font-mono text-micro uppercase tracking-[0.16em] text-signal">
                     Application
                   </span>
                   <h3 className="mt-2 text-h2 font-medium text-paper">{industry}</h3>

@@ -110,7 +110,7 @@ export function ManufacturingGallery({ locale }: ManufacturingGalleryProps) {
         <div className="mt-10">
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-ink hover:text-forge"
+            className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-ink hover:text-signal"
           >
             Request a site visit or audit
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

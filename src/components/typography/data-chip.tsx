@@ -5,7 +5,7 @@ type Tone = "default" | "accent" | "muted"
 
 const toneClasses: Record<Tone, string> = {
   default: "text-ink border-hairline",
-  accent: "text-forge border-forge/30",
+  accent: "text-signal border-signal/30",
   muted: "text-ink/60 border-hairline",
 }
 

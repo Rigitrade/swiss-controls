@@ -86,7 +86,7 @@ export function Hero({ hero, locale }: HeroProps) {
         className="absolute left-6 top-24 sm:left-8 lg:left-16"
       >
         <span className="font-mono text-micro uppercase tracking-[0.2em] text-paper/80">
-          <span className="mr-2 inline-block h-1 w-6 align-middle bg-forge" />
+          <span className="mr-2 inline-block h-1 w-6 align-middle bg-signal" />
           {hero.number} — {hero.label}
         </span>
       </motion.div>
@@ -110,7 +110,7 @@ export function Hero({ hero, locale }: HeroProps) {
                   <span className="block overflow-hidden">
                     <motion.span
                       variants={lineRevealVariants}
-                      className={cn("block bg-gradient-to-r from-forge to-paper bg-clip-text text-transparent")}
+                      className={cn("block bg-gradient-to-r from-signal to-paper bg-clip-text text-transparent")}
                     >
                       {lineTwo}
                     </motion.span>
@@ -122,7 +122,7 @@ export function Hero({ hero, locale }: HeroProps) {
                 variants={fadeUpVariants}
                 className="mt-2 font-mono text-caption uppercase tracking-[0.2em] text-paper/80 sm:text-body"
               >
-                <span className="mr-3 inline-block h-px w-10 align-middle bg-forge" />
+                <span className="mr-3 inline-block h-px w-10 align-middle bg-signal" />
                 {hero.subhead}
               </motion.p>
 
@@ -136,10 +136,10 @@ export function Hero({ hero, locale }: HeroProps) {
               {hero.banner && (
                 <motion.div
                   variants={fadeUpVariants}
-                  className="max-w-[60ch] border-l-2 border-forge bg-paper/5 px-5 py-4 backdrop-blur-sm"
+                  className="max-w-[60ch] border-l-2 border-signal bg-paper/5 px-5 py-4 backdrop-blur-sm"
                 >
                   <p className="text-body text-paper">
-                    <span aria-hidden="true" className="mr-2 font-mono text-forge">
+                    <span aria-hidden="true" className="mr-2 font-mono text-signal">
                       ▸
                     </span>
                     {hero.banner}
@@ -185,7 +185,7 @@ export function Hero({ hero, locale }: HeroProps) {
             Scroll
           </span>
           <span className="relative block h-12 w-px bg-paper/30 overflow-hidden">
-            <span className="absolute inset-0 block h-1/2 w-full bg-forge animate-[scroll-cue_1.8s_ease-in-out_infinite]" />
+            <span className="absolute inset-0 block h-1/2 w-full bg-signal animate-[scroll-cue_1.8s_ease-in-out_infinite]" />
           </span>
           <ArrowDown className="h-3 w-3 transition-transform duration-300 group-hover:translate-y-1" aria-hidden="true" />
         </Link>

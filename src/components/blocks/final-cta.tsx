@@ -31,7 +31,7 @@ export function FinalCta({ finalCta, locale }: FinalCtaProps) {
           <Stack gap="6">
             <span className="font-mono text-micro uppercase tracking-[0.2em] text-paper/70">
               <span
-                className="mr-2 inline-block h-1 w-6 align-middle bg-forge"
+                className="mr-2 inline-block h-1 w-6 align-middle bg-signal"
                 aria-hidden="true"
               />
               Final · Get in Touch
