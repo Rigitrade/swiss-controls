@@ -43,8 +43,50 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             </aside>
             <div className="lg:col-span-8">
               <Stack gap="6">
-                <SectionLabel number="02" label="SEND US A MESSAGE" />
-                <ContactForm formspreeId={contactId} />
+                <SectionLabel
+                  number="02"
+                  label={contactId ? "SEND US A MESSAGE" : "DIRECT LINE"}
+                />
+                {contactId ? (
+                  <ContactForm formspreeId={contactId} />
+                ) : (
+                  <div className="border border-hairline p-8 lg:p-10">
+                    <Stack gap="6">
+                      <p className="max-w-[22ch] text-h2 font-medium text-ink">
+                        Talk to the engineering team.
+                      </p>
+                      <p className="max-w-[52ch] text-body-l text-ink/70">
+                        Email or call us directly — we reply to project inquiries within
+                        one business day.
+                      </p>
+                      <Hairline className="my-2" />
+                      <div className="flex flex-col gap-6">
+                        <a
+                          href={`mailto:${frontmatter.office.email}`}
+                          className="group block"
+                        >
+                          <span className="block font-mono text-micro uppercase tracking-[0.08em] text-ink/50">
+                            Email
+                          </span>
+                          <span className="mt-1 block text-h3 text-ink transition-colors group-hover:text-signal">
+                            {frontmatter.office.email}
+                          </span>
+                        </a>
+                        <a
+                          href={`tel:${frontmatter.office.phone.replace(/\s+/g, "")}`}
+                          className="group block"
+                        >
+                          <span className="block font-mono text-micro uppercase tracking-[0.08em] text-ink/50">
+                            Phone
+                          </span>
+                          <span className="mt-1 block font-mono text-h3 tabular-nums text-ink transition-colors group-hover:text-signal">
+                            {frontmatter.office.phone}
+                          </span>
+                        </a>
+                      </div>
+                    </Stack>
+                  </div>
+                )}
               </Stack>
             </div>
           </div>
