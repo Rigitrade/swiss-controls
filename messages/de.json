@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "solutions": "Lösungen",
+    "materials": "Werkstoffe",
+    "commodities": "Rohstoffe",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "requestQuote": "Angebot anfordern"
+  },
+  "cta": {
+    "requestTechnicalQuote": "Technisches Angebot anfordern",
+    "exploreSolutions": "Lösungen entdecken",
+    "speakWithExpert": "Mit einem Experten sprechen",
+    "compareSelectMaterials": "Werkstoffe vergleichen",
+    "exploreCommodities": "Rohstoffhandel entdecken",
+    "viewMore": "Mehr"
+  },
+  "form": {
+    "submit": "Anfrage senden",
+    "submitting": "Wird gesendet...",
+    "required": "Pflichtfeld",
+    "invalidEmail": "Bitte eine gültige Geschäfts-E-Mail eingeben",
+    "consentRequired": "Einwilligung ist erforderlich",
+    "errors": {
+      "submission": "Senden fehlgeschlagen. Bitte erneut versuchen oder direkt info@rigitrade.com kontaktieren."
+    },
+    "success": {
+      "label": "Anfrage Erhalten",
+      "headline": "Wir melden uns innerhalb eines Werktags.",
+      "back": "Zurück zu den Lösungen"
+    }
+  },
+  "footer": {
+    "office": "Büro",
+    "contact": "Kontakt",
+    "sisterBrands": "Schwestermarken",
+    "legal": "Rechtliches",
+    "rights": "Alle Rechte vorbehalten"
+  },
+  "skip": "Zum Inhalt springen"
+}

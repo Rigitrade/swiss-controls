@@ -1,0 +1,79 @@
+import Link from "next/link"
+import { Container } from "@/components/primitives/container"
+import { Section } from "@/components/primitives/section"
+import { Stack } from "@/components/primitives/stack"
+import { Hairline } from "@/components/primitives/hairline"
+import { SectionLabel } from "@/components/typography/section-label"
+import { DisplayHeading } from "@/components/typography/display-heading"
+
+type Crumb = { label: string; href?: string }
+
+type PageHeaderProps = {
+  number: string
+  label: string
+  title: string
+  intro: string
+  breadcrumbs?: Crumb[]
+}
+
+export function PageHeader({
+  number,
+  label,
+  title,
+  intro,
+  breadcrumbs,
+}: PageHeaderProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rigitrade.com"
+
+  return (
+    <Section density="default">
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: breadcrumbs.map((c, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: c.label,
+                ...(c.href ? { item: `${baseUrl}${c.href}` } : {}),
+              })),
+            }),
+          }}
+        />
+      )}
+      <Container>
+        <Stack gap="4">
+          {breadcrumbs && breadcrumbs.length > 0 && (
+            <nav aria-label="Breadcrumb">
+              <ol className="flex flex-wrap gap-2 font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
+                {breadcrumbs.map((crumb, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    {crumb.href ? (
+                      <Link href={crumb.href} className="hover:text-ink">
+                        {crumb.label}
+                      </Link>
+                    ) : (
+                      <span>{crumb.label}</span>
+                    )}
+                    {i < breadcrumbs.length - 1 && (
+                      <span aria-hidden="true">/</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+          <SectionLabel number={number} label={label} />
+          <DisplayHeading as="h1" size="display-l" className="max-w-[20ch]">
+            {title}
+          </DisplayHeading>
+          <p className="max-w-[65ch] text-body-l text-ink/80">{intro}</p>
+          <Hairline className="mt-6" />
+        </Stack>
+      </Container>
+    </Section>
+  )
+}

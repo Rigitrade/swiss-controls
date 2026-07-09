@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "materials": "Materials",
+    "commodities": "Commodities",
+    "about": "About",
+    "contact": "Contact",
+    "requestQuote": "Request Quote"
+  },
+  "cta": {
+    "requestTechnicalQuote": "Request Technical Quote",
+    "exploreSolutions": "Explore Solutions",
+    "speakWithExpert": "Speak with a Technical Expert",
+    "compareSelectMaterials": "Compare & Select Materials",
+    "exploreCommodities": "Explore Commodities Trade",
+    "viewMore": "View"
+  },
+  "form": {
+    "submit": "Submit Request",
+    "submitting": "Submitting...",
+    "required": "Required",
+    "invalidEmail": "Please enter a valid business email",
+    "consentRequired": "Consent is required to submit",
+    "errors": {
+      "submission": "Submission failed. Please try again or email info@rigitrade.com directly."
+    },
+    "success": {
+      "label": "Request Received",
+      "headline": "We'll be in touch within one business day.",
+      "back": "Back to Solutions"
+    }
+  },
+  "footer": {
+    "office": "Office",
+    "contact": "Contact",
+    "sisterBrands": "Sister Brands",
+    "legal": "Legal",
+    "rights": "All rights reserved"
+  },
+  "skip": "Skip to content"
+}

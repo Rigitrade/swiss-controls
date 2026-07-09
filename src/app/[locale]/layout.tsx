@@ -1,0 +1,100 @@
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { NextIntlClientProvider, hasLocale } from "next-intl"
+import { getMessages, setRequestLocale } from "next-intl/server"
+import { Analytics } from "@vercel/analytics/next"
+import { routing, type Locale } from "@/i18n/routing"
+import { switzer, jetbrains, logoFont } from "@/lib/fonts"
+import { cn } from "@/lib/utils/cn"
+import { SiteHeader } from "@/components/interactive/site-header"
+import { SiteFooter } from "@/components/interactive/site-footer"
+import { WhatsappFloating } from "@/components/interactive/whatsapp-floating"
+import { loadSharedContent } from "@/lib/content/load"
+import { footerSchema, navSchema } from "@/lib/content/schema"
+
+export const metadata: Metadata = {
+  title: { default: "Rigitrade", template: "%s · Rigitrade" },
+  description:
+    "Swiss-controlled supply of superalloys for extreme environments — Inconel, Hastelloy, Duplex, Monel.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  openGraph: {
+    type: "website",
+    siteName: "Rigitrade",
+    locale: "en_US",
+  },
+  robots: { index: true, follow: true },
+  authors: [{ name: "Rigitrade AG" }],
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  setRequestLocale(locale)
+
+  const messages = await getMessages()
+  const nav = await loadSharedContent(locale as Locale, "nav", navSchema)
+  const footer = await loadSharedContent(locale as Locale, "footer", footerSchema)
+
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rigitrade.com"
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Rigitrade AG",
+    url: baseUrl,
+    logo: `${baseUrl}/og-default.png`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Tannenstrasse 16",
+      addressLocality: "Embrach",
+      addressRegion: "ZH",
+      postalCode: "8424",
+      addressCountry: "CH",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Customer Support",
+      email: "info@rigitrade.com",
+    },
+  }
+
+  return (
+    <html
+      lang={locale}
+      className={cn(switzer.variable, jetbrains.variable, logoFont.variable)}
+    >
+      <body className="bg-paper text-ink antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <NextIntlClientProvider locale={locale as Locale} messages={messages}>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+          >
+            Skip to content
+          </a>
+          <SiteHeader
+            locale={locale as Locale}
+            links={nav.links}
+            cta={nav.cta}
+          />
+          <main id="main">{children}</main>
+          <SiteFooter locale={locale as Locale} content={footer} />
+          <WhatsappFloating number="41763666669" />
+          <Analytics />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  )
+}
