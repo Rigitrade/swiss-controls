@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react"
 import { Container } from "@/components/primitives/container"
 import { Hairline } from "@/components/primitives/hairline"
 import { Wordmark } from "@/components/typography/wordmark"
-import { LangSwitcher } from "@/components/interactive/lang-switcher"
 import { LinkButton } from "@/components/ui/link-button"
 import { cn } from "@/lib/utils/cn"
 
@@ -14,12 +13,11 @@ type NavLink = { label: string; href: string }
 
 type SiteHeaderProps = {
   locale: "en" | "de"
-  pathname?: string
   links: NavLink[]
   cta: { label: string; href: string }
 }
 
-export function SiteHeader({ locale, pathname = "", links, cta }: SiteHeaderProps) {
+export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -63,7 +61,6 @@ export function SiteHeader({ locale, pathname = "", links, cta }: SiteHeaderProp
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <LangSwitcher current={locale} pathname={pathname} />
             <LinkButton href={`/${locale}${cta.href}`} variant="primary" size="pill">
               {cta.label}
             </LinkButton>
@@ -127,7 +124,6 @@ export function SiteHeader({ locale, pathname = "", links, cta }: SiteHeaderProp
             </Link>
           ))}
           <Hairline />
-          <LangSwitcher current={locale} pathname={pathname} />
           <LinkButton
             href={`/${locale}${cta.href}`}
             variant="primary"

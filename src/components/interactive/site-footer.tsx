@@ -42,23 +42,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
             <p className="mt-1 whitespace-pre-line text-body text-paper/80">
               {content.office.address}
             </p>
-            {content.office.cheNumber && (
-              <p className="mt-2 font-mono text-caption text-paper/60">
-                {content.office.cheNumber}
-              </p>
-            )}
           </div>
-
-          {content.branchOffice && (
-            <div>
-              <h3 className="mb-4 font-mono text-micro uppercase tracking-[0.08em] text-paper/60">
-                {content.branchOffice.label}
-              </h3>
-              <p className="whitespace-pre-line text-body text-paper/80">
-                {content.branchOffice.address}
-              </p>
-            </div>
-          )}
 
           <div>
             <h3 className="mb-4 font-mono text-micro uppercase tracking-[0.08em] text-paper/60">

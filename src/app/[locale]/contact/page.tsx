@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { Suspense } from "react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { Stack } from "@/components/primitives/stack"
@@ -8,7 +7,6 @@ import { Hairline } from "@/components/primitives/hairline"
 import { PageHeader } from "@/components/blocks/page-header"
 import { SectionLabel } from "@/components/typography/section-label"
 import { LeaderDots } from "@/components/typography/leader-dots"
-import { QuoteForm } from "@/components/interactive/quote-form"
 import { ContactForm } from "@/components/interactive/contact-form"
 import { loadPageContent } from "@/lib/content/load"
 import { contactPageSchema } from "@/lib/content/schema"
@@ -16,9 +14,13 @@ import type { Locale } from "@/i18n/routing"
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Submit a technical quote request or speak with an expert at Rigitrade AG.",
+  description: "Get in touch with Swiss Controls.",
 }
 
+// NOTE(Phase 3): the `QuoteForm` (and its Rigitrade-specific `quote-schema`) were removed
+// in Task 2.9 — this page keeps only the general-inquiry `ContactForm`. `office.hours` no
+// longer exists on `contactPageSchema`, so that row was dropped. Revisit the full layout
+// in Phase 3.
 export default async function ContactPage({
   params,
 }: {
@@ -33,7 +35,6 @@ export default async function ContactPage({
     contactPageSchema,
   )
 
-  const quoteId = process.env.NEXT_PUBLIC_FORMSPREE_QUOTE_ID ?? ""
   const contactId = process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID ?? ""
 
   return (
@@ -56,20 +57,12 @@ export default async function ContactPage({
                 <Hairline className="my-2" />
                 <LeaderDots left="Email" right={frontmatter.office.email} />
                 <LeaderDots left="Phone" right={frontmatter.office.phone} />
-                <LeaderDots left="Hours" right={frontmatter.office.hours} />
               </Stack>
             </aside>
 
             <div className="lg:col-span-8">
               <Stack gap="6">
-                <SectionLabel number="02" label="REQUEST TECHNICAL QUOTE" />
-                <Suspense fallback={null}>
-                  <QuoteForm formspreeId={quoteId} />
-                </Suspense>
-
-                <Hairline className="my-12" />
-
-                <SectionLabel number="03" label="GENERAL INQUIRY" />
+                <SectionLabel number="02" label="GENERAL INQUIRY" />
                 <ContactForm formspreeId={contactId} />
               </Stack>
             </div>

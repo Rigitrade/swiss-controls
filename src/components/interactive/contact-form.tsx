@@ -67,7 +67,7 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
       setSuccess({ id: result.id })
     } else {
       setSubmitError(
-        "Submission failed. Please try again or email info@rigitrade.com directly.",
+        "Submission failed. Please try again or email info@swiss-controls.com directly.",
       )
     }
   })
@@ -169,7 +169,7 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
             }
           />
           <span>
-            I consent to Rigitrade processing this submission to respond to my
+            I consent to Swiss Controls processing this submission to respond to my
             inquiry, in accordance with the{" "}
             <a href="/en/privacy" className="underline">
               privacy policy
