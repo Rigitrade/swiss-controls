@@ -23,7 +23,7 @@ export function PageHeader({
   intro,
   breadcrumbs,
 }: PageHeaderProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rigitrade.com"
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.swiss-controls.com"
 
   return (
     <Section density="default">

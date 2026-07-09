@@ -42,7 +42,7 @@ const dotVariants: Variants = {
   },
 }
 
-const WORD = "RIGITRADE"
+const WORD = "SWISS CONTROLS"
 
 type WordmarkProps = {
   size?: Size
@@ -66,7 +66,7 @@ export function Wordmark({ size = "md", className, href }: WordmarkProps) {
         {WORD.split("").map((letter, i) => (
           <span key={i} className="inline-block overflow-hidden">
             <motion.span variants={letterVariants} className="inline-block">
-              {letter}
+              {letter === " " ? " " : letter}
             </motion.span>
           </span>
         ))}
@@ -83,7 +83,7 @@ export function Wordmark({ size = "md", className, href }: WordmarkProps) {
 
   if (href) {
     return (
-      <Link href={href} aria-label="Rigitrade home" className="inline-block">
+      <Link href={href} aria-label="Swiss Controls home" className="inline-block">
         {content}
       </Link>
     )

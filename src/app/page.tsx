@@ -23,7 +23,7 @@ export default function RootRedirectPage() {
         />
       </head>
       <body>
-        <a href="/en/">Continue to Rigitrade</a>
+        <a href="/en/">Continue to Swiss Controls</a>
       </body>
     </html>
   )

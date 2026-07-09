@@ -85,7 +85,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
           <Hairline className="bg-paper/20" />
           <div className="mt-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p className="font-mono text-micro uppercase tracking-[0.08em] text-paper/50">
-              © Rigitrade AG {new Date().getFullYear()} · Switzerland
+              © Swiss Controls {new Date().getFullYear()} · Switzerland
             </p>
             <div className="flex items-center gap-3">
               {content.social.map((s) =>

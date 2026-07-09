@@ -11,7 +11,7 @@ type WhatsappFloatingProps = {
 
 export function WhatsappFloating({
   number,
-  defaultMessage = "Hello Rigitrade, I'd like to discuss a technical requirement.",
+  defaultMessage = "Hello Swiss Controls, I'd like to discuss a technical requirement.",
 }: WhatsappFloatingProps) {
   const [visible, setVisible] = useState(false)
 
@@ -28,14 +28,14 @@ export function WhatsappFloating({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with Rigitrade on WhatsApp"
+      aria-label="Chat with Swiss Controls on WhatsApp"
       className={`group fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-signal text-paper shadow-xl shadow-signal/40 ring-1 ring-paper/10 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:bg-ink sm:bottom-6 sm:right-6 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
-      {/* Forge pulse ring — heat-signature accent */}
+      {/* Signal pulse ring — heat-signature accent */}
       <span
         aria-hidden="true"
         className="absolute inset-0 rounded-full bg-signal opacity-60 motion-safe:animate-[wa-pulse_2.6s_cubic-bezier(0.22,1,0.36,1)_infinite]"
