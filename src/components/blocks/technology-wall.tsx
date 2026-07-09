@@ -19,7 +19,7 @@ export function TechnologyWall({ content }: Props) {
           {content.vendors.map((v) => (
             <li
               key={v}
-              className="flex items-center justify-center bg-paper px-4 py-8 text-center font-mono text-caption uppercase tracking-[0.12em] text-ink/50 grayscale transition-colors hover:text-ink"
+              className="flex items-center justify-center bg-paper px-4 py-8 text-center font-mono text-caption uppercase tracking-[0.12em] text-ink/70 grayscale transition-colors hover:text-ink"
             >
               {v}
             </li>

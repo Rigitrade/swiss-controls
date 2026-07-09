@@ -18,7 +18,7 @@ export function IndustriesGrid({ number, label, intro, items }: Props) {
           {items.map((item, i) => (
             <li key={item} className="group flex items-center justify-between bg-paper p-6">
               <span className="text-h3 font-medium text-ink">{item}</span>
-              <span className="font-mono text-micro text-signal/60 group-hover:text-signal">
+              <span className="font-mono text-micro text-ink/70 group-hover:text-signal">
                 {String(i + 1).padStart(2, "0")}
               </span>
             </li>

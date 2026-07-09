@@ -25,8 +25,8 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
           >
             {content.tagline}
           </DisplayHeading>
-          <p className="mt-6 inline-flex items-center gap-3 font-mono text-micro uppercase tracking-[0.16em] text-signal">
-            <span aria-hidden="true" className="inline-block h-2 w-2 bg-signal" />
+          <p className="mt-6 inline-flex items-center gap-3 font-mono text-micro uppercase tracking-[0.16em] text-volt">
+            <span aria-hidden="true" className="inline-block h-2 w-2 bg-volt" />
             {content.technologyTag}
           </p>
         </div>
@@ -50,13 +50,13 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
             </h3>
             <a
               href={`mailto:${content.contact.email}`}
-              className="block text-body text-paper hover:text-signal"
+              className="block text-body text-paper hover:text-volt"
             >
               {content.contact.email}
             </a>
             <a
               href={`tel:${content.contact.phone.replace(/\s+/g, "")}`}
-              className="mt-1 block font-mono text-body tabular-nums text-paper hover:text-signal"
+              className="mt-1 block font-mono text-body tabular-nums text-paper hover:text-volt"
             >
               {content.contact.phone}
             </a>

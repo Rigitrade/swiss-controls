@@ -33,7 +33,7 @@ export function ServicesGrid({ content, locale }: Props) {
                     <Icon className="h-8 w-8 text-signal" aria-hidden="true" strokeWidth={1.5} />
                     <ArrowUpRight className="h-5 w-5 text-ink/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal" aria-hidden="true" />
                   </div>
-                  <span className="font-mono text-micro uppercase tracking-[0.16em] text-ink/50">
+                  <span className="font-mono text-micro uppercase tracking-[0.16em] text-ink/70">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-h3 font-medium text-ink">{item.title}</h3>
