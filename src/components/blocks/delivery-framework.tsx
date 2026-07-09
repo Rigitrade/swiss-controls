@@ -3,16 +3,16 @@ import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
 import type { HomeContent } from "@/lib/content/schema"
 
-type Props = { content: HomeContent["process"] }
+type Props = { content: HomeContent["deliveryFramework"] }
 
-export function ProcessTimeline({ content }: Props) {
+export function DeliveryFramework({ content }: Props) {
   return (
     <Section surface="ink">
       <Container>
         <div className="mb-12 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} className="!text-paper/60" />
         </div>
-        <ol className="grid grid-cols-1 gap-px bg-paper/10 md:grid-cols-5">
+        <ol className="grid grid-cols-2 gap-px bg-paper/10 md:grid-cols-4">
           {content.steps.map((s, i) => (
             <li key={s.step} className="bg-ink p-6">
               <div className="flex items-baseline gap-3">
