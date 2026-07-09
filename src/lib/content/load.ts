@@ -8,12 +8,12 @@ const CONTENT_ROOT = path.join(process.cwd(), "content")
 
 export type PageSlug =
   | "home"
-  | "solutions"
-  | "materials"
-  | "commodities"
+  | "services/index"
   | "about"
+  | "industries"
   | "contact"
   | "privacy"
+  | "imprint"
 
 export type LoadedContent<T> = {
   frontmatter: T
@@ -52,7 +52,7 @@ export async function loadPageContent<T>(
 
 export async function loadSharedContent<T>(
   locale: Locale,
-  name: "nav" | "footer" | "trust-strip",
+  name: "nav" | "footer",
   schema: z.ZodSchema<T>,
 ): Promise<T> {
   const filePath = path.join(CONTENT_ROOT, locale, "shared", `${name}.mdx`)
