@@ -14,55 +14,36 @@ import type { Locale } from "@/i18n/routing"
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Swiss Controls.",
+  description: "Discuss your project with the Swiss Controls engineering team.",
 }
 
-// NOTE(Phase 3): the `QuoteForm` (and its Rigitrade-specific `quote-schema`) were removed
-// in Task 2.9 — this page keeps only the general-inquiry `ContactForm`. `office.hours` no
-// longer exists on `contactPageSchema`, so that row was dropped. Revisit the full layout
-// in Phase 3.
-export default async function ContactPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
-
-  const { frontmatter } = await loadPageContent(
-    locale as Locale,
-    "contact",
-    contactPageSchema,
-  )
-
+  const { frontmatter } = await loadPageContent(locale as Locale, "contact", contactPageSchema)
   const contactId = process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID ?? ""
 
   return (
     <>
       <PageHeader
-        number={frontmatter.pageHeader.number}
-        label={frontmatter.pageHeader.label}
-        title={frontmatter.pageHeader.title}
-        intro={frontmatter.pageHeader.intro}
+        {...frontmatter.pageHeader}
         breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: "Contact" }]}
       />
-
       <Section>
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
             <aside className="lg:col-span-4">
               <Stack gap="4">
-                <SectionLabel number="01" label="OFFICE" />
+                <SectionLabel number="01" label="HEADQUARTERS" />
                 <p className="whitespace-pre-line text-body-l text-ink">{frontmatter.office.address}</p>
                 <Hairline className="my-2" />
                 <LeaderDots left="Email" right={frontmatter.office.email} />
                 <LeaderDots left="Phone" right={frontmatter.office.phone} />
               </Stack>
             </aside>
-
             <div className="lg:col-span-8">
               <Stack gap="6">
-                <SectionLabel number="02" label="GENERAL INQUIRY" />
+                <SectionLabel number="02" label="SEND US A MESSAGE" />
                 <ContactForm formspreeId={contactId} />
               </Stack>
             </div>
