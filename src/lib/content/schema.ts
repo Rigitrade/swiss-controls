@@ -15,100 +15,88 @@ const pageHeaderSchema = z.object({
 
 const heroSchema = z.object({
   eyebrow: z.string(),          // "A Brand by RIGITRADE AG"
-  headline: z.string(),         // "Engineering the Future of Industry"
   wordmark: z.string(),         // "SWISS CONTROLS"
-  body: z.string(),
-  positioning: z.string(),      // the three-part line
+  headline: z.string(),         // "Engineering Leadership. Swiss Precision. Industrial Transformation."
+  subheadline: z.string(),
+  positioning: z.string(),      // the three-part positioning line
   primaryCta: ctaSchema,
 })
 
 const metricSchema = z.object({
-  value: z.string(),            // "20+", "5", "100%", "International"
+  value: z.string(),            // "100+", "30+", "End-to-End"
   suffix: z.string().optional(),
   label: z.string(),
 })
 
-const serviceCardSchema = z.object({
-  slug: z.string(),
-  icon: z.string(),             // lucide icon name
-  title: z.string(),
-  summary: z.string(),
-})
+const whyItemSchema = z.object({ title: z.string(), detail: z.string() })
 
-const processStepSchema = z.object({
+const deliveryStepSchema = z.object({
   step: z.string(),             // "Discover"
   detail: z.string(),
 })
 
-const whyItemSchema = z.object({ title: z.string(), detail: z.string() })
+const pillarSchema = z.object({ title: z.string(), detail: z.string() })
 
-const finalCtaSchema = z.object({
-  headline: z.string(),
-  body: z.string().optional(),
-  primaryCta: ctaSchema,
+const industryGroupSchema = z.object({
+  category: z.string(),
+  items: z.array(z.string()).min(1),
+})
+
+const technologyCategorySchema = z.object({
+  category: z.string(),
+  items: z.array(z.string()).min(1),
 })
 
 export const homeSchema = z.object({
   hero: heroSchema,
-  intro: z.object({ heading: z.string(), body: z.string() }),
+  purpose: z.object({ heading: z.string(), body: z.string() }),
   metrics: z.object({
     number: z.string(),
     label: z.string(),
     items: z.array(metricSchema).length(4),
   }),
-  services: z.object({
-    number: z.string(),
-    label: z.string(),
-    items: z.array(serviceCardSchema).min(1),
-  }),
-  process: z.object({
-    number: z.string(),
-    label: z.string(),
-    steps: z.array(processStepSchema).min(1),
-  }),
-  technologies: z.object({
-    number: z.string(),
-    label: z.string(),
-    note: z.string(),
-    vendors: z.array(z.string()).min(1),
-  }),
-  industries: z.object({
-    number: z.string(),
-    label: z.string(),
-    intro: z.string(),
-    items: z.array(z.string()).min(1),
-  }),
-  whyChoose: z.object({
+  whyPartner: z.object({
     number: z.string(),
     label: z.string(),
     items: z.array(whyItemSchema).min(1),
   }),
-  finalCta: finalCtaSchema,
+  deliveryFramework: z.object({
+    number: z.string(),
+    label: z.string(),
+    steps: z.array(deliveryStepSchema).min(1),
+  }),
 })
 
-export const servicesIndexSchema = z.object({
+export const solutionsIndexSchema = z.object({
   pageHeader: pageHeaderSchema,
 })
 
-export const serviceDetailSchema = z.object({
+export const solutionDetailSchema = z.object({
   pageHeader: pageHeaderSchema,
-  summary: z.string(),
-  catalog: z.array(z.string()).min(1),
+  challenge: z.string(),
+  approach: z.string(),
+  capabilities: z.array(z.string()).min(1),
 })
 
-export const aboutPageSchema = z.object({
+export const whoWeAreSchema = z.object({
   pageHeader: pageHeaderSchema,
-  sections: z
-    .array(z.object({ number: z.string(), title: z.string(), body: z.string() }))
-    .min(1),
-  values: z.array(z.object({ title: z.string(), detail: z.string() })).min(1),
+  narrative: z.array(z.string()).min(1),
+  pillars: z.array(pillarSchema).min(1),
+  industries: z.array(industryGroupSchema).min(1),
+  executiveLeadership: z.array(z.string()).min(1),
+  mission: z.string(),
+  vision: z.string(),
 })
 
-export const industriesPageSchema = z.object({
+export const technologySchema = z.object({
   pageHeader: pageHeaderSchema,
-  industries: z.array(z.string()).min(1),
-  clientTypesLabel: z.string(),
-  clientTypes: z.array(z.string()).min(1),
+  flow: z.array(z.string()).min(1),
+  categories: z.array(technologyCategorySchema).min(1),
+  commissioning: z.object({
+    heading: z.string(),
+    body: z.string(),
+    items: z.array(z.string()).min(1),
+  }),
 })
 
 export const contactPageSchema = z.object({
@@ -118,6 +106,7 @@ export const contactPageSchema = z.object({
     phone: z.string(),
     email: z.string().email(),
   }),
+  regions: z.array(z.string()).min(1),
 })
 
 export const privacyPageSchema = z.object({
@@ -151,10 +140,10 @@ export const footerSchema = z.object({
 export type ImageContent = z.infer<typeof imageSchema>
 export type CtaContent = z.infer<typeof ctaSchema>
 export type HomeContent = z.infer<typeof homeSchema>
-export type ServicesIndexContent = z.infer<typeof servicesIndexSchema>
-export type ServiceDetailContent = z.infer<typeof serviceDetailSchema>
-export type AboutPageContent = z.infer<typeof aboutPageSchema>
-export type IndustriesPageContent = z.infer<typeof industriesPageSchema>
+export type SolutionsIndexContent = z.infer<typeof solutionsIndexSchema>
+export type SolutionDetailContent = z.infer<typeof solutionDetailSchema>
+export type WhoWeAreContent = z.infer<typeof whoWeAreSchema>
+export type TechnologyContent = z.infer<typeof technologySchema>
 export type ContactPageContent = z.infer<typeof contactPageSchema>
 export type PrivacyPageContent = z.infer<typeof privacyPageSchema>
 export type NavContent = z.infer<typeof navSchema>
