@@ -1,31 +1,36 @@
 import Link from "next/link"
-import { Cpu, Zap, Network, DraftingCompass, RefreshCw, Factory, ArrowUpRight, type LucideIcon } from "lucide-react"
+import { RefreshCw, Zap, Cpu, DraftingCompass, ArrowUpRight, type LucideIcon } from "lucide-react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
-import type { HomeContent } from "@/lib/content/schema"
 
 const ICONS: Record<string, LucideIcon> = {
-  Cpu, Zap, Network, DraftingCompass, RefreshCw, Factory,
+  RefreshCw, Zap, Cpu, DraftingCompass, ArrowUpRight,
 }
 
-type Props = { content: HomeContent["services"]; locale: "en" }
+type SolutionsGridContent = {
+  number: string
+  label: string
+  items: { slug: string; icon: string; title: string; summary: string }[]
+}
 
-export function ServicesGrid({ content, locale }: Props) {
+type Props = { content: SolutionsGridContent; locale: "en" }
+
+export function SolutionsGrid({ content, locale }: Props) {
   return (
     <Section surface="paper">
       <Container>
         <div className="mb-12 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />
         </div>
-        <div className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
           {content.items.map((item, i) => {
-            const Icon = ICONS[item.icon] ?? Cpu
+            const Icon = ICONS[item.icon] ?? RefreshCw
             return (
               <Link
                 key={item.slug}
-                href={`/${locale}/services/${item.slug}`}
+                href={`/${locale}/solutions/${item.slug}`}
                 className="group relative flex flex-col bg-paper p-8 transition-colors hover:bg-stone/40"
               >
                 <Stack gap="4">
