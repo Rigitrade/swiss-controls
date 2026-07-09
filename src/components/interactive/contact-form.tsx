@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
@@ -54,6 +55,9 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
     },
   })
 
+  // react-hook-form's `watch` subscribes to form state at runtime and is not
+  // memoizable by the React Compiler; this is inherent to the library.
+  // eslint-disable-next-line react-hooks/incompatible-library
   const consentChecked = watch("consent" as never)
 
   const onSubmit = handleSubmit(async (data) => {
@@ -171,9 +175,9 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
           <span>
             I consent to Swiss Controls processing this submission to respond to my
             inquiry, in accordance with the{" "}
-            <a href="/en/privacy" className="underline">
+            <Link href="/en/privacy" className="underline">
               privacy policy
-            </a>
+            </Link>
             .
           </span>
         </label>

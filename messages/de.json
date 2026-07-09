@@ -2,8 +2,6 @@
   "nav": {
     "home": "Startseite",
     "solutions": "Lösungen",
-    "materials": "Werkstoffe",
-    "commodities": "Rohstoffe",
     "about": "Über uns",
     "contact": "Kontakt",
     "requestQuote": "Angebot anfordern"
@@ -12,8 +10,6 @@
     "requestTechnicalQuote": "Technisches Angebot anfordern",
     "exploreSolutions": "Lösungen entdecken",
     "speakWithExpert": "Mit einem Experten sprechen",
-    "compareSelectMaterials": "Werkstoffe vergleichen",
-    "exploreCommodities": "Rohstoffhandel entdecken",
     "viewMore": "Mehr"
   },
   "form": {

@@ -23,6 +23,10 @@ export default function RootRedirectPage() {
         />
       </head>
       <body>
+        {/* This is a standalone redirect shell that renders its own <html>
+            document (outside the app-router tree), not an in-app navigation,
+            so next/link is inappropriate here. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a href="/en/">Continue to Swiss Controls</a>
       </body>
     </html>

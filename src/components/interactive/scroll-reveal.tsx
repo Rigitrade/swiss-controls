@@ -25,6 +25,10 @@ export function ScrollReveal({
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if (reduce) {
+      // One-time reveal when motion is reduced. A lazy useState initializer
+      // can't be used because matchMedia is unavailable during SSR (static
+      // export prerenders this component on the server).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setRevealed(true)
       return
     }

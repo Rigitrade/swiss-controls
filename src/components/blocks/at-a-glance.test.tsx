@@ -27,12 +27,12 @@ beforeAll(() => {
     }),
   })
 
-  global.IntersectionObserver = class IntersectionObserver {
+  global.IntersectionObserver = class {
     constructor(public callback: IntersectionObserverCallback) {}
     observe() {
       this.callback(
         [{ isIntersecting: true } as IntersectionObserverEntry],
-        this as any
+        this as unknown as IntersectionObserver
       )
     }
     disconnect() {}
@@ -40,7 +40,7 @@ beforeAll(() => {
     takeRecords() {
       return []
     }
-  } as any
+  } as unknown as typeof IntersectionObserver
 })
 
 describe("AtAGlance", () => {

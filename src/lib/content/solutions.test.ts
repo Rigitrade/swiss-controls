@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import { SOLUTION_SLUGS, SOLUTIONS, getSolution } from "./solutions"
+import { SOLUTION_SLUGS, getSolution } from "./solutions"
 
 describe("solutions registry", () => {
   it("SOLUTION_SLUGS contains exactly 4 slugs in order", () => {

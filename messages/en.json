@@ -2,8 +2,6 @@
   "nav": {
     "home": "Home",
     "solutions": "Solutions",
-    "materials": "Materials",
-    "commodities": "Commodities",
     "about": "About",
     "contact": "Contact",
     "requestQuote": "Request Quote"
@@ -12,8 +10,6 @@
     "requestTechnicalQuote": "Request Technical Quote",
     "exploreSolutions": "Explore Solutions",
     "speakWithExpert": "Speak with a Technical Expert",
-    "compareSelectMaterials": "Compare & Select Materials",
-    "exploreCommodities": "Explore Commodities Trade",
     "viewMore": "View"
   },
   "form": {

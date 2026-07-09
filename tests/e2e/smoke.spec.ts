@@ -1,17 +1,16 @@
 import { test, expect } from "@playwright/test"
 import AxeBuilder from "@axe-core/playwright"
 
+// Static export with trailingSlash: true, served by `npx serve out`.
 const ROUTES = [
   "/en/",
-  "/en/services/",
-  "/en/services/industrial-automation/",
-  "/en/services/electrical-engineering/",
-  "/en/services/system-integration/",
-  "/en/services/engineering-consulting/",
-  "/en/services/commissioning-lifecycle/",
-  "/en/services/procurement-sourcing/",
-  "/en/about/",
-  "/en/industries/",
+  "/en/solutions/",
+  "/en/solutions/operational-modernization/",
+  "/en/solutions/energy-transition/",
+  "/en/solutions/industrial-digitalization/",
+  "/en/solutions/capital-investment/",
+  "/en/who-we-are/",
+  "/en/technology/",
   "/en/contact/",
   "/en/privacy/",
   "/en/imprint/",
