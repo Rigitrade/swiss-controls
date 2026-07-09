@@ -51,17 +51,21 @@ export function Hero({ hero, locale }: HeroProps) {
       <Container className="pb-section-mobile pt-32 lg:pb-section-loose">
         <motion.div initial="hidden" animate="visible" variants={container}>
           <Stack gap="6">
-            <span className="font-logo text-caption uppercase tracking-[0.35em] text-volt">
-              {hero.wordmark}
+            <span className="block overflow-hidden">
+              <motion.span
+                variants={lineReveal}
+                className="block font-logo text-display-2xl font-black uppercase leading-none tracking-[0.04em] text-paper"
+              >
+                {hero.wordmark}
+              </motion.span>
             </span>
-            <h1 className="text-display-2xl font-medium tracking-tight text-balance">
-              <span className="block overflow-hidden">
-                <motion.span variants={lineReveal} className="block text-paper">
-                  {hero.headline}
-                </motion.span>
-              </span>
-            </h1>
-            <motion.p variants={fadeUp} className="max-w-[60ch] text-body-l text-paper/85 lg:text-h3">
+            <motion.h1
+              variants={fadeUp}
+              className="max-w-[22ch] text-display-m font-medium tracking-tight text-balance text-paper/90"
+            >
+              {hero.headline}
+            </motion.h1>
+            <motion.p variants={fadeUp} className="max-w-[56ch] text-body-l text-paper/75">
               {hero.subheadline}
             </motion.p>
             <motion.p
