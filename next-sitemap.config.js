@@ -4,12 +4,6 @@ module.exports = {
   generateRobotsTxt: true,
   outDir: "out",
   exclude: ["/404", "/_not-found"],
-  alternateRefs: [
-    {
-      href: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.swiss-controls.com"}/en`,
-      hreflang: "en",
-    },
-  ],
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
   },
