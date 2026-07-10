@@ -35,12 +35,6 @@ export function WhatsappFloating({
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
-      {/* Signal pulse ring — heat-signature accent */}
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 rounded-full bg-red opacity-60 motion-safe:animate-[wa-pulse_2.6s_cubic-bezier(0.22,1,0.36,1)_infinite]"
-      />
-
       {/* WhatsApp logomark */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
