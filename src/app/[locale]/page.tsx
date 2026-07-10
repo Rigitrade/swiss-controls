@@ -24,7 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(locale as Locale, "home", homeSchema)
   const c = frontmatter
-  const solutions = SOLUTIONS.map((s) => ({ slug: s.slug, icon: s.icon, title: s.title, summary: s.summary, image: s.image }))
+  const solutions = SOLUTIONS.map((s) => ({ slug: s.slug, title: s.title, summary: s.summary, image: s.image }))
 
   return (
     <>
