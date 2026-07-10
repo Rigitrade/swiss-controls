@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
 import { PageHeader } from "@/components/blocks/page-header"
+import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
 import { IndustriesGroups } from "@/components/blocks/industries-groups"
 import { Section } from "@/components/primitives/section"
@@ -32,34 +33,57 @@ export default async function WhoWeArePage({
     <>
       <PageHeader
         {...frontmatter.pageHeader}
+        fill
         breadcrumbs={[
           { label: "Home", href: `/${locale}` },
           { label: "Who We Are" },
         ]}
       />
 
-      <Section surface="paper" density="default">
+      <Section surface="stone" density="default">
         <Container>
-          <div className="max-w-[70ch]">
-            <Stack gap="3">
-              {frontmatter.narrative.map((paragraph, i) => (
-                <p key={i} className="text-body-l text-ink/80">
-                  {paragraph}
-                </p>
-              ))}
-            </Stack>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <SectionLabel number="01" label="OUR STORY" />
+            </div>
+            <div className="lg:col-span-8">
+              <p className="text-h2 font-medium leading-snug text-ink">
+                {frontmatter.narrative[0]}
+              </p>
+              <Stack gap="3" className="mt-6">
+                {frontmatter.narrative.slice(1).map((paragraph, i) => (
+                  <p key={i} className="max-w-[65ch] text-body-l text-ink/80">
+                    {paragraph}
+                  </p>
+                ))}
+              </Stack>
+            </div>
           </div>
         </Container>
       </Section>
 
+      <AtAGlance
+        surface="paper"
+        content={{
+          number: "02",
+          label: "AT A GLANCE",
+          items: [
+            { value: "100", suffix: "+", label: "Years Combined Leadership" },
+            { value: "30", suffix: "+", label: "Countries Served" },
+            { value: "20", suffix: "+", label: "Industry Sectors" },
+            { value: "4", label: "Regional Hubs" },
+          ],
+        }}
+      />
+
       <WhyChoose
-        number="02"
+        number="03"
         label="OUR FOUNDATIONAL PILLARS"
         items={frontmatter.pillars}
       />
 
       <IndustriesGroups
-        number="03"
+        number="04"
         label="INDUSTRIES WE SERVE"
         intro="Deep domain expertise spanning the complete industrial landscape."
         groups={frontmatter.industries}
@@ -69,7 +93,7 @@ export default async function WhoWeArePage({
         <Container>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <SectionLabel number="04" label="EXECUTIVE LEADERSHIP" />
+              <SectionLabel number="05" label="EXECUTIVE LEADERSHIP" />
             </div>
             <div className="lg:col-span-8">
               <Stack gap="3">
@@ -87,7 +111,7 @@ export default async function WhoWeArePage({
       <Section surface="paper" density="default">
         <Container>
           <div className="mb-12 max-w-2xl">
-            <SectionLabel number="05" label="MISSION & VISION" />
+            <SectionLabel number="06" label="MISSION & VISION" />
           </div>
           <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
             <div className="flex flex-col gap-4 bg-paper p-8 border-t-2 border-red">

@@ -56,7 +56,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
         </div>
 
         <div className="mb-16">
-          <Wordmark size="xl" className="text-paper" />
+          <Wordmark size="xl" />
           <DisplayHeading
             as="h2"
             size="display-m"

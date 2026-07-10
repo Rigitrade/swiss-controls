@@ -31,6 +31,7 @@ export default async function TechnologyPage({
     <>
       <PageHeader
         {...frontmatter.pageHeader}
+        fill
         breadcrumbs={[
           { label: "Home", href: `/${locale}` },
           { label: "Technology Expertise" },
@@ -39,7 +40,7 @@ export default async function TechnologyPage({
 
       <TechnologyPlatforms
         number="01"
-        label="TECHNOLOGY EXPERTISE"
+        label="PLATFORM COVERAGE"
         flow={frontmatter.flow}
         categories={frontmatter.categories}
       />
