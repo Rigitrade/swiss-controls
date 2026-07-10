@@ -22,7 +22,16 @@ export function DeliveryFramework({ content, surface = "stone" }: Props) {
               <h3 className="mt-4 text-h3 font-medium text-ink">{s.step}</h3>
               <p className="mt-2 text-body text-mute">{s.detail}</p>
               {s.points && s.points.length > 0 && (
-                <p className="mt-2 text-micro text-mute">{s.points.join(" · ")}</p>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {s.points.map((p) => (
+                    <li
+                      key={p}
+                      className="rounded-full border border-line px-2.5 py-1 text-micro text-mute"
+                    >
+                      {p}
+                    </li>
+                  ))}
+                </ul>
               )}
             </li>
           ))}
