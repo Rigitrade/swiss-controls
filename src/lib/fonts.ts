@@ -1,4 +1,4 @@
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { Montserrat, JetBrains_Mono } from "next/font/google"
 
 // Site typography is provisional — the client will supply the licensed site
 // fonts (plus letter-spacing / spacing specs) later. Until then we keep the
@@ -8,7 +8,7 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 // The LOGO/wordmark is separate: it uses Helvetica (matching the master logo),
 // served via a system stack in globals.css (--font-logo) — no JS font needed.
 
-export const bodyFont = Inter({
+export const bodyFont = Montserrat({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",

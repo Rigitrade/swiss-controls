@@ -42,7 +42,7 @@ export function DisplayHeading({
     return (
       <Tag
         className={cn(
-          "font-sans font-medium text-balance",
+          "font-sans font-bold text-balance",
           sizeClasses[size],
           className,
         )}
@@ -67,7 +67,7 @@ export function DisplayHeading({
   return (
     <Tag
       className={cn(
-        "font-sans font-medium text-balance",
+        "font-sans font-bold text-balance",
         sizeClasses[size],
         className,
       )}

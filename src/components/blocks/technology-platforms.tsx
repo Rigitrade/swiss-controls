@@ -37,7 +37,7 @@ export function TechnologyPlatforms({ number, label, flow, categories }: Props) 
                   />
                 ) : null}
               </div>
-              <span className="text-h3 font-medium leading-tight tracking-tight text-ink">
+              <span className="text-h3 font-semibold leading-tight tracking-tight text-ink">
                 {step}
               </span>
             </li>
@@ -55,7 +55,7 @@ export function TechnologyPlatforms({ number, label, flow, categories }: Props) 
                 <span className="font-mono text-body-l font-medium tabular-nums text-red">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-h3 font-medium text-ink">{cat.category}</h3>
+                <h3 className="text-h3 font-semibold text-ink">{cat.category}</h3>
               </div>
               <ul className="flex flex-wrap gap-2">
                 {cat.items.map((item) => (

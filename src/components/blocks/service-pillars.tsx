@@ -80,7 +80,7 @@ export function ServicePillars({ content, surface = "paper" }: Props) {
                   <div className="absolute inset-0 z-10 flex translate-y-2 flex-col justify-center gap-4 bg-paper/90 px-6 py-8 opacity-0 backdrop-blur-md transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:px-8 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100">
                     <h3
                       id={titleId}
-                      className="text-h2 font-semibold uppercase tracking-[0.06em] text-ink"
+                      className="text-h2 font-bold uppercase tracking-[0.06em] text-ink"
                     >
                       {pillar.title}
                     </h3>

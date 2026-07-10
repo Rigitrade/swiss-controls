@@ -19,7 +19,7 @@ export function DeliveryFramework({ content, surface = "stone" }: Props) {
                 <span className="font-mono text-micro text-red">{String(i + 1).padStart(2, "0")}</span>
                 <span className="h-px flex-1 bg-red/30" aria-hidden="true" />
               </div>
-              <h3 className="mt-4 text-h3 font-medium text-ink">{s.step}</h3>
+              <h3 className="mt-4 text-h3 font-semibold text-ink">{s.step}</h3>
               <p className="mt-2 text-body text-mute">{s.detail}</p>
             </li>
           ))}
