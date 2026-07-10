@@ -50,6 +50,20 @@ const technologyCategorySchema = z.object({
 export const homeSchema = z.object({
   hero: heroSchema,
   purpose: z.object({ heading: z.string(), body: z.string() }),
+  services: z.object({
+    number: z.string(),
+    label: z.string(),
+    items: z
+      .array(
+        z.object({
+          title: z.string(),
+          summary: z.string(),
+          points: z.array(z.string()).min(1),
+          image: z.string().optional(),
+        }),
+      )
+      .length(4),
+  }),
   metrics: z.object({
     number: z.string(),
     label: z.string(),
