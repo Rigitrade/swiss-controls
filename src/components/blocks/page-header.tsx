@@ -15,6 +15,9 @@ type PageHeaderProps = {
   title: string
   intro: string
   breadcrumbs?: Crumb[]
+  /** Fixed full-height hero band with vertically-centred content. Used on the
+   *  main inner pages so their first section is a consistent height. */
+  fill?: boolean
 }
 
 export function PageHeader({
@@ -22,11 +25,15 @@ export function PageHeader({
   title,
   intro,
   breadcrumbs,
+  fill = false,
 }: PageHeaderProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.swiss-controls.com"
 
   return (
-    <Section density="header">
+    <Section
+      density={fill ? "default" : "header"}
+      className={fill ? "flex min-h-[80vh] items-center" : undefined}
+    >
       {breadcrumbs && breadcrumbs.length > 0 && (
         <script
           type="application/ld+json"

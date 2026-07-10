@@ -32,6 +32,7 @@ export default async function WhoWeArePage({
     <>
       <PageHeader
         {...frontmatter.pageHeader}
+        fill
         breadcrumbs={[
           { label: "Home", href: `/${locale}` },
           { label: "Who We Are" },

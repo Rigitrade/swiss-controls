@@ -31,6 +31,7 @@ export default async function TechnologyPage({
     <>
       <PageHeader
         {...frontmatter.pageHeader}
+        fill
         breadcrumbs={[
           { label: "Home", href: `/${locale}` },
           { label: "Technology Expertise" },

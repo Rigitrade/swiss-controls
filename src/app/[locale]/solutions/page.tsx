@@ -22,6 +22,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
     <>
       <PageHeader
         {...frontmatter.pageHeader}
+        fill
         breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: "Solutions" }]}
       />
       <SolutionsGrid content={{ number: "01", label: "OUR SOLUTIONS", items }} locale="en" />

@@ -30,6 +30,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <>
       <PageHeader
         {...frontmatter.pageHeader}
+        fill
         breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: "Contact" }]}
       />
       <Section>
