@@ -14,7 +14,8 @@ const hero = {
 describe("Hero", () => {
   it("renders wordmark, headline and CTA to the localized contact route", () => {
     render(<Hero hero={hero} locale="en" />)
-    expect(screen.getByText("SWISS CONTROLS")).toBeInTheDocument()
+    // The hero renders the shared Wordmark lockup (lowercase "swiss controls").
+    expect(screen.getByText("swiss controls")).toBeInTheDocument()
     expect(
       screen.getByText(
         "Engineering Leadership. Swiss Precision. Industrial Transformation.",

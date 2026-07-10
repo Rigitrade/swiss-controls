@@ -10,7 +10,6 @@ import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
 import { Hairline } from "@/components/primitives/hairline"
 import { contactSchema, CONTACT_REASONS, type ContactFormData } from "@/lib/forms/contact-schema"
-import { cn } from "@/lib/utils/cn"
 
 const REASON_LABELS: Record<(typeof CONTACT_REASONS)[number], string> = {
   general: "General inquiry",
@@ -77,31 +76,18 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
   // eslint-disable-next-line react-hooks/incompatible-library
   const consentChecked = watch("consent" as never)
 
-  const onSubmit = handleSubmit(
-    (data) => {
-      console.log("[contact] submit VALID", data)
-      if (data.website) {
-        console.log("[contact] honeypot filled → ignored")
-        return
-      }
-      const url = buildWhatsappUrl(whatsappNumber, data)
-      console.log("[contact] whatsappNumber:", whatsappNumber)
-      console.log("[contact] wa.me URL:", url)
-      setSentUrl(url)
-      // Best-effort auto-open (may be blocked as a non-gesture popup after
-      // async validation — the confirmation screen's link is the reliable path).
-      try {
-        const w = window.open(url, "_blank")
-        console.log("[contact] window.open returned:", w ? "window" : "null (blocked)")
-        if (w) w.opener = null
-      } catch (err) {
-        console.log("[contact] window.open threw:", err)
-      }
-    },
-    (formErrors) => {
-      console.log("[contact] submit INVALID — validation errors:", formErrors)
-    },
-  )
+  const onSubmit = handleSubmit((data) => {
+    const url = buildWhatsappUrl(whatsappNumber, data)
+    setSentUrl(url)
+    // Best-effort auto-open (may be blocked as a non-gesture popup after async
+    // validation — the confirmation screen's link is the reliable path).
+    try {
+      const w = window.open(url, "_blank")
+      if (w) w.opener = null
+    } catch {
+      /* popup blocked — use the confirmation link */
+    }
+  })
 
   if (sentUrl) {
     return (
@@ -123,7 +109,6 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
             <MessageCircle className="h-5 w-5" aria-hidden="true" />
             Open WhatsApp
           </a>
-          <p className="break-all font-mono text-caption text-ink/50">{sentUrl}</p>
         </Stack>
       </div>
     )
@@ -131,13 +116,6 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-8" noValidate>
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label>
-          Website
-          <input type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
-        </label>
-      </div>
-
       <Stack gap="6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
