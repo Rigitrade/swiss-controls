@@ -24,7 +24,12 @@ const lineReveal: Variants = {
 
 export function Hero({ hero, locale }: HeroProps) {
   return (
-    <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink">
+    <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-ink text-paper">
+      {/* Dark charcoal ground sets the hero apart from the light body below. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,theme(colors.steel),theme(colors.ink))]"
+      />
       {/* Swiss red signature — a full-height rule down the left edge. */}
       <div aria-hidden="true" className="absolute left-0 top-0 h-full w-1.5 bg-red" />
 
@@ -40,13 +45,13 @@ export function Hero({ hero, locale }: HeroProps) {
               variants={fadeUp}
               className="flex flex-wrap items-center gap-x-4 gap-y-2"
             >
-              <Wordmark size="sm" />
-              <span className="font-sans text-caption uppercase tracking-[0.14em] text-mute">
+              <Wordmark size="md" tone="red" />
+              <span className="font-sans text-caption uppercase tracking-[0.14em] text-paper/65">
                 {hero.eyebrow}
               </span>
             </motion.div>
 
-            <h1 className="text-display-l font-semibold tracking-tight text-balance text-ink">
+            <h1 className="text-display-l font-semibold tracking-tight text-balance text-paper">
               <span className="block overflow-hidden">
                 <motion.span variants={lineReveal} className="block">
                   {hero.headline}
@@ -54,13 +59,13 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </h1>
 
-            <motion.p variants={fadeUp} className="max-w-[56ch] text-body-l text-mute">
+            <motion.p variants={fadeUp} className="max-w-[56ch] text-body-l text-paper/80">
               {hero.subheadline}
             </motion.p>
 
             <motion.p
               variants={fadeUp}
-              className="flex items-center gap-3 font-sans text-caption uppercase tracking-[0.16em] text-ink/70"
+              className="flex items-center gap-3 font-sans text-caption uppercase tracking-[0.16em] text-paper/70"
             >
               <span aria-hidden="true" className="inline-block h-px w-10 bg-red" />
               {hero.positioning}
