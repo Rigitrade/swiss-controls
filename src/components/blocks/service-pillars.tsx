@@ -41,7 +41,7 @@ export function ServicePillars({ content, surface = "paper" }: Props) {
         <div className="mb-8 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />
         </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-px bg-hairline sm:grid-cols-2">
           {content.items.map((pillar) => {
             const titleId = `pillar-${slug(pillar.title)}`
             return (
@@ -58,15 +58,9 @@ export function ServicePillars({ content, surface = "paper" }: Props) {
                       alt=""
                       fill
                       sizes="(min-width: 640px) 50vw, 100vw"
-                      className="object-cover saturate-[0.65] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                      className="object-cover saturate-[0.65]"
                     />
                   ) : null}
-
-                  {/* Persistent red top bar */}
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 z-20 h-1.5 bg-red"
-                  />
 
                   {/* Default face — title over a bottom scrim */}
                   <div
