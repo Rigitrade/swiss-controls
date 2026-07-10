@@ -2,7 +2,7 @@ import { type ElementType, type ReactNode } from "react"
 import { cn } from "@/lib/utils/cn"
 
 type Surface = "paper" | "stone" | "ink"
-type Density = "tight" | "default" | "loose"
+type Density = "tight" | "default" | "loose" | "header"
 
 type SectionProps = {
   children: ReactNode
@@ -24,6 +24,9 @@ const densityClasses: Record<Density, string> = {
   tight: "py-section-tight",
   default: "py-section-mobile lg:py-section",
   loose: "py-section lg:py-section-loose",
+  // Page-header rhythm: full top padding, minimal bottom — the following
+  // section's top padding supplies the gap, avoiding a double-padded void.
+  header: "pt-section-mobile pb-6 lg:pt-section lg:pb-8",
 }
 
 export function Section({

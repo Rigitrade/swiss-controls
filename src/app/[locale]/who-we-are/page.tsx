@@ -84,7 +84,7 @@ export default async function WhoWeArePage({
         </Container>
       </Section>
 
-      <Section surface="stone" density="default">
+      <Section surface="paper" density="default">
         <Container>
           <div className="mb-12 max-w-2xl">
             <SectionLabel number="05" label="MISSION & VISION" />

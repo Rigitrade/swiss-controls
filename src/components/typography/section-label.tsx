@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils/cn"
 
 type SectionLabelProps = {
-  number: string
+  number?: string
   label: string
   className?: string
   id?: string
@@ -16,8 +16,12 @@ export function SectionLabel({ number, label, className, id }: SectionLabelProps
         className,
       )}
     >
-      <span aria-hidden="true">{number}</span>
-      <span className="mx-2" aria-hidden="true">—</span>
+      {number ? (
+        <>
+          <span aria-hidden="true">{number}</span>
+          <span className="mx-2" aria-hidden="true">—</span>
+        </>
+      ) : null}
       <span>{label}</span>
     </div>
   )
