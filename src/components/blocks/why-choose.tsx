@@ -3,11 +3,16 @@ import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
 
 type Item = { title: string; detail: string }
-type Props = { number: string; label: string; items: Item[] }
+type Props = {
+  number: string
+  label: string
+  items: Item[]
+  surface?: "paper" | "stone"
+}
 
-export function WhyChoose({ number, label, items }: Props) {
+export function WhyChoose({ number, label, items, surface = "stone" }: Props) {
   return (
-    <Section surface="stone" density="default">
+    <Section surface={surface} density="default">
       <Container>
         <div className="mb-12 max-w-2xl">
           <SectionLabel number={number} label={label} />

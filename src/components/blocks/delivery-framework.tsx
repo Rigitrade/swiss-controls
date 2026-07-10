@@ -3,11 +3,11 @@ import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
 import type { HomeContent } from "@/lib/content/schema"
 
-type Props = { content: HomeContent["deliveryFramework"] }
+type Props = { content: HomeContent["deliveryFramework"]; surface?: "paper" | "stone" }
 
-export function DeliveryFramework({ content }: Props) {
+export function DeliveryFramework({ content, surface = "stone" }: Props) {
   return (
-    <Section surface="stone">
+    <Section surface={surface}>
       <Container>
         <div className="mb-12 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />

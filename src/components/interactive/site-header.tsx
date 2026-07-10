@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Container } from "@/components/primitives/container"
 import { Hairline } from "@/components/primitives/hairline"
@@ -17,8 +18,16 @@ type SiteHeaderProps = {
   cta: { label: string; href: string }
 }
 
+const stripSlash = (s: string) => (s !== "/" && s.endsWith("/") ? s.slice(0, -1) : s)
+
 export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
   const [open, setOpen] = useState(false)
+  const pathname = stripSlash(usePathname() ?? "")
+
+  const isActive = (href: string) => {
+    const target = stripSlash(`/${locale}${href}`)
+    return pathname === target || pathname.startsWith(`${target}/`)
+  }
 
   useEffect(() => {
     if (open) {
@@ -45,19 +54,25 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
         <div className="flex h-16 items-center justify-between">
           <Wordmark size="lg" href={`/${locale}`} />
 
-          <nav
-            className="hidden items-center gap-8 lg:flex"
-            aria-label="Primary"
-          >
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={`/${locale}${link.href}`}
-                className="font-mono text-micro uppercase tracking-[0.08em] text-ink transition-colors hover:text-red"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+            {links.map((link) => {
+              const active = isActive(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={`/${locale}${link.href}`}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "font-mono text-micro uppercase tracking-[0.08em] underline-offset-[6px] transition-colors",
+                    active
+                      ? "text-red underline decoration-red decoration-2"
+                      : "text-ink hover:text-red",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
@@ -113,16 +128,23 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
           </button>
         </div>
         <nav className="flex flex-col gap-6" aria-label="Mobile">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={`/${locale}${link.href}`}
-              onClick={() => setOpen(false)}
-              className="font-sans text-h3 text-ink hover:text-red"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active = isActive(link.href)
+            return (
+              <Link
+                key={link.href}
+                href={`/${locale}${link.href}`}
+                onClick={() => setOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "font-sans text-h3",
+                  active ? "text-red" : "text-ink hover:text-red",
+                )}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
           <Hairline />
           <LinkButton
             href={`/${locale}${cta.href}`}

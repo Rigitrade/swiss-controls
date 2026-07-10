@@ -23,7 +23,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(locale as Locale, "contact", contactPageSchema)
   const { office, regions } = frontmatter
-  const contactId = process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID ?? ""
+  const whatsappNumber =
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? office.phone.replace(/[^\d]/g, "")
 
   return (
     <>
@@ -54,48 +55,15 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </Stack>
             </aside>
             <div className="lg:col-span-8">
-              {contactId ? (
-                <Stack gap="6">
-                  <SectionLabel number="03" label="SEND US A MESSAGE" />
-                  <ContactForm formspreeId={contactId} />
-                </Stack>
-              ) : (
-                <Stack gap="6">
-                  <SectionLabel number="03" label="DIRECT LINE" />
-                  <div className="border border-hairline p-8">
-                    <Stack gap="4">
-                      <p className="text-h3 font-medium text-ink">Talk to the engineering team.</p>
-                      <p className="text-body-l text-ink/70">
-                        Email or call us directly — we reply to project inquiries within one
-                        business day.
-                      </p>
-                      <Hairline />
-                      <a
-                        href={`mailto:${office.email}`}
-                        className="group block"
-                      >
-                        <span className="block font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
-                          Email
-                        </span>
-                        <span className="mt-1 block text-h3 text-ink transition-colors group-hover:text-red">
-                          {office.email}
-                        </span>
-                      </a>
-                      <a
-                        href={`tel:${office.phone.replace(/\s+/g, "")}`}
-                        className="group block"
-                      >
-                        <span className="block font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
-                          Phone
-                        </span>
-                        <span className="mt-1 block text-h3 tabular-nums text-ink transition-colors group-hover:text-red">
-                          {office.phone}
-                        </span>
-                      </a>
-                    </Stack>
-                  </div>
-                </Stack>
-              )}
+              <Stack gap="6">
+                <SectionLabel number="03" label="SEND US A MESSAGE" />
+                <p className="max-w-[52ch] text-body-l text-ink/70">
+                  Fill in the form and we&apos;ll open WhatsApp with your message ready to
+                  send — the fastest way to reach our engineering team. Prefer email or a
+                  call? Our direct details are on the left.
+                </p>
+                <ContactForm whatsappNumber={whatsappNumber} />
+              </Stack>
             </div>
           </div>
         </Container>

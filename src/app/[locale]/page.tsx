@@ -33,9 +33,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </Container>
       </Section>
-      <AtAGlance content={c.metrics} />
-      <WhyChoose number={c.whyPartner.number} label={c.whyPartner.label} items={c.whyPartner.items} />
-      <DeliveryFramework content={c.deliveryFramework} />
+      {/* Alternate surfaces so each band reads as its own section:
+          purpose (white) → metrics (gray) → why (white) → delivery (gray) → footer (dark). */}
+      <AtAGlance content={c.metrics} surface="stone" />
+      <WhyChoose
+        number={c.whyPartner.number}
+        label={c.whyPartner.label}
+        items={c.whyPartner.items}
+        surface="paper"
+      />
+      <DeliveryFramework content={c.deliveryFramework} surface="stone" />
     </>
   )
 }

@@ -4,11 +4,11 @@ import { SectionLabel } from "@/components/typography/section-label"
 import { CountUp } from "@/components/interactive/count-up"
 import type { HomeContent } from "@/lib/content/schema"
 
-type Props = { content: HomeContent["metrics"] }
+type Props = { content: HomeContent["metrics"]; surface?: "paper" | "stone" }
 
-export function AtAGlance({ content }: Props) {
+export function AtAGlance({ content, surface = "stone" }: Props) {
   return (
-    <Section id="at-a-glance" surface="stone" density="tight">
+    <Section id="at-a-glance" surface={surface} density="tight">
       <Container>
         <div className="mb-8">
           <SectionLabel number={content.number} label={content.label} />

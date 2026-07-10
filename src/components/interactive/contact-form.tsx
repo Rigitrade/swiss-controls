@@ -4,12 +4,12 @@ import { useState } from "react"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
 import { Hairline } from "@/components/primitives/hairline"
 import { contactSchema, CONTACT_REASONS, type ContactFormData } from "@/lib/forms/contact-schema"
-import { submitToFormspree } from "@/lib/forms/formspree-client"
 import { cn } from "@/lib/utils/cn"
 
 const REASON_LABELS: Record<(typeof CONTACT_REASONS)[number], string> = {
@@ -30,12 +30,29 @@ const labelClass = "block font-mono text-micro uppercase tracking-[0.08em] text-
 const errorClass = "mt-1 text-caption text-red"
 
 type ContactFormProps = {
-  formspreeId: string
+  /** WhatsApp number, digits only (no "+"), e.g. "41763666669". */
+  whatsappNumber: string
 }
 
-export function ContactForm({ formspreeId }: ContactFormProps) {
-  const [success, setSuccess] = useState<{ id?: string } | null>(null)
-  const [submitError, setSubmitError] = useState<string | null>(null)
+function buildWhatsappUrl(number: string, data: ContactFormData): string {
+  const lines = [
+    "New inquiry via swiss-controls.com",
+    "",
+    `Name: ${data.name}`,
+    data.company ? `Company: ${data.company}` : null,
+    `Email: ${data.email}`,
+    `Topic: ${REASON_LABELS[data.reason]}`,
+    "",
+    "Message:",
+    data.message,
+  ]
+    .filter((l): l is string => l !== null)
+    .join("\n")
+  return `https://wa.me/${number}?text=${encodeURIComponent(lines)}`
+}
+
+export function ContactForm({ whatsappNumber }: ContactFormProps) {
+  const [sentUrl, setSentUrl] = useState<string | null>(null)
 
   const {
     register,
@@ -60,31 +77,31 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
   // eslint-disable-next-line react-hooks/incompatible-library
   const consentChecked = watch("consent" as never)
 
-  const onSubmit = handleSubmit(async (data) => {
-    setSubmitError(null)
-    if (data.website) {
-      setSuccess({})
-      return
-    }
-    const result = await submitToFormspree(formspreeId, { ...data, _source: "contact" })
-    if (result.ok) {
-      setSuccess({ id: result.id })
-    } else {
-      setSubmitError(
-        "Submission failed. Please try again or email info@swiss-controls.com directly.",
-      )
-    }
+  const onSubmit = handleSubmit((data) => {
+    if (data.website) return // honeypot — silently ignore bots
+    const url = buildWhatsappUrl(whatsappNumber, data)
+    setSentUrl(url)
+    window.open(url, "_blank", "noopener,noreferrer")
   })
 
-  if (success) {
+  if (sentUrl) {
     return (
       <div className="border border-hairline p-8">
         <Stack gap="3">
-          <SectionLabel number="04" label="MESSAGE RECEIVED" />
-          <p className="text-h2 font-medium">Thanks — we&apos;ll get back to you soon.</p>
-          {success.id && (
-            <p className="font-mono text-caption text-ink/60">Reference: {success.id}</p>
-          )}
+          <SectionLabel number="04" label="READY TO SEND" />
+          <p className="text-h2 font-medium text-ink">WhatsApp is opening with your message.</p>
+          <p className="text-body text-ink/70">
+            If it didn&apos;t open,{" "}
+            <a
+              href={sentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-red underline"
+            >
+              tap here to continue on WhatsApp
+            </a>
+            . Review the message and press send.
+          </p>
         </Stack>
       </div>
     )
@@ -106,23 +123,14 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
               Name *
             </label>
             <input id="name" className={inputClass} {...register("name")} />
-            {errors.name?.message && (
-              <p className={errorClass}>{errors.name.message}</p>
-            )}
+            {errors.name?.message && <p className={errorClass}>{errors.name.message}</p>}
           </div>
           <div>
             <label htmlFor="email" className={labelClass}>
               Email *
             </label>
-            <input
-              id="email"
-              type="email"
-              className={inputClass}
-              {...register("email")}
-            />
-            {errors.email?.message && (
-              <p className={errorClass}>{errors.email.message}</p>
-            )}
+            <input id="email" type="email" className={inputClass} {...register("email")} />
+            {errors.email?.message && <p className={errorClass}>{errors.email.message}</p>}
           </div>
           <div>
             <label htmlFor="company" className={labelClass}>
@@ -132,7 +140,7 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
           </div>
           <div>
             <label htmlFor="reason" className={labelClass}>
-              Reason
+              Topic
             </label>
             <select id="reason" className={inputClass} {...register("reason")}>
               {CONTACT_REASONS.map((r) => (
@@ -148,15 +156,8 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
           <label htmlFor="message" className={labelClass}>
             Message *
           </label>
-          <textarea
-            id="message"
-            rows={6}
-            className={textareaClass}
-            {...register("message")}
-          />
-          {errors.message?.message && (
-            <p className={errorClass}>{errors.message.message}</p>
-          )}
+          <textarea id="message" rows={6} className={textareaClass} {...register("message")} />
+          {errors.message?.message && <p className={errorClass}>{errors.message.message}</p>}
         </div>
 
         <Hairline />
@@ -173,26 +174,19 @@ export function ContactForm({ formspreeId }: ContactFormProps) {
             }
           />
           <span>
-            I consent to Swiss Controls processing this submission to respond to my
-            inquiry, in accordance with the{" "}
+            I consent to Swiss Controls using these details to respond to my inquiry, in
+            accordance with the{" "}
             <Link href="/en/privacy" className="underline">
               privacy policy
             </Link>
             .
           </span>
         </label>
-        {errors.consent?.message && (
-          <p className={errorClass}>{errors.consent.message}</p>
-        )}
-
-        {submitError && (
-          <p className={cn(errorClass, "text-body")} role="alert">
-            {submitError}
-          </p>
-        )}
+        {errors.consent?.message && <p className={errorClass}>{errors.consent.message}</p>}
 
         <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Send Message"}
+          <MessageCircle className="h-5 w-5" aria-hidden="true" />
+          Send via WhatsApp
         </Button>
       </Stack>
     </form>
