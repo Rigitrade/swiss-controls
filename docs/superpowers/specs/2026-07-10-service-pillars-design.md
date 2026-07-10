@@ -27,24 +27,29 @@ they take the first numbered slot. Section numbers shift:
 
 ## Layout & interaction
 
-- Contained to the site's `Container` (matches the mockup's side margins and the
-  site's rhythm — not a hard edge-to-edge breakout).
-- `paper` (white) section surface; blocks are `stone` (light gray) so the gutters
-  read white, matching the mockup.
-- **2×2 grid** on desktop (`md:grid-cols-2`), single column stacked on mobile.
-- Each block is tall (`min-h` ~20–22rem desktop) so the 2×2 band fills most of a
-  viewport height.
-- A solid **red bar across the top** of every block (persistent in both states).
+Refined image cards (final design — an earlier full-bleed, viewport-height
+version read as too flat and was reverted per client feedback).
+
+- Contained to the site's `Container`, `paper` section surface.
+- **2×2 grid, flush (no gutters)** on desktop (`sm:grid-cols-2`), single column
+  stacked on mobile. Each card is `aspect-[16/10]`.
+- Each card carries a **real background photo** (Unsplash, free for commercial
+  use) desaturated (`saturate-[0.65]`) with a dark gradient veil so the four
+  images read as one cohesive, subdued set rather than clashing.
+- A solid **red bar across the top** of every card (static, persistent in both
+  states).
 
 ### Reveal (pure CSS — static-export safe, no JS)
 
 Two stacked faces, crossfaded:
 
-- **Default face** (`aria-hidden`): `bg-stone`, large centered pillar title in
-  muted gray (`text-mute`), uppercase, wide tracking.
-- **Reveal face**: `bg-ink` (dark), fades + slides up on hover; contains the
-  pillar title (light, smaller), the one-line explanation, and the four points in
-  a 2-column grid.
+- **Default face** (`aria-hidden`): the photo under a dark gradient veil, with the
+  pillar title bottom-left (`text-h3`, white, uppercase). The photo zooms subtly
+  on hover.
+- **Reveal face**: translucent **light** panel (`bg-paper/90 backdrop-blur-md`) —
+  the photo stays faintly visible through it — fades + slides up on hover;
+  contains the pillar title (`text-h2`, ink), the one-line explanation, and the
+  four points in a 2-column grid with red markers.
 
 State handling:
 - Hover-capable devices: default face shown, reveal hidden; swap on
