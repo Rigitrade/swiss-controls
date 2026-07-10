@@ -21,16 +21,22 @@ type Props = {
   locale: "en"
   surface?: "paper" | "stone"
   density?: "tight" | "default"
+  columns?: 2 | 4
 }
 
-export function SolutionsGrid({ content, locale, surface = "paper", density = "default" }: Props) {
+export function SolutionsGrid({ content, locale, surface = "paper", density = "default", columns = 2 }: Props) {
+  const gridCols = columns === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2"
+  const imageSizes =
+    columns === 4
+      ? "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+      : "(min-width: 768px) 50vw, 100vw"
   return (
     <Section surface={surface} density={density}>
       <Container>
         <div className="mb-8 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />
         </div>
-        <div className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
+        <div className={`grid grid-cols-1 gap-px bg-hairline ${gridCols}`}>
           {content.items.map((item, i) => {
             const Icon = ICONS[item.icon] ?? RefreshCw
             return (
@@ -44,7 +50,7 @@ export function SolutionsGrid({ content, locale, surface = "paper", density = "d
                     src={item.image}
                     alt=""
                     fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    sizes={imageSizes}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
