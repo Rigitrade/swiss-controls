@@ -65,6 +65,13 @@ export const homeSchema = z.object({
     label: z.string(),
     steps: z.array(deliveryStepSchema).min(1),
   }),
+  partners: z.object({
+    number: z.string(),
+    label: z.string(),
+    statement: z.string(),
+    cta: ctaSchema,
+    items: z.array(z.object({ name: z.string(), logo: z.string() })).min(1),
+  }),
 })
 
 export const solutionsIndexSchema = z.object({

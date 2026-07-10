@@ -3,6 +3,7 @@ export type SolutionMeta = {
   title: string
   icon: string // lucide-react icon name
   summary: string
+  image: string // path under public/, served as-is in static export
 }
 
 export const SOLUTIONS: SolutionMeta[] = [
@@ -12,6 +13,7 @@ export const SOLUTIONS: SolutionMeta[] = [
     icon: "RefreshCw",
     summary:
       "Systematically audit and upgrade legacy systems to extend asset life, maximize ROI, and ensure operational continuity.",
+    image: "/img/solutions/operational-modernization.jpg",
   },
   {
     slug: "energy-transition",
@@ -19,6 +21,7 @@ export const SOLUTIONS: SolutionMeta[] = [
     icon: "Zap",
     summary:
       "Design robust electrical infrastructure and intelligent drive systems to radically reduce energy costs and ensure power quality.",
+    image: "/img/solutions/energy-transition.jpg",
   },
   {
     slug: "industrial-digitalization",
@@ -26,6 +29,7 @@ export const SOLUTIONS: SolutionMeta[] = [
     icon: "Cpu",
     summary:
       "Integrate multi-vendor ecosystems with advanced IoT frameworks to transform field data into actionable intelligence and predictive operations.",
+    image: "/img/solutions/industrial-digitalization.jpg",
   },
   {
     slug: "capital-investment",
@@ -33,6 +37,7 @@ export const SOLUTIONS: SolutionMeta[] = [
     icon: "DraftingCompass",
     summary:
       "Independent technical due diligence and master planning to derisk major capital investments before deployment begins.",
+    image: "/img/solutions/capital-investment.jpg",
   },
 ]
 

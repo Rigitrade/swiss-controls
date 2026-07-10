@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server"
 import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionDetail } from "@/components/blocks/solution-detail"
 import { MidPageCta } from "@/components/blocks/mid-page-cta"
+import { ResponsiveImage } from "@/components/primitives/responsive-image"
 import { loadPageContent } from "@/lib/content/load"
 import { solutionDetailSchema } from "@/lib/content/schema"
 import { SOLUTION_SLUGS, getSolution } from "@/lib/content/solutions"
@@ -28,7 +29,8 @@ export default async function SolutionDetailPage({
 }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params
   setRequestLocale(locale)
-  if (!getSolution(slug)) notFound()
+  const solution = getSolution(slug)
+  if (!solution) notFound()
   const { frontmatter } = await loadPageContent(locale as Locale, `solutions/${slug}`, solutionDetailSchema)
 
   return (
@@ -41,6 +43,15 @@ export default async function SolutionDetailPage({
           { label: frontmatter.pageHeader.title },
         ]}
       />
+      <div className="relative aspect-[21/9] w-full overflow-hidden bg-stone">
+        <ResponsiveImage
+          src={solution.image}
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+        />
+      </div>
       <SolutionDetail
         challenge={frontmatter.challenge}
         approach={frontmatter.approach}

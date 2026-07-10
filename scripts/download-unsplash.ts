@@ -10,89 +10,33 @@ type Asset = {
   cropParams?: string
 }
 
+// One photo per Swiss Controls solution. Each serves BOTH the card thumbnail
+// and the detail-page banner (CSS object-cover handles the different crops).
+// To swap an image: replace the unsplashId (the "photo-<id>" segment of an
+// images.unsplash.com URL) and re-run `npx tsx scripts/download-unsplash.ts`.
 const ASSETS: Asset[] = [
-  // Hero — dramatic molten-metal pour, dark
   {
-    out: "public/img/hero/specimen.jpg",
-    unsplashId: "1572277603731-6941cdb65597",
-    width: 2400,
-  },
-
-  // Core capabilities — three portraits with industrial subjects
-  {
-    out: "public/img/solutions/high-temp.jpg",
-    unsplashId: "1571590946238-a0ba990d12a9", // molten metal
-    width: 1200,
-  },
-  {
-    out: "public/img/solutions/corrosion.jpg",
-    unsplashId: "1522322512347-a0e57fd1744c", // industrial structure
-    width: 1200,
-  },
-  {
-    out: "public/img/solutions/high-pressure.jpg",
-    unsplashId: "1605600659873-d808a13e4d2a", // steel pipes
-    width: 1200,
-  },
-  {
-    out: "public/img/solutions/castings.jpg",
-    unsplashId: "1647343137860-69ccd12a61c6", // steel mill
-    width: 1200,
-  },
-
-  // Industry tiles — 6 application contexts
-  {
-    out: "public/img/industries/oil-gas.jpg",
-    unsplashId: "1578356058390-f58c575337a2", // offshore platform
-    width: 1200,
-  },
-  {
-    out: "public/img/industries/refineries.jpg",
-    unsplashId: "1726731782158-fcf6822b6ca4", // refinery
-    width: 1200,
-  },
-  {
-    out: "public/img/industries/petrochemicals.jpg",
-    unsplashId: "1611581372056-30cf28a7bd2e", // petrochem
-    width: 1200,
-  },
-  {
-    out: "public/img/industries/fertilizer.jpg",
-    unsplashId: "1602056820935-316884c035f8", // process plant
-    width: 1200,
-  },
-  {
-    out: "public/img/industries/power.jpg",
-    unsplashId: "1717386255773-1e3037c81788", // factory / industrial
-    width: 1200,
-  },
-  {
-    out: "public/img/industries/marine.jpg",
-    unsplashId: "1548337138-e87d889cc369", // offshore
-    width: 1200,
-  },
-
-  // Featured break — dramatic AOD/molten reference
-  {
-    out: "public/img/featured/aod-furnace.jpg",
-    unsplashId: "1680866362357-d8192e20a7dc", // molten metal #3
-    width: 2400,
-  },
-
-  // Facility photos for the About page
-  {
-    out: "public/img/facilities/zurich.jpg",
-    unsplashId: "1573137785546-9d19e4f33f87", // Zürich
+    // Operational Modernization & Asset Lifecycle — plant interior / machinery
+    out: "public/img/solutions/operational-modernization.jpg",
+    unsplashId: "1717386255773-1e3037c81788",
     width: 1600,
   },
   {
-    out: "public/img/facilities/uk.jpg",
-    unsplashId: "1692523087152-080b04c8ed88", // UK industrial city
+    // Energy Transition & Infrastructure Reliability — industrial infrastructure
+    out: "public/img/solutions/energy-transition.jpg",
+    unsplashId: "1522322512347-a0e57fd1744c",
     width: 1600,
   },
   {
-    out: "public/img/facilities/egypt.jpg",
-    unsplashId: "1601816500593-8f1276479ea6", // Alexandria port
+    // Industrial Digitalization & Industry 4.0 — process / control plant
+    out: "public/img/solutions/industrial-digitalization.jpg",
+    unsplashId: "1602056820935-316884c035f8",
+    width: 1600,
+  },
+  {
+    // Capital Investment & Strategic Advisory — large facility / refinery scale
+    out: "public/img/solutions/capital-investment.jpg",
+    unsplashId: "1726731782158-fcf6822b6ca4",
     width: 1600,
   },
 ]

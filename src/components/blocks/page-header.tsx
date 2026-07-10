@@ -2,14 +2,15 @@ import Link from "next/link"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { Stack } from "@/components/primitives/stack"
-import { Hairline } from "@/components/primitives/hairline"
 import { SectionLabel } from "@/components/typography/section-label"
 import { DisplayHeading } from "@/components/typography/display-heading"
 
 type Crumb = { label: string; href?: string }
 
 type PageHeaderProps = {
-  number: string
+  // `number` is accepted (content still carries it) but not rendered — a bare
+  // eyebrow reads better on standalone pages than a meaningless "01".
+  number?: string
   label: string
   title: string
   intro: string
@@ -17,7 +18,6 @@ type PageHeaderProps = {
 }
 
 export function PageHeader({
-  number,
   label,
   title,
   intro,
@@ -26,7 +26,7 @@ export function PageHeader({
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.swiss-controls.com"
 
   return (
-    <Section density="default">
+    <Section density="header">
       {breadcrumbs && breadcrumbs.length > 0 && (
         <script
           type="application/ld+json"
@@ -66,12 +66,11 @@ export function PageHeader({
               </ol>
             </nav>
           )}
-          <SectionLabel number={number} label={label} />
+          <SectionLabel label={label} />
           <DisplayHeading as="h1" size="display-l" className="max-w-[20ch]">
             {title}
           </DisplayHeading>
           <p className="max-w-[65ch] text-body-l text-ink/80">{intro}</p>
-          <Hairline className="mt-6" />
         </Stack>
       </Container>
     </Section>

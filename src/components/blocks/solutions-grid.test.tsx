@@ -5,8 +5,8 @@ import { SolutionsGrid } from "./solutions-grid"
 const content = {
   number: "01", label: "SOLUTIONS",
   items: [
-    { slug: "operational-modernization", icon: "RefreshCw", title: "Operational Modernization & Asset Lifecycle", summary: "…" },
-    { slug: "energy-transition", icon: "Zap", title: "Energy Transition & Infrastructure Reliability", summary: "…" },
+    { slug: "operational-modernization", title: "Operational Modernization & Asset Lifecycle", summary: "…", image: "/img/solutions/operational-modernization.jpg" },
+    { slug: "energy-transition", title: "Energy Transition & Infrastructure Reliability", summary: "…", image: "/img/solutions/energy-transition.jpg" },
   ],
 }
 

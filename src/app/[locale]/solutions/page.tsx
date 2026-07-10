@@ -16,7 +16,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
   const { locale } = await params
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(locale as Locale, "solutions/index", solutionsIndexSchema)
-  const items = SOLUTIONS.map((s) => ({ slug: s.slug, icon: s.icon, title: s.title, summary: s.summary }))
+  const items = SOLUTIONS.map((s) => ({ slug: s.slug, title: s.title, summary: s.summary, image: s.image }))
 
   return (
     <>
