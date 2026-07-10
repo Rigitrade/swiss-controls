@@ -81,27 +81,36 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
     if (data.website) return // honeypot — silently ignore bots
     const url = buildWhatsappUrl(whatsappNumber, data)
     setSentUrl(url)
-    window.open(url, "_blank", "noopener,noreferrer")
+    // Best-effort auto-open. This can be blocked because it runs after RHF's
+    // async validation (no longer a "user gesture"), so the confirmation
+    // screen below always offers a direct link the user can tap.
+    try {
+      window.open(url, "_blank", "noopener,noreferrer")
+    } catch {
+      /* ignore — the confirmation link is the reliable path */
+    }
   })
 
   if (sentUrl) {
     return (
       <div className="border border-hairline p-8">
-        <Stack gap="3">
+        <Stack gap="4">
           <SectionLabel number="04" label="READY TO SEND" />
-          <p className="text-h2 font-medium text-ink">WhatsApp is opening with your message.</p>
-          <p className="text-body text-ink/70">
-            If it didn&apos;t open,{" "}
-            <a
-              href={sentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-red underline"
-            >
-              tap here to continue on WhatsApp
-            </a>
-            . Review the message and press send.
+          <p className="text-h2 font-medium text-ink">Your message is ready.</p>
+          <p className="max-w-[46ch] text-body text-ink/70">
+            Open WhatsApp to review and send it to our engineering team. If a tab already
+            opened, you can send it there.
           </p>
+          <a
+            href={sentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            autoFocus
+            className="inline-flex h-14 w-fit items-center justify-center gap-2 bg-red px-8 text-body-l font-medium text-paper transition-colors hover:bg-red-dark focus-visible:outline-2 focus-visible:outline-red focus-visible:outline-offset-2"
+          >
+            <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            Open WhatsApp
+          </a>
         </Stack>
       </div>
     )
