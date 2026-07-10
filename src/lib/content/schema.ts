@@ -143,12 +143,19 @@ export const navSchema = z.object({
 export const footerSchema = z.object({
   tagline: z.string(),
   technologyTag: z.string(),
+  parentLine: z.string().optional(),
   office: z.object({
     label: z.string().optional(),
     company: z.string(),
     address: z.string(),
   }),
-  contact: z.object({ email: z.string().email(), phone: z.string() }),
+  contact: z.object({
+    email: z.string().email(),
+    phone: z.string(),
+    website: z.string().optional(),
+  }),
+  registry: z.object({ label: z.string(), value: z.string() }).optional(),
+  locations: z.array(z.string()).optional(),
   legal: z.array(z.object({ label: z.string(), href: z.string() })),
   social: z.array(
     z.object({
