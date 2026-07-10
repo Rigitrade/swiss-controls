@@ -65,7 +65,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
           >
             {content.tagline}
           </DisplayHeading>
-          <p className="mt-6 inline-flex items-center gap-3 font-mono text-micro uppercase tracking-[0.16em] text-red">
+          <p className="mt-6 inline-flex items-center gap-3 font-mono text-micro uppercase tracking-[0.16em] text-paper/80">
             <span aria-hidden="true" className="inline-block h-2 w-2 bg-red" />
             {content.technologyTag}
           </p>
