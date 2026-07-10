@@ -77,19 +77,31 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
   // eslint-disable-next-line react-hooks/incompatible-library
   const consentChecked = watch("consent" as never)
 
-  const onSubmit = handleSubmit((data) => {
-    if (data.website) return // honeypot — silently ignore bots
-    const url = buildWhatsappUrl(whatsappNumber, data)
-    setSentUrl(url)
-    // Best-effort auto-open. This can be blocked because it runs after RHF's
-    // async validation (no longer a "user gesture"), so the confirmation
-    // screen below always offers a direct link the user can tap.
-    try {
-      window.open(url, "_blank", "noopener,noreferrer")
-    } catch {
-      /* ignore — the confirmation link is the reliable path */
-    }
-  })
+  const onSubmit = handleSubmit(
+    (data) => {
+      console.log("[contact] submit VALID", data)
+      if (data.website) {
+        console.log("[contact] honeypot filled → ignored")
+        return
+      }
+      const url = buildWhatsappUrl(whatsappNumber, data)
+      console.log("[contact] whatsappNumber:", whatsappNumber)
+      console.log("[contact] wa.me URL:", url)
+      setSentUrl(url)
+      // Best-effort auto-open (may be blocked as a non-gesture popup after
+      // async validation — the confirmation screen's link is the reliable path).
+      try {
+        const w = window.open(url, "_blank")
+        console.log("[contact] window.open returned:", w ? "window" : "null (blocked)")
+        if (w) w.opener = null
+      } catch (err) {
+        console.log("[contact] window.open threw:", err)
+      }
+    },
+    (formErrors) => {
+      console.log("[contact] submit INVALID — validation errors:", formErrors)
+    },
+  )
 
   if (sentUrl) {
     return (
@@ -111,6 +123,7 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
             <MessageCircle className="h-5 w-5" aria-hidden="true" />
             Open WhatsApp
           </a>
+          <p className="break-all font-mono text-caption text-ink/50">{sentUrl}</p>
         </Stack>
       </div>
     )
