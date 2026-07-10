@@ -81,8 +81,8 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </motion.div>
 
-            {/* Headline sized ~15% below display-l (34→52) per client note. */}
-            <h1 className="text-[clamp(1.81rem,3.06vw,2.76rem)] font-semibold leading-[1.08] tracking-tight text-balance text-ink">
+            {/* Headline sized ~15% below display-l, then −17% for Montserrat. */}
+            <h1 className="text-[clamp(1.5rem,2.54vw,2.29rem)] font-semibold leading-[1.08] tracking-tight text-balance text-ink">
               <span className="block overflow-hidden">
                 <motion.span variants={lineReveal} className="block">
                   <HeadlineWithSquareDots text={hero.headline} />
