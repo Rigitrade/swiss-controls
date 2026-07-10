@@ -3,17 +3,18 @@ import { render, screen } from "@testing-library/react"
 import { DeliveryFramework } from "./delivery-framework"
 
 const content = {
-  number: "05",
+  number: "04",
   label: "DELIVERY FRAMEWORK",
   steps: [
-    { step: "Discover", detail: "Understand business objectives." },
-    { step: "Assess", detail: "Evaluate existing assets." },
-    { step: "Design", detail: "Develop independent concepts." },
-    { step: "Engineer", detail: "Produce detailed engineering." },
-    { step: "Validate", detail: "Verify compliance." },
-    { step: "Commission", detail: "Support installation and startup." },
-    { step: "Optimize", detail: "Improve performance." },
-    { step: "Support", detail: "Provide lifecycle engineering." },
+    { step: "Discover", detail: "Understand operations and objectives." },
+    { step: "Assess", detail: "Evaluate existing assets and risks." },
+    { step: "Design", detail: "Develop the engineering solution:", points: ["Electrical Engineering", "Automation Architecture"] },
+    { step: "Build", detail: "Manufacture, assemble, and integrate:", points: ["Electrical Panels", "PLC Panels"] },
+    { step: "Validate", detail: "Internal QA before delivery:", points: ["FAT", "Simulation"] },
+    { step: "Deploy", detail: "Install and integrate on site:", points: ["Installation"] },
+    { step: "Commission", detail: "Startup and commissioning:", points: ["SAT"] },
+    { step: "Optimize", detail: "After commissioning:", points: ["AI Analytics"] },
+    { step: "Support", detail: "Long-term partnership:", points: ["Lifecycle Services"] },
   ],
 }
 
@@ -24,10 +25,16 @@ describe("DeliveryFramework", () => {
     expect(screen.getByText("Support")).toBeInTheDocument()
   })
 
-  it("renders all 8 steps", () => {
+  it("renders all 9 steps", () => {
     render(<DeliveryFramework content={content} />)
     for (const s of content.steps) {
       expect(screen.getByText(s.step)).toBeInTheDocument()
     }
+  })
+
+  it("renders sub-bullets when a step has points", () => {
+    render(<DeliveryFramework content={content} />)
+    expect(screen.getByText("FAT")).toBeInTheDocument()
+    expect(screen.getByText("Automation Architecture")).toBeInTheDocument()
   })
 })

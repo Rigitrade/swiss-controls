@@ -32,7 +32,8 @@ const whyItemSchema = z.object({ title: z.string(), detail: z.string() })
 
 const deliveryStepSchema = z.object({
   step: z.string(),             // "Discover"
-  detail: z.string(),
+  detail: z.string(),           // intro line, e.g. "Develop the engineering solution:"
+  points: z.array(z.string()).optional(), // sub-bullets shown beside the step
 })
 
 const pillarSchema = z.object({ title: z.string(), detail: z.string() })
