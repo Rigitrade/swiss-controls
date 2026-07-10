@@ -16,7 +16,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
     <Section
       as="footer"
       surface="ink"
-      density="loose"
+      density="footer"
       className="relative isolate text-paper"
     >
       {/* Bright top seam — separates the footer from whatever sits above it,

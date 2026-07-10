@@ -22,6 +22,30 @@ const lineReveal: Variants = {
   visible: { y: "0%", transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
 }
 
+// Renders the headline with Swiss-style square full-stops: each sentence's
+// period becomes a small red square. The real text (with periods) is exposed
+// to screen readers via an sr-only copy; the styled version is aria-hidden.
+function HeadlineWithSquareDots({ text }: { text: string }) {
+  const phrases = text
+    .split(".")
+    .map((s) => s.trim())
+    .filter(Boolean)
+  return (
+    <>
+      <span aria-hidden="true">
+        {phrases.map((phrase, i) => (
+          <span key={i}>
+            {phrase}
+            <span className="ml-[0.05em] inline-block h-[0.16em] w-[0.16em] translate-y-[-0.04em] bg-red align-baseline" />
+            {i < phrases.length - 1 ? " " : ""}
+          </span>
+        ))}
+      </span>
+      <span className="sr-only">{text}</span>
+    </>
+  )
+}
+
 export function Hero({ hero, locale }: HeroProps) {
   return (
     <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink">
@@ -57,10 +81,11 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </motion.div>
 
-            <h1 className="text-display-l font-semibold tracking-tight text-balance text-ink">
+            {/* Headline sized ~15% below display-l (34→52) per client note. */}
+            <h1 className="text-[clamp(1.81rem,3.06vw,2.76rem)] font-semibold leading-[1.08] tracking-tight text-balance text-ink">
               <span className="block overflow-hidden">
                 <motion.span variants={lineReveal} className="block">
-                  {hero.headline}
+                  <HeadlineWithSquareDots text={hero.headline} />
                 </motion.span>
               </span>
             </h1>

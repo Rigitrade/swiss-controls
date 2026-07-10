@@ -50,7 +50,10 @@ export function CountUp({
           break
         }
       },
-      { rootMargin: "-15%" },
+      // Inset only the vertical axis (trigger once ~15% scrolled into view).
+      // A bare "-15%" also insets left/right, which pushed the leftmost,
+      // left-aligned metric out of the observed area so it never fired.
+      { rootMargin: "0px 0px -15% 0px" },
     )
     observer.observe(node)
     return () => observer.disconnect()
