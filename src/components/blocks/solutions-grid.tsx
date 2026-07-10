@@ -22,7 +22,7 @@ type Props = {
 
 export function SolutionsGrid({ content, locale, surface = "paper", density = "default", columns = 2 }: Props) {
   const gridCols = columns === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2"
-  const imageAspect = columns === 4 ? "aspect-[4/5]" : "aspect-[4/3]"
+  const imageAspect = columns === 4 ? "aspect-square" : "aspect-[4/3]"
   const imageSizes =
     columns === 4
       ? "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -46,7 +46,6 @@ export function SolutionsGrid({ content, locale, surface = "paper", density = "d
                   alt=""
                   fill
                   sizes={imageSizes}
-                  className="transition-transform duration-500 group-hover:scale-105"
                 />
                 <div
                   className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink/60 to-transparent"
