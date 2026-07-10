@@ -54,7 +54,7 @@ export default async function TechnologyPage({
                   number="02"
                   label="COMMISSIONING & LIFECYCLE QUALITY"
                 />
-                <h2 className="text-h2 font-medium leading-tight text-ink">
+                <h2 className="text-h2 font-semibold leading-tight text-ink">
                   {frontmatter.commissioning.heading}
                 </h2>
               </Stack>

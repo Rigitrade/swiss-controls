@@ -19,7 +19,7 @@ export function IndustriesGroups({ number, label, intro, groups }: Props) {
           {groups.map((group, i) => (
             <div key={group.category} className="flex flex-col gap-5 bg-paper p-6">
               <div className="flex items-baseline justify-between border-b border-hairline pb-4">
-                <h3 className="text-h3 font-medium text-ink">{group.category}</h3>
+                <h3 className="text-h3 font-semibold text-ink">{group.category}</h3>
                 <span className="font-mono text-micro text-ink/70">
                   {String(i + 1).padStart(2, "0")}
                 </span>

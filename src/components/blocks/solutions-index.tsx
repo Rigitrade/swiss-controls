@@ -48,7 +48,7 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                       <span className="font-mono text-body-l font-medium tabular-nums text-red">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="text-h2 font-medium text-ink transition-colors group-hover:text-red">
+                      <h3 className="text-h2 font-semibold text-ink transition-colors group-hover:text-red">
                         {item.title}
                       </h3>
                     </div>

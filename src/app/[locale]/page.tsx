@@ -33,7 +33,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Section surface="paper" density="default">
         <Container>
           <div className="max-w-3xl">
-            <h2 className="text-h1 font-medium text-ink">{c.purpose.heading}</h2>
+            <h2 className="text-h1 font-semibold text-ink">{c.purpose.heading}</h2>
             <p className="mt-6 text-body-l text-ink/80">{c.purpose.body}</p>
           </div>
         </Container>

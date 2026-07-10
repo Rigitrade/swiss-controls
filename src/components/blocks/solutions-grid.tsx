@@ -59,7 +59,7 @@ export function SolutionsGrid({ content, locale, surface = "paper", density = "d
                 </div>
               </div>
               <Stack gap="3" className="p-6">
-                <h3 className="text-h3 font-medium text-ink">{item.title}</h3>
+                <h3 className="text-h3 font-semibold text-ink">{item.title}</h3>
                 <p className="text-body text-ink/70">{item.summary}</p>
               </Stack>
             </Link>

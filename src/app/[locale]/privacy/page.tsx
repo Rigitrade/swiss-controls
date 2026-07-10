@@ -38,7 +38,7 @@ export default async function PrivacyPage({
       />
       <Section>
         <Container>
-          <article className="max-w-3xl space-y-6 text-body-l text-ink/80 [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-h2 [&_h2]:font-medium [&_h2]:text-ink [&_p]:my-4">
+          <article className="max-w-3xl space-y-6 text-body-l text-ink/80 [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-h2 [&_h2]:font-semibold [&_h2]:text-ink [&_p]:my-4">
             <p className="font-mono text-micro uppercase tracking-[0.08em] text-ink/50">
               Last updated: {frontmatter.lastUpdated}
             </p>

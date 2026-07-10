@@ -3,11 +3,13 @@ import { cn } from "@/lib/utils/cn"
 
 type Size = "sm" | "md" | "lg" | "xl"
 
+// Explicit sizes (not the heading scale) so the wordmark stays fixed regardless
+// of any heading-scale tuning. Values match the original h2 / h1 / display-m.
 const sizeClasses: Record<Size, string> = {
   sm: "text-body-l",
-  md: "text-h2",
-  lg: "text-h1",
-  xl: "text-display-m",
+  md: "text-[1.5rem]",
+  lg: "text-[1.875rem]",
+  xl: "text-[clamp(1.875rem,2.6vw,2.375rem)]",
 }
 
 // The Swiss Controls wordmark: lowercase Helvetica bold in Swiss red with a
