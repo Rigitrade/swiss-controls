@@ -32,7 +32,7 @@ export function PageHeader({
   return (
     <Section
       density={fill ? "default" : "header"}
-      className={fill ? "flex min-h-[80vh] items-center" : undefined}
+      className={fill ? "min-h-[80vh]" : undefined}
     >
       {breadcrumbs && breadcrumbs.length > 0 && (
         <script
