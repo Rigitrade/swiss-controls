@@ -55,6 +55,12 @@ const validHome = {
       { step: "Support", detail: "Provide lifecycle engineering, modernization, troubleshooting, and continuous improvement." },
     ],
   },
+  partners: {
+    label: "PLATFORM FLUENCY",
+    statement: "Vendor-independent by principle — fluent across the industrial platforms you already run.",
+    cta: { label: "Technology Expertise", href: "/technology" },
+    items: ["ABB", "Siemens", "Schneider Electric", "Honeywell"],
+  },
 }
 
 describe("homeSchema", () => {

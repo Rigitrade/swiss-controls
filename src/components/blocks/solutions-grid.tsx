@@ -4,6 +4,7 @@ import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
+import { ResponsiveImage } from "@/components/primitives/responsive-image"
 
 const ICONS: Record<string, LucideIcon> = {
   RefreshCw, Zap, Cpu, DraftingCompass, ArrowUpRight,
@@ -12,14 +13,14 @@ const ICONS: Record<string, LucideIcon> = {
 type SolutionsGridContent = {
   number: string
   label: string
-  items: { slug: string; icon: string; title: string; summary: string }[]
+  items: { slug: string; icon: string; title: string; summary: string; image: string }[]
 }
 
-type Props = { content: SolutionsGridContent; locale: "en" }
+type Props = { content: SolutionsGridContent; locale: "en"; surface?: "paper" | "stone" }
 
-export function SolutionsGrid({ content, locale }: Props) {
+export function SolutionsGrid({ content, locale, surface = "paper" }: Props) {
   return (
-    <Section surface="paper">
+    <Section surface={surface}>
       <Container>
         <div className="mb-12 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />
@@ -31,9 +32,18 @@ export function SolutionsGrid({ content, locale }: Props) {
               <Link
                 key={item.slug}
                 href={`/${locale}/solutions/${item.slug}`}
-                className="group relative flex flex-col bg-paper p-8 transition-colors hover:bg-stone/40"
+                className="group relative flex flex-col bg-paper transition-colors hover:bg-stone/40"
               >
-                <Stack gap="4">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <ResponsiveImage
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <Stack gap="4" className="p-8">
                   <div className="flex items-center justify-between">
                     <Icon className="h-8 w-8 text-red" aria-hidden="true" strokeWidth={1.5} />
                     <ArrowUpRight className="h-5 w-5 text-ink/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-red" aria-hidden="true" />

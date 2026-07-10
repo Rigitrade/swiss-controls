@@ -4,10 +4,13 @@ import { Hero } from "@/components/blocks/hero"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
 import { DeliveryFramework } from "@/components/blocks/delivery-framework"
+import { SolutionsGrid } from "@/components/blocks/solutions-grid"
+import { PartnerStrip } from "@/components/blocks/partner-strip"
 import { Section } from "@/components/primitives/section"
 import { Container } from "@/components/primitives/container"
 import { loadPageContent } from "@/lib/content/load"
 import { homeSchema } from "@/lib/content/schema"
+import { SOLUTIONS } from "@/lib/content/solutions"
 import type { Locale } from "@/i18n/routing"
 
 export const metadata: Metadata = {
@@ -21,6 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(locale as Locale, "home", homeSchema)
   const c = frontmatter
+  const solutions = SOLUTIONS.map((s) => ({ slug: s.slug, icon: s.icon, title: s.title, summary: s.summary, image: s.image }))
 
   return (
     <>
@@ -34,15 +38,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Container>
       </Section>
       {/* Alternate surfaces so each band reads as its own section:
-          purpose (white) → metrics (gray) → why (white) → delivery (gray) → footer (dark). */}
-      <AtAGlance content={c.metrics} surface="stone" />
+          purpose (white) → solutions (gray) → metrics (white) → why (gray)
+          → delivery (white) → partners (gray) → footer (dark). */}
+      <SolutionsGrid content={{ number: "01", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" />
+      <AtAGlance content={c.metrics} surface="paper" />
       <WhyChoose
         number={c.whyPartner.number}
         label={c.whyPartner.label}
         items={c.whyPartner.items}
-        surface="paper"
+        surface="stone"
       />
-      <DeliveryFramework content={c.deliveryFramework} surface="stone" />
+      <DeliveryFramework content={c.deliveryFramework} surface="paper" />
+      <PartnerStrip content={c.partners} locale="en" surface="stone" />
     </>
   )
 }
