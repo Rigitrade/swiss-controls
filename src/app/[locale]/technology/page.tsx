@@ -39,7 +39,7 @@ export default async function TechnologyPage({
 
       <TechnologyPlatforms
         number="01"
-        label="TECHNOLOGY EXPERTISE"
+        label="PLATFORM COVERAGE"
         flow={frontmatter.flow}
         categories={frontmatter.categories}
       />
