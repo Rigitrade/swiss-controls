@@ -56,10 +56,16 @@ const validHome = {
     ],
   },
   partners: {
+    number: "05",
     label: "PLATFORM FLUENCY",
     statement: "Vendor-independent by principle — fluent across the industrial platforms you already run.",
     cta: { label: "Technology Expertise", href: "/technology" },
-    items: ["ABB", "Siemens", "Schneider Electric", "Honeywell"],
+    items: [
+      { name: "ABB", logo: "/img/logos/abb.svg" },
+      { name: "Siemens", logo: "/img/logos/siemens.svg" },
+      { name: "Schneider Electric", logo: "/img/logos/schneider-electric.svg" },
+      { name: "Honeywell", logo: "/img/logos/honeywell.svg" },
+    ],
   },
 }
 

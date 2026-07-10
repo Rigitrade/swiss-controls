@@ -3,17 +3,23 @@ import { render, screen } from "@testing-library/react"
 import { PartnerStrip } from "./partner-strip"
 
 const content = {
+  number: "05",
   label: "PLATFORM FLUENCY",
   statement: "Vendor-independent by principle — fluent across the industrial platforms you already run.",
   cta: { label: "Technology Expertise", href: "/technology" },
-  items: ["ABB", "Siemens", "Schneider Electric", "Honeywell"],
+  items: [
+    { name: "ABB", logo: "/img/logos/abb.svg" },
+    { name: "Siemens", logo: "/img/logos/siemens.svg" },
+    { name: "Schneider Electric", logo: "/img/logos/schneider-electric.svg" },
+    { name: "Honeywell", logo: "/img/logos/honeywell.svg" },
+  ],
 }
 
 describe("PartnerStrip", () => {
-  it("renders each partner wordmark", () => {
+  it("renders each partner logo with its brand name as alt text", () => {
     render(<PartnerStrip content={content} locale="en" />)
-    expect(screen.getByText("ABB")).toBeInTheDocument()
-    expect(screen.getByText("Honeywell")).toBeInTheDocument()
+    expect(screen.getByAltText("ABB")).toHaveAttribute("src", "/img/logos/abb.svg")
+    expect(screen.getByAltText("Honeywell")).toBeInTheDocument()
   })
 
   it("links the CTA to the localized technology route", () => {
