@@ -28,7 +28,7 @@ export function IndustriesGroups({ number, label, intro, groups }: Props) {
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-full border border-hairline px-3 py-1 text-body text-ink/80 transition-colors hover:border-signal hover:text-signal"
+                    className="rounded-full border border-hairline px-3 py-1 text-body text-ink/80 transition-colors hover:border-red hover:text-red"
                   >
                     {item}
                   </li>

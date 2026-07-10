@@ -23,7 +23,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
           including the dark final-CTA section on the home page. */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-signal via-volt to-signal"
+        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-red via-red to-red"
       />
       {/* Cool top sheen lifts the footer's top edge into slate so it reads as a
           distinct machined plate even against a near-black section above. */}
@@ -33,17 +33,17 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-volt/[0.06] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-red/[0.06] to-transparent"
       />
       <Container>
         <div className="mb-8 flex items-center justify-between gap-4 border-b border-paper/10 pb-8">
           <span className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-paper/70">
-            <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-volt" />
+            <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-red" />
             A RIGITRADE AG Brand
           </span>
           <a
             href="#main"
-            className="group inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-paper/50 transition-colors hover:text-volt"
+            className="group inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-paper/50 transition-colors hover:text-red"
           >
             Back to top
             <span
@@ -65,8 +65,8 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
           >
             {content.tagline}
           </DisplayHeading>
-          <p className="mt-6 inline-flex items-center gap-3 font-mono text-micro uppercase tracking-[0.16em] text-volt">
-            <span aria-hidden="true" className="inline-block h-2 w-2 bg-volt" />
+          <p className="mt-6 inline-flex items-center gap-3 font-mono text-micro uppercase tracking-[0.16em] text-red">
+            <span aria-hidden="true" className="inline-block h-2 w-2 bg-red" />
             {content.technologyTag}
           </p>
         </div>
@@ -90,13 +90,13 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
             </h3>
             <a
               href={`mailto:${content.contact.email}`}
-              className="block text-body text-paper hover:text-volt"
+              className="block text-body text-paper hover:text-red"
             >
               {content.contact.email}
             </a>
             <a
               href={`tel:${content.contact.phone.replace(/\s+/g, "")}`}
-              className="mt-1 block font-mono text-body tabular-nums text-paper hover:text-volt"
+              className="mt-1 block font-mono text-body tabular-nums text-paper hover:text-red"
             >
               {content.contact.phone}
             </a>

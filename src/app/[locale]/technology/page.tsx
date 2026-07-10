@@ -69,7 +69,7 @@ export default async function TechnologyPage({
                       key={item}
                       className="flex items-baseline gap-4 border-b border-hairline py-4"
                     >
-                      <span className="font-mono text-micro text-signal">
+                      <span className="font-mono text-micro text-red">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="text-body-l text-ink">{item}</span>

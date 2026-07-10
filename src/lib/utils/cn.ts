@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from "clsx"
 import { extendTailwindMerge } from "tailwind-merge"
 
 // Our design tokens (see `@theme` in globals.css) extend Tailwind's default
-// color and font-size scales with custom names (ink, paper, signal, ... /
+// color and font-size scales with custom names (ink, paper, red, ... /
 // micro, caption, body, body-l, h1-h3, display-*). tailwind-merge's default
 // class-group detection only recognizes Tailwind's built-in scale keywords,
 // so without registering these it conflates unrelated utilities that merely
@@ -19,9 +19,9 @@ const customTwMerge = extendTailwindMerge({
             "paper",
             "stone",
             "steel",
-            "signal",
-            "signal-bright",
-            "volt",
+            "red",
+            "red-dark",
+            "red",
           ],
         },
       ],

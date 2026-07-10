@@ -1,31 +1,23 @@
-import { Inter, JetBrains_Mono, Jost } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
 
-// Note: spec calls for Switzer (Fontshare). For launch v1 we use Inter as a
-// near-equivalent grotesque available via next/font/google. To switch to
-// Switzer later, download the Switzer-Variable.woff2 file from Fontshare into
-// public/fonts/switzer/ and replace this file with localFont definitions.
+// Site typography is provisional — the client will supply the licensed site
+// fonts (plus letter-spacing / spacing specs) later. Until then we keep the
+// existing neutral defaults so the design-system tokens are wired and a swap
+// is a one-line change in globals.css (--font-sans / --font-mono).
+//
+// The LOGO/wordmark is separate: it uses Helvetica (matching the master logo),
+// served via a system stack in globals.css (--font-logo) — no JS font needed.
 
-export const switzer = Inter({
+export const bodyFont = Inter({
   subsets: ["latin"],
-  variable: "--font-switzer",
+  variable: "--font-body",
   display: "swap",
   preload: true,
 })
 
-export const jetbrains = JetBrains_Mono({
+export const monoFont = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-mono-face",
   display: "swap",
   preload: false,
-})
-
-// Logo / wordmark font — Jost, a geometric sans designed as a free
-// alternative to Futura (the typeface used by Vitra). Heavy weight gives
-// presence; geometric forms read as Bauhaus-modern, confident, precise.
-export const logoFont = Jost({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  variable: "--font-logo",
-  display: "swap",
-  preload: true,
 })

@@ -77,7 +77,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         <span className="block font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
                           Email
                         </span>
-                        <span className="mt-1 block text-h3 text-ink transition-colors group-hover:text-signal">
+                        <span className="mt-1 block text-h3 text-ink transition-colors group-hover:text-red">
                           {office.email}
                         </span>
                       </a>
@@ -88,7 +88,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         <span className="block font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
                           Phone
                         </span>
-                        <span className="mt-1 block text-h3 tabular-nums text-ink transition-colors group-hover:text-signal">
+                        <span className="mt-1 block text-h3 tabular-nums text-ink transition-colors group-hover:text-red">
                           {office.phone}
                         </span>
                       </a>

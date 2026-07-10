@@ -17,7 +17,7 @@ export function AtAGlance({ content }: Props) {
           {content.items.map((m) => {
             const numeric = /^\d+$/.test(m.value)
             return (
-              <div key={m.label} className="border-l-2 border-signal pl-4">
+              <div key={m.label} className="border-l-2 border-red pl-4">
                 <dd className="text-display-m font-medium text-ink">
                   {numeric ? (
                     <CountUp to={Number(m.value)} suffix={m.suffix ?? ""} />

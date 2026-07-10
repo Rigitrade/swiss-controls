@@ -6,19 +6,25 @@
    ============================================================= */
 
 @theme {
-  /* Color tokens — Swiss Controls "electric-signal" */
-  --color-ink: #0b0f14;
-  --color-paper: #f6f8fb;
-  --color-stone: #e2e8f0;
-  --color-steel: #1e293b;
-  --color-signal: #1d4ed8;
-  --color-signal-bright: #2563eb;
-  --color-volt: #22d3ee;
+  /* Color — Swiss identity: red / gray / white (International Typographic style).
+     One accent (red); everything else is a neutral gray ramp on white. */
+  --color-ink: #141414;         /* near-black — body text, dark grounding bands */
+  --color-paper: #ffffff;       /* white — primary surface, generous whitespace */
+  --color-stone: #f4f4f2;       /* light warm-gray — alternate section surface */
+  --color-steel: #1c1c1e;       /* charcoal — footer / dark grounding */
+  --color-mute: #6e6e73;        /* mid gray — secondary text, meta labels */
+  --color-line: #e4e4e2;        /* light gray — hairlines, borders */
+  --color-red: #da291c;         /* Swiss red — the sole accent (Pantone 485) */
+  --color-red-dark: #b01e14;    /* red — hover / pressed */
 
-  /* Type families (wired in layout via next/font CSS variables) */
-  --font-sans: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
-  --font-logo: var(--font-logo), "Arial Black", "Helvetica Neue", sans-serif;
+  /* Type families.
+     Site body / headings / labels are PROVISIONAL — the client will supply the
+     licensed site fonts; swap them here (one place) when they arrive.
+     The wordmark/logo is Helvetica (matches the master logo), served via a
+     system stack so it needs no JS font. */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-logo: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
 
   /* Modular type scale — retuned for the v2 strategic-advisory content
      (taglines + prose). Display ceilings pulled in from the v1 one-word-hero
@@ -128,10 +134,10 @@
 /* Hairline rule */
 @layer utilities {
   .border-hairline {
-    border-color: rgb(11 15 20 / 0.08);
+    border-color: var(--color-line);
   }
   .bg-hairline {
-    background-color: rgb(11 15 20 / 0.08);
+    background-color: var(--color-line);
   }
   .text-balance {
     text-wrap: balance;
@@ -153,14 +159,14 @@
   body {
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.625;
+    line-height: 1.65;
   }
   ::selection {
-    background-color: var(--color-signal);
+    background-color: var(--color-red);
     color: var(--color-paper);
   }
   *:focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-red);
     outline-offset: 2px;
   }
 }

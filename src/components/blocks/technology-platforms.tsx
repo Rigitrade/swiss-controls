@@ -24,7 +24,7 @@ export function TechnologyPlatforms({ number, label, flow, categories }: Props) 
                 {step}
               </span>
               {i < flow.length - 1 ? (
-                <span aria-hidden className="text-signal">
+                <span aria-hidden className="text-red">
                   &rarr;
                 </span>
               ) : null}
@@ -44,7 +44,7 @@ export function TechnologyPlatforms({ number, label, flow, categories }: Props) 
                 {cat.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-full border border-hairline px-3 py-1 text-body text-ink/80 transition-colors hover:border-signal hover:text-signal"
+                    className="rounded-full border border-hairline px-3 py-1 text-body text-ink/80 transition-colors hover:border-red hover:text-red"
                   >
                     {item}
                   </li>

@@ -13,7 +13,7 @@ export function SolutionDetail({ challenge, approach, capabilities }: Props) {
           <aside className="lg:col-span-5">
             <Stack gap="4">
               <SectionLabel number="01" label="THE CHALLENGE" />
-              <blockquote className="border-l-2 border-signal pl-6">
+              <blockquote className="border-l-2 border-red pl-6">
                 <p className="text-body-l text-ink/80">{challenge}</p>
               </blockquote>
             </Stack>
@@ -32,7 +32,7 @@ export function SolutionDetail({ challenge, approach, capabilities }: Props) {
           <ol className="grid grid-cols-1 gap-px bg-hairline sm:grid-cols-2">
             {capabilities.map((item, i) => (
               <li key={item} className="flex items-start gap-4 bg-paper p-5">
-                <span className="font-mono text-micro text-signal">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-micro text-red">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-body text-ink">{item}</span>
               </li>
             ))}

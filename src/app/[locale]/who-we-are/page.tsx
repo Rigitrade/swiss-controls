@@ -84,29 +84,25 @@ export default async function WhoWeArePage({
         </Container>
       </Section>
 
-      <Section surface="ink" density="default">
+      <Section surface="stone" density="default">
         <Container>
           <div className="mb-12 max-w-2xl">
-            <SectionLabel
-              number="05"
-              label="MISSION & VISION"
-              className="text-paper/60"
-            />
+            <SectionLabel number="05" label="MISSION & VISION" />
           </div>
-          <div className="grid grid-cols-1 gap-px bg-paper/10 md:grid-cols-2">
-            <div className="flex flex-col gap-4 bg-ink p-8 border-t-2 border-volt">
-              <span className="font-mono text-micro uppercase tracking-[0.08em] text-volt">
+          <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
+            <div className="flex flex-col gap-4 bg-paper p-8 border-t-2 border-red">
+              <span className="font-mono text-micro uppercase tracking-[0.08em] text-red">
                 Vision
               </span>
-              <p className="text-h3 font-medium leading-snug text-paper">
+              <p className="text-h3 font-medium leading-snug text-ink">
                 {frontmatter.vision}
               </p>
             </div>
-            <div className="flex flex-col gap-4 bg-ink p-8 border-t-2 border-signal">
-              <span className="font-mono text-micro uppercase tracking-[0.08em] text-signal">
+            <div className="flex flex-col gap-4 bg-paper p-8 border-t-2 border-red">
+              <span className="font-mono text-micro uppercase tracking-[0.08em] text-red">
                 Mission
               </span>
-              <p className="text-h3 font-medium leading-snug text-paper">
+              <p className="text-h3 font-medium leading-snug text-ink">
                 {frontmatter.mission}
               </p>
             </div>

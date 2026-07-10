@@ -53,7 +53,7 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
-                className="font-mono text-micro uppercase tracking-[0.08em] text-ink transition-colors hover:text-signal"
+                className="font-mono text-micro uppercase tracking-[0.08em] text-ink transition-colors hover:text-red"
               >
                 {link.label}
               </Link>
@@ -118,7 +118,7 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
               key={link.href}
               href={`/${locale}${link.href}`}
               onClick={() => setOpen(false)}
-              className="font-sans text-h3 text-ink hover:text-signal"
+              className="font-sans text-h3 text-ink hover:text-red"
             >
               {link.label}
             </Link>

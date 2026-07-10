@@ -1,84 +1,45 @@
-"use client"
-
 import Link from "next/link"
-import { motion, type Variants } from "framer-motion"
 import { cn } from "@/lib/utils/cn"
 
 type Size = "sm" | "md" | "lg" | "xl"
 
 const sizeClasses: Record<Size, string> = {
-  sm: "text-caption",
-  md: "text-body-l",
-  lg: "text-h2",
+  sm: "text-body-l",
+  md: "text-h2",
+  lg: "text-h1",
   xl: "text-display-m",
 }
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.04, delayChildren: 0.05 },
-  },
-}
-
-const letterVariants: Variants = {
-  hidden: { y: "100%", opacity: 0 },
-  visible: {
-    y: "0%",
-    opacity: 1,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  },
-}
-
-const dotVariants: Variants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      delay: 0.45,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-}
-
-const WORD = "SWISS CONTROLS"
+// The Swiss Controls wordmark: lowercase Helvetica bold in Swiss red with a
+// superscript ©, matching the master logo.
+const WORD = "swiss controls"
 
 type WordmarkProps = {
   size?: Size
   className?: string
   href?: string
+  /** Override the mark color (defaults to Swiss red). Use for dark surfaces. */
+  tone?: "red" | "paper"
 }
 
-export function Wordmark({ size = "md", className, href }: WordmarkProps) {
+export function Wordmark({ size = "md", className, href, tone = "red" }: WordmarkProps) {
   const content = (
-    <motion.span
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+    <span
       className={cn(
-        "group inline-flex items-baseline leading-none",
+        "inline-flex items-start font-logo font-bold lowercase leading-none tracking-[-0.015em]",
+        tone === "red" ? "text-red" : "text-paper",
         sizeClasses[size],
         className,
       )}
     >
-      <span className="flex font-logo font-black uppercase tracking-[0.01em] opacity-50 transition-opacity duration-300 group-hover:opacity-90">
-        {WORD.split("").map((letter, i) => (
-          <span key={i} className="inline-block overflow-hidden">
-            <motion.span variants={letterVariants} className="inline-block">
-              {letter === " " ? " " : letter}
-            </motion.span>
-          </span>
-        ))}
-      </span>
-      <motion.span
+      {WORD}
+      <span
         aria-hidden="true"
-        variants={dotVariants}
-        className="ml-0.5 inline-block font-logo font-black text-signal transition-transform duration-500 group-hover:scale-125"
+        className="ml-[0.12em] mt-[0.05em] text-[0.4em] font-normal leading-none"
       >
-        .
-      </motion.span>
-    </motion.span>
+        ©
+      </span>
+    </span>
   )
 
   if (href) {
