@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server"
 import { Hero } from "@/components/blocks/hero"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
+import { ServicePillars } from "@/components/blocks/service-pillars"
 import { DeliveryFramework } from "@/components/blocks/delivery-framework"
 import { SolutionsGrid } from "@/components/blocks/solutions-grid"
 import { PartnerStrip } from "@/components/blocks/partner-strip"
@@ -38,9 +39,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Container>
       </Section>
       {/* Alternate surfaces so each band reads as its own section:
-          purpose (white) → solutions (gray) → metrics (white) → why (gray)
-          → delivery (white) → partners (gray) → footer (dark). */}
-      <SolutionsGrid content={{ number: "01", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" density="tight" columns={4} />
+          purpose (white) → services (white, gray blocks) → solutions (gray)
+          → metrics (white) → why (gray) → delivery (white) → partners (gray)
+          → footer (dark). */}
+      <ServicePillars content={c.services} />
+      <SolutionsGrid content={{ number: "02", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" density="tight" columns={4} />
       <AtAGlance content={c.metrics} surface="paper" />
       <WhyChoose
         number={c.whyPartner.number}

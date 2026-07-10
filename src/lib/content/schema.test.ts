@@ -21,6 +21,16 @@ const validHome = {
     heading: "Engineering with Purpose",
     body: "We believe successful industrial projects begin long before equipment is selected.",
   },
+  services: {
+    number: "01",
+    label: "OUR SERVICES",
+    items: [
+      { title: "Automation", summary: "Control systems engineered for uptime.", points: ["PLC Systems", "SCADA Systems"] },
+      { title: "Electrification", summary: "Robust power and drive infrastructure.", points: ["Power Distribution"] },
+      { title: "Digital Transformation", summary: "A single, actionable view of your operation.", points: ["Industrial IoT"] },
+      { title: "AI Condition Monitoring", summary: "Predictive intelligence in real time.", points: ["Predictive Maintenance"] },
+    ],
+  },
   metrics: {
     number: "01",
     label: "AT A GLANCE",
