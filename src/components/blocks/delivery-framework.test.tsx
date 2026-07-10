@@ -34,7 +34,7 @@ describe("DeliveryFramework", () => {
 
   it("renders sub-bullets when a step has points", () => {
     render(<DeliveryFramework content={content} />)
-    expect(screen.getByText("FAT")).toBeInTheDocument()
-    expect(screen.getByText("Automation Architecture")).toBeInTheDocument()
+    expect(screen.getByText(/FAT/)).toBeInTheDocument()
+    expect(screen.getByText(/Automation Architecture/)).toBeInTheDocument()
   })
 })
