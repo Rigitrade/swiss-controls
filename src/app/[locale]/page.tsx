@@ -40,7 +40,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Alternate surfaces so each band reads as its own section:
           purpose (white) → solutions (gray) → metrics (white) → why (gray)
           → delivery (white) → partners (gray) → footer (dark). */}
-      <SolutionsGrid content={{ number: "01", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" />
+      <SolutionsGrid content={{ number: "01", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" density="tight" />
       <AtAGlance content={c.metrics} surface="paper" />
       <WhyChoose
         number={c.whyPartner.number}

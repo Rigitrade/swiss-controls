@@ -16,13 +16,18 @@ type SolutionsGridContent = {
   items: { slug: string; icon: string; title: string; summary: string; image: string }[]
 }
 
-type Props = { content: SolutionsGridContent; locale: "en"; surface?: "paper" | "stone" }
+type Props = {
+  content: SolutionsGridContent
+  locale: "en"
+  surface?: "paper" | "stone"
+  density?: "tight" | "default"
+}
 
-export function SolutionsGrid({ content, locale, surface = "paper" }: Props) {
+export function SolutionsGrid({ content, locale, surface = "paper", density = "default" }: Props) {
   return (
-    <Section surface={surface}>
+    <Section surface={surface} density={density}>
       <Container>
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-8 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />
         </div>
         <div className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
@@ -34,7 +39,7 @@ export function SolutionsGrid({ content, locale, surface = "paper" }: Props) {
                 href={`/${locale}/solutions/${item.slug}`}
                 className="group relative flex flex-col bg-paper transition-colors hover:bg-stone/40"
               >
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/9] overflow-hidden">
                   <ResponsiveImage
                     src={item.image}
                     alt=""
@@ -43,7 +48,7 @@ export function SolutionsGrid({ content, locale, surface = "paper" }: Props) {
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <Stack gap="4" className="p-8">
+                <Stack gap="3" className="p-6">
                   <div className="flex items-center justify-between">
                     <Icon className="h-8 w-8 text-red" aria-hidden="true" strokeWidth={1.5} />
                     <ArrowUpRight className="h-5 w-5 text-ink/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-red" aria-hidden="true" />
