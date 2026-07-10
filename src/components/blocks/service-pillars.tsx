@@ -65,13 +65,13 @@ export function ServicePillars({ content, surface = "paper" }: Props) {
                   {/* Default face — uniform fade veil + bottom scrim for the title */}
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 z-10 flex items-end bg-ink/50 p-6 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 sm:p-8 [@media(hover:none)]:opacity-0"
+                    className="absolute inset-0 z-10 flex items-center justify-center bg-ink/50 p-6 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 sm:p-8 [@media(hover:none)]:opacity-0"
                   >
                     <span
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/80 to-transparent"
                     />
-                    <span className="relative text-h3 font-semibold uppercase leading-tight tracking-[0.06em] text-paper">
+                    <span className="relative text-center text-h3 font-extrabold uppercase leading-tight tracking-[0.06em] text-paper">
                       {pillar.title}
                     </span>
                   </div>

@@ -137,7 +137,7 @@ export const privacyPageSchema = z.object({
 
 export const navSchema = z.object({
   links: z.array(z.object({ label: z.string(), href: z.string() })),
-  cta: ctaSchema,
+  cta: ctaSchema.optional(),
 })
 
 export const footerSchema = z.object({

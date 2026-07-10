@@ -77,7 +77,7 @@ export function PageHeader({
           <DisplayHeading as="h1" size="display-l" className="max-w-[20ch]">
             {title}
           </DisplayHeading>
-          <p className="max-w-[65ch] text-body-l text-ink/80">{intro}</p>
+          <p className="max-w-[65ch] whitespace-pre-line text-body-l text-ink/80">{intro}</p>
         </Stack>
       </Container>
     </Section>

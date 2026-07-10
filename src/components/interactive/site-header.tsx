@@ -15,7 +15,7 @@ type NavLink = { label: string; href: string }
 type SiteHeaderProps = {
   locale: "en" | "de"
   links: NavLink[]
-  cta: { label: string; href: string }
+  cta?: { label: string; href: string }
 }
 
 const stripSlash = (s: string) => (s !== "/" && s.endsWith("/") ? s.slice(0, -1) : s)
@@ -75,11 +75,13 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
             })}
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <LinkButton href={`/${locale}${cta.href}`} variant="primary" size="pill">
-              {cta.label}
-            </LinkButton>
-          </div>
+          {cta && (
+            <div className="hidden items-center gap-4 lg:flex">
+              <LinkButton href={`/${locale}${cta.href}`} variant="primary" size="pill">
+                {cta.label}
+              </LinkButton>
+            </div>
+          )}
 
           <button
             type="button"
@@ -145,14 +147,18 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
               </Link>
             )
           })}
-          <Hairline />
-          <LinkButton
-            href={`/${locale}${cta.href}`}
-            variant="primary"
-            onClick={() => setOpen(false)}
-          >
-            {cta.label}
-          </LinkButton>
+          {cta && (
+            <>
+              <Hairline />
+              <LinkButton
+                href={`/${locale}${cta.href}`}
+                variant="primary"
+                onClick={() => setOpen(false)}
+              >
+                {cta.label}
+              </LinkButton>
+            </>
+          )}
         </nav>
       </aside>
     </header>
