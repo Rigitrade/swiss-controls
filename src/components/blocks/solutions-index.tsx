@@ -74,10 +74,10 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                     <Link
                       href={`/${locale}/solutions/${item.slug}`}
                       aria-label={`Explore ${item.title}`}
-                      className="absolute bottom-5 right-5 inline-flex items-center gap-1.5 rounded-full border border-paper/20 bg-ink/40 px-4 py-2 font-mono text-micro uppercase tracking-[0.08em] text-paper shadow-lg backdrop-blur-md transition-colors duration-300 hover:bg-ink/60"
+                      className="absolute bottom-5 right-5 inline-flex items-center gap-1 rounded-full border border-paper/20 bg-ink/40 px-4 py-2 font-mono text-micro uppercase tracking-[0.08em] text-paper shadow-lg backdrop-blur-md transition-colors duration-300 hover:bg-ink/60 hover:text-red"
                     >
                       Explore
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                      <ArrowUpRight className="h-4 w-3.5 -translate-y-0.25" aria-hidden="true" />
                     </Link>
                   </div>
                 </div>
