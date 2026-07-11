@@ -4,60 +4,44 @@ import { SectionLabel } from "@/components/typography/section-label"
 
 type Category = { category: string; items: string[] }
 type Props = {
-  number: string
   label: string
   flow: string[]
   categories: Category[]
 }
 
-export function TechnologyPlatforms({ number, label, flow, categories }: Props) {
+export function TechnologyPlatforms({ label, flow, categories }: Props) {
   return (
     <Section surface="paper" density="default">
       <Container>
-        <div className="mb-12">
-          <SectionLabel number={number} label={label} />
+        <div className="mb-14 text-center">
+          <SectionLabel label={label} />
         </div>
 
-        {/* Capability spine — a connected numbered pipeline that reads as the
-            end-to-end automation → digital flow. */}
-        <ol className="mb-20 flex flex-col gap-6 sm:flex-row">
-          {flow.map((step, i) => (
-            <li
-              key={step}
-              className="flex flex-1 items-center gap-4 sm:flex-col sm:items-start sm:gap-5"
-            >
-              <div className="flex items-center gap-3 sm:w-full">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-red font-mono text-caption font-medium text-red">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {i < flow.length - 1 ? (
-                  <span
-                    aria-hidden
-                    className="hidden h-px flex-1 bg-gradient-to-r from-red/50 to-hairline sm:block"
-                  />
-                ) : null}
-              </div>
-              <span className="text-h3 font-semibold leading-tight tracking-tight text-ink">
+        {/* Coverage areas — a centred set (not a sequence), each marked with the
+            brand's red square. No connecting line: these are parallel domains,
+            not ordered steps. */}
+        <ul className="mb-20 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-6">
+          {flow.map((step) => (
+            <li key={step} className="flex flex-col items-center gap-4 text-center">
+              <span aria-hidden className="h-2 w-2 shrink-0 bg-red" />
+              <span className="text-h3 font-bold leading-tight tracking-wide text-balance text-ink">
                 {step}
               </span>
             </li>
           ))}
-        </ol>
+        </ul>
 
-        {/* Platform categories — number-led headers over a red accent, refined chips. */}
+        {/* Platform categories — centred headers over a red accent, refined chips. */}
         <div className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
-          {categories.map((cat, i) => (
+          {categories.map((cat) => (
             <div
               key={cat.category}
               className="flex flex-col gap-6 border-t-2 border-red/80 bg-paper p-6 sm:p-8"
             >
-              <div className="flex items-baseline gap-4">
-                <span className="font-mono text-body-l font-medium tabular-nums text-red">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-h3 font-semibold text-ink">{cat.category}</h3>
-              </div>
-              <ul className="flex flex-wrap gap-2">
+              <h3 className="text-center text-h3 font-semibold text-ink">
+                {cat.category}
+              </h3>
+              <ul className="flex flex-wrap justify-center gap-2">
                 {cat.items.map((item) => (
                   <li
                     key={item}

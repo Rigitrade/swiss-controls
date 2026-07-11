@@ -39,7 +39,6 @@ export default async function TechnologyPage({
       />
 
       <TechnologyPlatforms
-        number="01"
         label="PLATFORM COVERAGE"
         flow={frontmatter.flow}
         categories={frontmatter.categories}
@@ -50,13 +49,7 @@ export default async function TechnologyPage({
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <Stack gap="4">
-                <SectionLabel
-                  number="02"
-                  label="COMMISSIONING & LIFECYCLE QUALITY"
-                />
-                <h2 className="text-h2 font-semibold leading-tight text-ink">
-                  {frontmatter.commissioning.heading}
-                </h2>
+                <SectionLabel label="COMMISSIONING & LIFECYCLE MANAGEMENT" />
               </Stack>
             </div>
             <div className="lg:col-span-8">
@@ -65,14 +58,15 @@ export default async function TechnologyPage({
                   {frontmatter.commissioning.body}
                 </p>
                 <ul className="flex flex-col border-t border-hairline">
-                  {frontmatter.commissioning.items.map((item, i) => (
+                  {frontmatter.commissioning.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-baseline gap-4 border-b border-hairline py-4"
+                      className="flex items-center gap-4 border-b border-hairline py-6"
                     >
-                      <span className="font-mono text-micro text-red">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="h-1.5 w-1.5 shrink-0 bg-red"
+                      />
                       <span className="text-body-l text-ink">{item}</span>
                     </li>
                   ))}

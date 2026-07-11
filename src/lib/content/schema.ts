@@ -16,7 +16,9 @@ const pageHeaderSchema = z.object({
 const heroSchema = z.object({
   eyebrow: z.string(),          // "A Brand by RIGITRADE AG"
   wordmark: z.string(),         // "SWISS CONTROLS"
-  headline: z.string(),         // "Engineering Leadership. Swiss Precision. Industrial Transformation."
+  headline: z.string(),         // accessible H1 text (also the reduced-motion fallback)
+  // Big words cycled in/out as the hero's animated focal point.
+  rotatingWords: z.array(z.string()).min(1).optional(),
   subheadline: z.string(),
   positioning: z.string(),      // the three-part positioning line
   primaryCta: ctaSchema,
@@ -114,7 +116,7 @@ export const technologySchema = z.object({
   flow: z.array(z.string()).min(1),
   categories: z.array(technologyCategorySchema).min(1),
   commissioning: z.object({
-    heading: z.string(),
+    heading: z.string().optional(),
     body: z.string(),
     items: z.array(z.string()).min(1),
   }),

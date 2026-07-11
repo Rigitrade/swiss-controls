@@ -186,7 +186,7 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
 
         <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
-          Send via WhatsApp
+          <span className="text-caption font-bold uppercase tracking-[0.2em]">Send</span>
         </Button>
       </Stack>
     </form>

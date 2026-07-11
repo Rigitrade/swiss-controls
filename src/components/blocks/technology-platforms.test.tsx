@@ -6,7 +6,6 @@ describe("TechnologyPlatforms", () => {
   it("renders the flow strip and each platform category with its items", () => {
     render(
       <TechnologyPlatforms
-        number="01"
         label="TECHNOLOGY EXPERTISE"
         flow={["Automation", "Power", "Motion", "Industrial Software", "Networks", "Digital"]}
         categories={[

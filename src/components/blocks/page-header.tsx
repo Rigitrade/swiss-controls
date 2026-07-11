@@ -11,13 +11,17 @@ type PageHeaderProps = {
   // `number` is accepted (content still carries it) but not rendered — a bare
   // eyebrow reads better on standalone pages than a meaningless "01".
   number?: string
-  label: string
+  // `label`/`intro` are optional: pass an empty string to drop the eyebrow (when
+  // it would just echo the title) or the descriptive paragraph.
+  label?: string
   title: string
-  intro: string
+  intro?: string
   breadcrumbs?: Crumb[]
   /** Fixed full-height hero band with vertically-centred content. Used on the
    *  main inner pages so their first section is a consistent height. */
   fill?: boolean
+  /** Centre the header content (title + intro). Used on the Contact page. */
+  centered?: boolean
 }
 
 export function PageHeader({
@@ -26,6 +30,7 @@ export function PageHeader({
   intro,
   breadcrumbs,
   fill = false,
+  centered = false,
 }: PageHeaderProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.swiss-controls.com"
 
@@ -52,7 +57,7 @@ export function PageHeader({
         />
       )}
       <Container>
-        <Stack gap="4">
+        <Stack gap="4" className={centered ? "items-center text-center" : undefined}>
           {breadcrumbs && breadcrumbs.length > 0 && (
             <nav aria-label="Breadcrumb">
               <ol className="flex flex-wrap gap-2 font-mono text-micro uppercase tracking-[0.08em] text-ink/60">
@@ -73,11 +78,15 @@ export function PageHeader({
               </ol>
             </nav>
           )}
-          <SectionLabel label={label} />
+          {label ? <SectionLabel label={label} /> : null}
           <DisplayHeading as="h1" size="display-l" className="max-w-[20ch]">
             {title}
           </DisplayHeading>
-          <p className="max-w-[65ch] whitespace-pre-line text-body-l text-ink/80">{intro}</p>
+          {intro ? (
+            <p className="max-w-[65ch] whitespace-pre-line text-body-l text-ink/80">
+              {intro}
+            </p>
+          ) : null}
         </Stack>
       </Container>
     </Section>

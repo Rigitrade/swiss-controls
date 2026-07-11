@@ -44,7 +44,7 @@ export default async function WhoWeArePage({
         <Container>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <SectionLabel number="01" label="OUR STORY" />
+              <SectionLabel label="OUR STORY" />
             </div>
             <div className="lg:col-span-8">
               <p className="text-h2 font-medium leading-snug text-ink">
@@ -65,11 +65,11 @@ export default async function WhoWeArePage({
       <AtAGlance
         surface="paper"
         content={{
-          number: "02",
+          number: "",
           label: "AT A GLANCE",
           items: [
-            { value: "100", suffix: "+", label: "Years Combined Leadership" },
-            { value: "30", suffix: "+", label: "Countries Served" },
+            { value: "20", suffix: "+", label: "Years Combined Leadership" },
+            { value: "20", suffix: "+", label: "Countries Served" },
             { value: "20", suffix: "+", label: "Industry Sectors" },
             { value: "4", label: "Regional Hubs" },
           ],
@@ -77,13 +77,13 @@ export default async function WhoWeArePage({
       />
 
       <WhyChoose
-        number="03"
+        number=""
         label="OUR FOUNDATIONAL PILLARS"
         items={frontmatter.pillars}
       />
 
       <IndustriesGroups
-        number="04"
+        number=""
         label="INDUSTRIES WE SERVE"
         intro="Deep domain expertise spanning the complete industrial landscape."
         groups={frontmatter.industries}
@@ -93,7 +93,7 @@ export default async function WhoWeArePage({
         <Container>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <SectionLabel number="05" label="EXECUTIVE LEADERSHIP" />
+              <SectionLabel label="EXECUTIVE LEADERSHIP" />
             </div>
             <div className="lg:col-span-8">
               <Stack gap="3">
@@ -111,7 +111,7 @@ export default async function WhoWeArePage({
       <Section surface="paper" density="default">
         <Container>
           <div className="mb-12 max-w-2xl">
-            <SectionLabel number="06" label="MISSION & VISION" />
+            <SectionLabel label="MISSION & VISION" />
           </div>
           <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
             <div className="flex flex-col gap-4 bg-paper p-8 border-t-2 border-red">

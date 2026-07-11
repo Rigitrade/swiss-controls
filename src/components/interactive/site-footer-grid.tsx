@@ -16,7 +16,7 @@ const WHATSAPP_NUMBER = "41763666669"
 
 function ColLabel({ children }: { children: ReactNode }) {
   return (
-    <h3 className="mb-4 font-mono text-micro uppercase tracking-[0.12em] text-red/90">
+    <h3 className="mb-4 font-mono text-caption font-bold uppercase tracking-[0.12em] text-red">
       {children}
     </h3>
   )
@@ -63,7 +63,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
           <div className="md:col-span-4">
             <Wordmark size="xl" />
             {content.parentLine && (
-              <p className="mt-5 max-w-[24ch] text-body-l font-medium leading-snug text-paper/90">
+              <p className="mt-5 max-w-[24ch] text-body-l font-medium leading-relaxed text-paper/90">
                 {content.parentLine}
               </p>
             )}

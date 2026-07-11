@@ -1,6 +1,12 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { useEffect, useState } from "react"
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  type Variants,
+} from "framer-motion"
 import { Container } from "@/components/primitives/container"
 import { Stack } from "@/components/primitives/stack"
 import { LinkButton } from "@/components/ui/link-button"
@@ -17,14 +23,19 @@ const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
-const lineReveal: Variants = {
-  hidden: { y: "110%" },
-  visible: { y: "0%", transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+
+// A small Swiss-style square full-stop rendered in brand red.
+function SquareDot() {
+  return (
+    <span
+      aria-hidden="true"
+      className="ml-[0.06em] inline-block h-[0.12em] w-[0.12em] translate-y-[-0.06em] bg-red align-baseline"
+    />
+  )
 }
 
-// Renders the headline with Swiss-style square full-stops: each sentence's
-// period becomes a small red square. The real text (with periods) is exposed
-// to screen readers via an sr-only copy; the styled version is aria-hidden.
+// Renders text with Swiss-style square full-stops: each sentence's period
+// becomes a small red square. Used as the reduced-motion / fallback headline.
 function HeadlineWithSquareDots({ text }: { text: string }) {
   const phrases = text
     .split(".")
@@ -32,21 +43,80 @@ function HeadlineWithSquareDots({ text }: { text: string }) {
     .filter(Boolean)
   return (
     <>
-      <span aria-hidden="true">
-        {phrases.map((phrase, i) => (
-          <span key={i}>
-            {phrase}
-            <span className="ml-[0.05em] inline-block h-[0.16em] w-[0.16em] translate-y-[-0.04em] bg-red align-baseline" />
-            {i < phrases.length - 1 ? " " : ""}
-          </span>
-        ))}
-      </span>
-      <span className="sr-only">{text}</span>
+      {phrases.map((phrase, i) => (
+        <span key={i} className="inline">
+          {phrase}
+          <SquareDot />
+          {i < phrases.length - 1 ? " " : ""}
+        </span>
+      ))}
     </>
   )
 }
 
+// The animated focal point: one big word at a time, cycling in and out.
+// Falls back to a static list when the user prefers reduced motion.
+function CyclingWords({ words }: { words: string[] }) {
+  const reduce = useReducedMotion()
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    if (reduce || words.length <= 1) return
+    const id = setInterval(
+      () => setIndex((n) => (n + 1) % words.length),
+      2400,
+    )
+    return () => clearInterval(id)
+  }, [reduce, words.length])
+
+  // The longest word (by length) is the tallest once it wraps, so an invisible
+  // copy of it reserves a stable slot — the cycling words are absolutely
+  // positioned over that slot and never shift the layout around them.
+  const longest = words.reduce((a, b) => (b.length > a.length ? b : a))
+
+  if (reduce) {
+    return (
+      <span className="block">
+        {words.map((word) => (
+          <span key={word} className="block">
+            {word}
+            <SquareDot />
+          </span>
+        ))}
+      </span>
+    )
+  }
+
+  return (
+    <span className="relative block">
+      {/* Invisible sizer: fixes the height to the longest word at any width. */}
+      <span aria-hidden="true" className="invisible block">
+        {longest}
+        <SquareDot />
+      </span>
+      {/* Animated words, layered over the reserved slot. */}
+      <span className="absolute inset-0 block overflow-hidden">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={words[index]}
+            initial={{ y: "55%", opacity: 0 }}
+            animate={{ y: "0%", opacity: 1 }}
+            exit={{ y: "-55%", opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="block"
+          >
+            {words[index]}
+            <SquareDot />
+          </motion.span>
+        </AnimatePresence>
+      </span>
+    </span>
+  )
+}
+
 export function Hero({ hero, locale }: HeroProps) {
+  const words = hero.rotatingWords
+
   return (
     <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink">
       {/* Technical net — a faint blueprint grid that decorates the light hero
@@ -68,7 +138,7 @@ export function Hero({ hero, locale }: HeroProps) {
           initial="hidden"
           animate="visible"
           variants={container}
-          className="max-w-[52rem]"
+          className="max-w-[56rem]"
         >
           <Stack gap="6">
             <motion.div
@@ -81,25 +151,24 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </motion.div>
 
-            {/* Headline sized ~15% below display-l, then −25% for Montserrat. */}
-            <h1 className="text-[clamp(1.36rem,2.3vw,2.07rem)] font-bold leading-[1.08] tracking-tight text-balance text-ink">
-              <span className="block overflow-hidden">
-                <motion.span variants={lineReveal} className="block">
-                  <HeadlineWithSquareDots text={hero.headline} />
-                </motion.span>
-              </span>
-            </h1>
-
-            <motion.p variants={fadeUp} className="max-w-[56ch] text-body-l text-mute">
-              {hero.subheadline}
-            </motion.p>
-
-            <motion.p
+            {/* Big cycling words as the hero's focal point; a real, descriptive
+                headline stays available to screen readers and search engines. */}
+            <motion.h1
               variants={fadeUp}
-              className="flex items-center gap-3 font-sans text-caption uppercase tracking-[0.16em] text-ink/70"
+              className="text-[clamp(2.25rem,6vw,5rem)] font-bold leading-[1.04] tracking-tight text-ink"
             >
-              <span aria-hidden="true" className="inline-block h-px w-10 bg-red" />
-              {hero.positioning}
+              <span className="sr-only">{hero.headline}</span>
+              <span aria-hidden="true" className="block">
+                {words && words.length > 0 ? (
+                  <CyclingWords words={words} />
+                ) : (
+                  <HeadlineWithSquareDots text={hero.headline} />
+                )}
+              </span>
+            </motion.h1>
+
+            <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
+              {hero.subheadline}
             </motion.p>
 
             <motion.div variants={fadeUp}>
