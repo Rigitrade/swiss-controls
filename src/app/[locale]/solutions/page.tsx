@@ -37,11 +37,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: "Solutions" }]}
-      />
+      <PageHeader {...frontmatter.pageHeader} centered />
       <SolutionsIndex
         number=""
         label="OUR SOLUTIONS"

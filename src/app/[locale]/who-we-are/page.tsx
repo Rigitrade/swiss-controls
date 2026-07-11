@@ -31,14 +31,7 @@ export default async function WhoWeArePage({
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[
-          { label: "Home", href: `/${locale}` },
-          { label: "Who We Are" },
-        ]}
-      />
+      <PageHeader {...frontmatter.pageHeader} centered />
 
       <Section surface="stone" density="default">
         <Container>

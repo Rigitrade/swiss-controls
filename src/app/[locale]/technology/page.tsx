@@ -13,7 +13,7 @@ import type { Locale } from "@/i18n/routing"
 export const metadata: Metadata = {
   title: "Technology Expertise",
   description:
-    "Vendor-independent engineering across automation, power, motion, industrial software, networks, and digital platforms — matched to your operational requirements, not a vendor catalog.",
+    "Vendor-independent engineering across automation, power, motion, industrial software, networks, and digital platforms matched to your operational requirements, not a vendor catalog.",
 }
 
 export default async function TechnologyPage({
@@ -29,14 +29,7 @@ export default async function TechnologyPage({
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[
-          { label: "Home", href: `/${locale}` },
-          { label: "Technology Expertise" },
-        ]}
-      />
+      <PageHeader {...frontmatter.pageHeader} centered />
 
       <TechnologyPlatforms
         label="PLATFORM COVERAGE"
