@@ -43,7 +43,7 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                   aria-label={item.title}
                   className="group grid grid-cols-1 items-center gap-8 border-b border-hairline py-10 lg:grid-cols-12 lg:gap-12"
                 >
-                  <div className={cn("lg:col-span-7", flip && "lg:order-2")}>
+                  <div className={cn("lg:col-span-6", flip && "lg:order-2")}>
                     <h3 className="text-h2 font-semibold text-ink transition-colors group-hover:text-red">
                       {item.title}
                     </h3>
@@ -69,7 +69,7 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
 
                   <div
                     className={cn(
-                      "relative aspect-[16/10] overflow-hidden bg-stone lg:col-span-5",
+                      "relative aspect-[16/10] overflow-hidden bg-stone lg:col-span-6 lg:aspect-[2/1]",
                       flip && "lg:order-1",
                     )}
                   >
@@ -77,7 +77,7 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                       src={item.image}
                       alt=""
                       fill
-                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                   </div>
                 </Link>
