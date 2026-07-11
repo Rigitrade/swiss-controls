@@ -7,7 +7,6 @@ import { IndustriesGroups } from "@/components/blocks/industries-groups"
 import { Section } from "@/components/primitives/section"
 import { Container } from "@/components/primitives/container"
 import { Stack } from "@/components/primitives/stack"
-import { Hairline } from "@/components/primitives/hairline"
 import { SectionLabel } from "@/components/typography/section-label"
 import { loadPageContent } from "@/lib/content/load"
 import { whoWeAreSchema } from "@/lib/content/schema"
@@ -36,10 +35,7 @@ export default async function WhoWeArePage({
 
       <Section surface="stone" density="default">
         <Container>
-          <div className="flex items-center gap-5">
-            <SectionLabel label="OUR STORY" />
-            <Hairline className="flex-1" />
-          </div>
+          <SectionLabel label="OUR STORY" />
           <Stack gap="3" className="mt-6 lg:mt-8">
             {frontmatter.narrative.map((paragraph, i) => (
               <p
@@ -82,20 +78,17 @@ export default async function WhoWeArePage({
 
       <Section surface="stone" density="default">
         <Container>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <SectionLabel label="EXECUTIVE LEADERSHIP" />
-            </div>
-            <div className="lg:col-span-8">
-              <Stack gap="3">
-                {frontmatter.executiveLeadership.map((paragraph, i) => (
-                  <p key={i} className="text-body-l text-ink/80">
-                    {paragraph}
-                  </p>
-                ))}
-              </Stack>
-            </div>
-          </div>
+          <SectionLabel label="EXECUTIVE LEADERSHIP" />
+          <Stack gap="3" className="mt-6 lg:mt-8">
+            {frontmatter.executiveLeadership.map((paragraph, i) => (
+              <p
+                key={i}
+                className="max-w-[68ch] text-body-l leading-relaxed text-ink/90"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </Stack>
         </Container>
       </Section>
 
