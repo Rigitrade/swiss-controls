@@ -71,7 +71,7 @@ export function ServicePillars({ content, surface = "paper" }: Props) {
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/80 to-transparent"
                     />
-                    <span className="relative text-center text-h3 font-extrabold uppercase leading-tight tracking-[0.06em] text-paper">
+                    <span className="relative text-center text-[calc(var(--text-h3)*1.3)] font-extrabold uppercase leading-tight tracking-[0.06em] text-paper">
                       {pillar.title}
                     </span>
                   </div>

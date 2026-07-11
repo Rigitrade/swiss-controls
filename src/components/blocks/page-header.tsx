@@ -8,8 +8,8 @@ import { Hairline } from "@/components/primitives/hairline"
 
 type Crumb = { label: string; href?: string }
 
-// Renders a title with the brand's Swiss square full-stop: each sentence's
-// period (and the end of the title) becomes a small red square.
+// Renders a title with authored line breaks preserved (a newline inside a
+// sentence is an explicit break).
 function TitleWithSquareDots({ text }: { text: string }) {
   const phrases = text
     .split(".")
@@ -28,10 +28,6 @@ function TitleWithSquareDots({ text }: { text: string }) {
                 {j < lines.length - 1 ? <br /> : null}
               </span>
             ))}
-            <span
-              aria-hidden="true"
-              className="ml-[0.06em] inline-block h-[0.14em] w-[0.14em] translate-y-[-0.05em] bg-red align-baseline"
-            />
             {i < phrases.length - 1 ? " " : ""}
           </span>
         )

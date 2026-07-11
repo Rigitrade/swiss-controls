@@ -10,6 +10,8 @@ import {
 import { Container } from "@/components/primitives/container"
 import { Stack } from "@/components/primitives/stack"
 import { LinkButton } from "@/components/ui/link-button"
+import { heroFont } from "@/lib/fonts"
+import { cn } from "@/lib/utils/cn"
 import type { HomeContent } from "@/lib/content/schema"
 
 type HeroProps = { hero: HomeContent["hero"]; locale: "en" }
@@ -23,18 +25,8 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
 
-// A small Swiss-style square full-stop rendered in brand red.
-function SquareDot() {
-  return (
-    <span
-      aria-hidden="true"
-      className="ml-[0.06em] inline-block h-[0.12em] w-[0.12em] translate-y-[-0.06em] bg-red align-baseline"
-    />
-  )
-}
-
-// Renders text with Swiss-style square full-stops: each sentence's period
-// becomes a small red square. Used as the reduced-motion / fallback headline.
+// Renders each sentence of the headline as plain text (no trailing dot).
+// Used as the reduced-motion / fallback headline.
 function HeadlineWithSquareDots({ text }: { text: string }) {
   const phrases = text
     .split(".")
@@ -45,7 +37,6 @@ function HeadlineWithSquareDots({ text }: { text: string }) {
       {phrases.map((phrase, i) => (
         <span key={i} className="inline">
           {phrase}
-          <SquareDot />
           {i < phrases.length - 1 ? " " : ""}
         </span>
       ))}
@@ -75,11 +66,10 @@ function CyclingWords({ words }: { words: string[] }) {
 
   if (reduce) {
     return (
-      <span className="block">
+      <span className="block tracking-[0.02em]">
         {words.map((word) => (
           <span key={word} className="block">
             {word}
-            <SquareDot />
           </span>
         ))}
       </span>
@@ -87,11 +77,10 @@ function CyclingWords({ words }: { words: string[] }) {
   }
 
   return (
-    <span className="relative block">
+    <span className="relative block tracking-[0.02em]">
       {/* Invisible sizer: fixes the height to the longest word at any width. */}
       <span aria-hidden="true" className="invisible block">
         {longest}
-        <SquareDot />
       </span>
       {/* Animated words, layered over the reserved slot. */}
       <span className="absolute inset-0 block overflow-hidden">
@@ -105,7 +94,6 @@ function CyclingWords({ words }: { words: string[] }) {
             className="block"
           >
             {words[index]}
-            <SquareDot />
           </motion.span>
         </AnimatePresence>
       </span>
@@ -117,7 +105,13 @@ export function Hero({ hero, locale }: HeroProps) {
   const words = hero.rotatingWords
 
   return (
-    <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink">
+    <section
+      className={cn(
+        heroFont.variable,
+        "relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink",
+      )}
+      style={{ fontFamily: "var(--font-hero-face), var(--font-sans)" }}
+    >
       {/* Technical net — a faint blueprint grid that decorates the light hero
           and sets it apart from the plain body below. Faded toward the edges. */}
       <div
