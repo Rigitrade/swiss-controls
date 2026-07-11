@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
+import { PageHeader } from "@/components/blocks/page-header"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
 import { IndustriesGroups } from "@/components/blocks/industries-groups"
