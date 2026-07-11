@@ -52,7 +52,7 @@ function IntroText({ text }: { text: string }) {
     return <p className="max-w-[65ch] text-body-l text-ink/80">{text}</p>
   }
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-5 ">
       {lines.map((line, i) => (
         <p key={i} className="max-w-[65ch] text-body-l text-ink/80">
           {line}
