@@ -38,32 +38,24 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
             const flip = i % 2 === 1
             return (
               <li key={item.slug}>
-                <Link
-                  href={`/${locale}/solutions/${item.slug}`}
-                  aria-label={item.title}
-                  className="group grid grid-cols-1 items-center gap-8 border-b border-hairline py-10 lg:grid-cols-12 lg:gap-12"
-                >
+                <div className="grid grid-cols-1 items-center gap-8 border-b border-hairline py-10 lg:grid-cols-12 lg:gap-20">
                   <div className={cn("lg:col-span-6", flip && "lg:order-2")}>
-                    <h3 className="text-h2 font-semibold text-ink transition-colors group-hover:text-red">
-                      {item.title}
+                    <h3 className="text-h2 font-semibold text-ink">
+                      <Link
+                        href={`/${locale}/solutions/${item.slug}`}
+                        className="transition-colors hover:text-red"
+                      >
+                        {item.title}
+                      </Link>
                     </h3>
-                    <p className="mt-4 max-w-[60ch] text-body-l text-ink/70">{item.summary}</p>
-                    <div className="mt-6 flex flex-wrap items-center gap-2">
+                    <p className="mt-4 text-body-l text-ink/70 text-justify">{item.summary}</p>
+                    <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
                       {item.capabilities.slice(0, 3).map((cap) => (
-                        <span
-                          key={cap}
-                          className="rounded-full border border-hairline px-3 py-1 text-caption text-ink/70"
-                        >
+                        <span key={cap} className="inline-flex items-center gap-2 text-body-l text-ink/70">
+                          <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-red" />
                           {cap}
                         </span>
                       ))}
-                      <span className="ml-2 inline-flex items-center gap-1.5 font-mono text-micro uppercase tracking-[0.08em] text-red">
-                        Explore
-                        <ArrowUpRight
-                          className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                          aria-hidden="true"
-                        />
-                      </span>
                     </div>
                   </div>
 
@@ -79,8 +71,16 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                       fill
                       sizes="(min-width: 1024px) 50vw, 100vw"
                     />
+                    <Link
+                      href={`/${locale}/solutions/${item.slug}`}
+                      aria-label={`Explore ${item.title}`}
+                      className="absolute bottom-5 right-5 inline-flex items-center gap-1.5 rounded-full border border-paper/20 bg-ink/40 px-4 py-2 font-mono text-micro uppercase tracking-[0.08em] text-paper shadow-lg backdrop-blur-md transition-colors duration-300 hover:bg-ink/60"
+                    >
+                      Explore
+                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
                   </div>
-                </Link>
+                </div>
               </li>
             )
           })}
