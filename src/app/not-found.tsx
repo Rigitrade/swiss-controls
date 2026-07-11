@@ -4,13 +4,13 @@ import { Stack } from "@/components/primitives/stack"
 import { LinkButton } from "@/components/ui/link-button"
 import { SectionLabel } from "@/components/typography/section-label"
 import { DisplayHeading } from "@/components/typography/display-heading"
-import { bodyFont, monoFont } from "@/lib/fonts"
+import { bodyFont, labelFont, monoFont } from "@/lib/fonts"
 import { cn } from "@/lib/utils/cn"
 import "./globals.css"
 
 export default function NotFound() {
   return (
-    <html lang="en" className={cn(bodyFont.variable, monoFont.variable)}>
+    <html lang="en" className={cn(bodyFont.variable, labelFont.variable, monoFont.variable)}>
       <body className="bg-paper text-ink antialiased">
         <Section density="loose">
           <Container>

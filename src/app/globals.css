@@ -23,6 +23,7 @@
      The wordmark/logo is Helvetica (matches the master logo), served via a
      system stack so it needs no JS font. */
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-label-face), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, monospace;
   --font-logo: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
 
@@ -159,6 +160,7 @@
   body {
     font-family: var(--font-sans);
     font-size: 1rem;
+    font-weight: 500;
     line-height: 1.65;
   }
   ::selection {

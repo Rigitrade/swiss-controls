@@ -144,7 +144,7 @@ export function Hero({ hero, locale }: HeroProps) {
                 headline stays available to screen readers and search engines. */}
             <motion.h1
               variants={fadeUp}
-              className="text-[clamp(2.25rem,6vw,5rem)] font-bold leading-[1.04] tracking-tight text-ink"
+              className="text-[clamp(2.25rem,6vw,5rem)] font-black leading-[1.04] tracking-tight text-ink"
             >
               <span className="sr-only">{hero.headline}</span>
               <span aria-hidden="true" className="block">
