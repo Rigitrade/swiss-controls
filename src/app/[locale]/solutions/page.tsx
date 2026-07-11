@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionsIndex } from "@/components/blocks/solutions-index"
 import { loadPageContent } from "@/lib/content/load"
 import { solutionsIndexSchema, solutionDetailSchema } from "@/lib/content/schema"
@@ -37,11 +36,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: "Solutions" }]}
-      />
+      <h1 className="sr-only">{frontmatter.pageHeader.title}</h1>
       <SolutionsIndex
         number=""
         label="OUR SOLUTIONS"

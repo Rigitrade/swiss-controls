@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { PageHeader } from "@/components/blocks/page-header"
 import { TechnologyPlatforms } from "@/components/blocks/technology-platforms"
 import { Section } from "@/components/primitives/section"
 import { Container } from "@/components/primitives/container"
@@ -29,14 +28,7 @@ export default async function TechnologyPage({
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[
-          { label: "Home", href: `/${locale}` },
-          { label: "Technology Expertise" },
-        ]}
-      />
+      <h1 className="sr-only">{frontmatter.pageHeader.title}</h1>
 
       <TechnologyPlatforms
         label="PLATFORM COVERAGE"

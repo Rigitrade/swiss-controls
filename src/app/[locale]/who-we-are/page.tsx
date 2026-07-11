@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { PageHeader } from "@/components/blocks/page-header"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
 import { IndustriesGroups } from "@/components/blocks/industries-groups"
@@ -31,14 +30,7 @@ export default async function WhoWeArePage({
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[
-          { label: "Home", href: `/${locale}` },
-          { label: "Who We Are" },
-        ]}
-      />
+      <h1 className="sr-only">{frontmatter.pageHeader.title}</h1>
 
       <Section surface="stone" density="default">
         <Container>

@@ -9,8 +9,6 @@ import {
 } from "framer-motion"
 import { Container } from "@/components/primitives/container"
 import { Stack } from "@/components/primitives/stack"
-import { LinkButton } from "@/components/ui/link-button"
-import { Wordmark } from "@/components/typography/wordmark"
 import type { HomeContent } from "@/lib/content/schema"
 
 type HeroProps = { hero: HomeContent["hero"]; locale: "en" }
@@ -114,7 +112,7 @@ function CyclingWords({ words }: { words: string[] }) {
   )
 }
 
-export function Hero({ hero, locale }: HeroProps) {
+export function Hero({ hero }: HeroProps) {
   const words = hero.rotatingWords
 
   return (
@@ -141,16 +139,6 @@ export function Hero({ hero, locale }: HeroProps) {
           className="max-w-[56rem]"
         >
           <Stack gap="6">
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-wrap items-center gap-x-4 gap-y-2"
-            >
-              <Wordmark size="md" tone="red" />
-              <span className="font-sans text-caption uppercase tracking-[0.14em] text-mute">
-                {hero.eyebrow}
-              </span>
-            </motion.div>
-
             {/* Big cycling words as the hero's focal point; a real, descriptive
                 headline stays available to screen readers and search engines. */}
             <motion.h1
@@ -167,15 +155,11 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
-              {hero.subheadline}
-            </motion.p>
-
-            <motion.div variants={fadeUp}>
-              <LinkButton href={`/${locale}${hero.primaryCta.href}`} variant="primary" size="lg">
-                {hero.primaryCta.label}
-              </LinkButton>
-            </motion.div>
+            {hero.subheadline ? (
+              <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
+                {hero.subheadline}
+              </motion.p>
+            ) : null}
           </Stack>
         </motion.div>
       </Container>

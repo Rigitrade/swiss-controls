@@ -23,11 +23,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <PageHeader
-        {...frontmatter.pageHeader}
-        fill
-        breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: "Contact" }]}
-      />
+      <PageHeader {...frontmatter.pageHeader} centered />
       <Section>
         <Container>
           <div className="mx-auto max-w-2xl">
