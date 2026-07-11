@@ -4,6 +4,7 @@ import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
 import { ResponsiveImage } from "@/components/primitives/responsive-image"
+import { ScrollReveal } from "@/components/interactive/scroll-reveal"
 import { cn } from "@/lib/utils/cn"
 
 type Item = {
@@ -22,16 +23,21 @@ type Props = {
   locale: "en"
 }
 
-// Editorial index: each solution is a full-width row (number + title + summary
-// + capability tags on one side, a compact image on the other, alternating).
+// Full-screen showcase: a slim intro band, then each solution as its own
+// full-viewport panel — a full-bleed image beside vertically-centred content,
+// sides alternating, backgrounds alternating paper/stone so each reads as a
+// distinct "page". The whole panel links through to the solution detail.
 export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
   return (
-    <Section surface="paper">
-      <Container>
-        <div className="mb-12 max-w-2xl">
-          <SectionLabel number={number} label={label} />
-          {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
-        </div>
+    <>
+      <Section surface="paper" density="tight">
+        <Container>
+          <div className="max-w-2xl">
+            <SectionLabel number={number} label={label} />
+            {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
+          </div>
+        </Container>
+      </Section>
 
         <ul className="border-t border-hairline">
           {items.map((item, i) => {
@@ -79,13 +85,13 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                       fill
                       sizes="(min-width: 1024px) 50vw, 100vw"
                     />
-                  </div>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </Container>
-    </Section>
+                  </span>
+                </ScrollReveal>
+              </div>
+            </Link>
+          </section>
+        )
+      })}
+    </>
   )
 }

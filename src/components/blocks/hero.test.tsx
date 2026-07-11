@@ -19,7 +19,5 @@ describe("Hero", () => {
         "Engineering Leadership. Swiss Precision. Industrial Transformation.",
       ),
     ).toBeInTheDocument()
-    const cta = screen.getByRole("link", { name: "Partner With Us" })
-    expect(cta).toHaveAttribute("href", "/en/contact")
   })
 })

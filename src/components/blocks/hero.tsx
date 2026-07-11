@@ -113,7 +113,7 @@ function CyclingWords({ words }: { words: string[] }) {
   )
 }
 
-export function Hero({ hero, locale }: HeroProps) {
+export function Hero({ hero }: HeroProps) {
   const words = hero.rotatingWords
 
   return (
@@ -156,15 +156,11 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
-              {hero.subheadline}
-            </motion.p>
-
-            <motion.div variants={fadeUp}>
-              <LinkButton href={`/${locale}${hero.primaryCta.href}`} variant="primary" size="lg">
-                {hero.primaryCta.label}
-              </LinkButton>
-            </motion.div>
+            {hero.subheadline ? (
+              <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
+                {hero.subheadline}
+              </motion.p>
+            ) : null}
           </Stack>
         </motion.div>
       </Container>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionsIndex } from "@/components/blocks/solutions-index"
 import { loadPageContent } from "@/lib/content/load"
 import { solutionsIndexSchema, solutionDetailSchema } from "@/lib/content/schema"

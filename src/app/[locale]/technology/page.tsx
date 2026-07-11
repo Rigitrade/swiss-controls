@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { PageHeader } from "@/components/blocks/page-header"
 import { TechnologyPlatforms } from "@/components/blocks/technology-platforms"
 import { Section } from "@/components/primitives/section"
 import { Container } from "@/components/primitives/container"
