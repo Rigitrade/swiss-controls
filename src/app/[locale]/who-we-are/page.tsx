@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
+import { PageHeader } from "@/components/blocks/page-header"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
 import { IndustriesGroups } from "@/components/blocks/industries-groups"
@@ -30,27 +31,21 @@ export default async function WhoWeArePage({
 
   return (
     <>
-      <h1 className="sr-only">{frontmatter.pageHeader.title}</h1>
+      <PageHeader {...frontmatter.pageHeader} centered />
 
       <Section surface="stone" density="default">
         <Container>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <SectionLabel label="OUR STORY" />
-            </div>
-            <div className="lg:col-span-8">
-              <p className="text-h2 font-medium leading-snug text-ink">
-                {frontmatter.narrative[0]}
+          <SectionLabel label="OUR STORY" />
+          <Stack gap="3" className="mt-6 lg:mt-8">
+            {frontmatter.narrative.map((paragraph, i) => (
+              <p
+                key={i}
+                className="max-w-[68ch] text-body-l leading-relaxed text-ink/90"
+              >
+                {paragraph}
               </p>
-              <Stack gap="3" className="mt-6">
-                {frontmatter.narrative.slice(1).map((paragraph, i) => (
-                  <p key={i} className="max-w-[65ch] text-body-l text-ink/80">
-                    {paragraph}
-                  </p>
-                ))}
-              </Stack>
-            </div>
-          </div>
+            ))}
+          </Stack>
         </Container>
       </Section>
 
@@ -83,20 +78,17 @@ export default async function WhoWeArePage({
 
       <Section surface="stone" density="default">
         <Container>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <SectionLabel label="EXECUTIVE LEADERSHIP" />
-            </div>
-            <div className="lg:col-span-8">
-              <Stack gap="3">
-                {frontmatter.executiveLeadership.map((paragraph, i) => (
-                  <p key={i} className="text-body-l text-ink/80">
-                    {paragraph}
-                  </p>
-                ))}
-              </Stack>
-            </div>
-          </div>
+          <SectionLabel label="EXECUTIVE LEADERSHIP" />
+          <Stack gap="3" className="mt-6 lg:mt-8">
+            {frontmatter.executiveLeadership.map((paragraph, i) => (
+              <p
+                key={i}
+                className="max-w-[68ch] text-body-l leading-relaxed text-ink/90"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </Stack>
         </Container>
       </Section>
 

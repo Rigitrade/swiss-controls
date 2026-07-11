@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
+import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionsIndex } from "@/components/blocks/solutions-index"
 import { loadPageContent } from "@/lib/content/load"
 import { solutionsIndexSchema, solutionDetailSchema } from "@/lib/content/schema"
@@ -36,11 +37,11 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
 
   return (
     <>
-      <h1 className="sr-only">{frontmatter.pageHeader.title}</h1>
+      <PageHeader {...frontmatter.pageHeader} centered />
       <SolutionsIndex
         number=""
         label="OUR SOLUTIONS"
-        intro="Four integrated solutions across the full industrial asset lifecycle — delivered vendor-independently, from modernizing the assets you run today to derisking the capital you commit next."
+        intro="Four integrated solutions across the full industrial asset lifecycle delivered vendor-independently, from modernizing the assets you run today to derisking the capital you commit next."
         items={items}
         locale="en"
       />

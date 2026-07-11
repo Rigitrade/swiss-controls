@@ -61,7 +61,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
         <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:items-start md:gap-x-8">
           {/* Identity */}
           <div className="md:col-span-4">
-            <Wordmark size="xl" className="md:-mt-2" />
+            <Wordmark size="xl" />
             {content.parentLine && (
               <p className="mt-5 max-w-[24ch] text-body-l font-medium leading-relaxed text-paper/90">
                 {content.parentLine}

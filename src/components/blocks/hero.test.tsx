@@ -12,14 +12,14 @@ const hero = {
 }
 
 describe("Hero", () => {
-  it("renders the accessible headline", () => {
+  it("renders the headline and CTA to the localized contact route", () => {
     render(<Hero hero={hero} locale="en" />)
-    // The visible focal point is the animated words; the full headline stays
-    // available to screen readers via an sr-only copy.
     expect(
       screen.getByText(
         "Engineering Leadership. Swiss Precision. Industrial Transformation.",
       ),
     ).toBeInTheDocument()
+    const cta = screen.getByRole("link", { name: "Partner With Us" })
+    expect(cta).toHaveAttribute("href", "/en/contact")
   })
 })

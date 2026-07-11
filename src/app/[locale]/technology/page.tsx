@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
+import { PageHeader } from "@/components/blocks/page-header"
 import { TechnologyPlatforms } from "@/components/blocks/technology-platforms"
 import { Section } from "@/components/primitives/section"
 import { Container } from "@/components/primitives/container"
@@ -12,7 +13,7 @@ import type { Locale } from "@/i18n/routing"
 export const metadata: Metadata = {
   title: "Technology Expertise",
   description:
-    "Vendor-independent engineering across automation, power, motion, industrial software, networks, and digital platforms — matched to your operational requirements, not a vendor catalog.",
+    "Vendor-independent engineering across automation, power, motion, industrial software, networks, and digital platforms matched to your operational requirements, not a vendor catalog.",
 }
 
 export default async function TechnologyPage({
@@ -28,7 +29,7 @@ export default async function TechnologyPage({
 
   return (
     <>
-      <h1 className="sr-only">{frontmatter.pageHeader.title}</h1>
+      <PageHeader {...frontmatter.pageHeader} centered />
 
       <TechnologyPlatforms
         label="PLATFORM COVERAGE"

@@ -9,6 +9,7 @@ import {
 } from "framer-motion"
 import { Container } from "@/components/primitives/container"
 import { Stack } from "@/components/primitives/stack"
+import { LinkButton } from "@/components/ui/link-button"
 import type { HomeContent } from "@/lib/content/schema"
 
 type HeroProps = { hero: HomeContent["hero"]; locale: "en" }
@@ -112,7 +113,7 @@ function CyclingWords({ words }: { words: string[] }) {
   )
 }
 
-export function Hero({ hero }: HeroProps) {
+export function Hero({ hero, locale }: HeroProps) {
   const words = hero.rotatingWords
 
   return (
@@ -155,11 +156,15 @@ export function Hero({ hero }: HeroProps) {
               </span>
             </motion.h1>
 
-            {hero.subheadline ? (
-              <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
-                {hero.subheadline}
-              </motion.p>
-            ) : null}
+            <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
+              {hero.subheadline}
+            </motion.p>
+
+            <motion.div variants={fadeUp}>
+              <LinkButton href={`/${locale}${hero.primaryCta.href}`} variant="primary" size="lg">
+                {hero.primaryCta.label}
+              </LinkButton>
+            </motion.div>
           </Stack>
         </motion.div>
       </Container>

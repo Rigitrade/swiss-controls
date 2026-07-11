@@ -36,7 +36,10 @@ export function DisplayHeading({
 }: DisplayHeadingProps) {
   const Tag = as as ElementType
   const reduce = useReducedMotion()
-  const shouldAnimate = animate && !reduce && typeof children === "string"
+  // The line-reveal works with any children (plain text or an element such as a
+  // title with red square full-stops); it's gated only on the `animate` flag and
+  // the user's reduced-motion preference.
+  const shouldAnimate = animate && !reduce
 
   if (!shouldAnimate) {
     return (
@@ -78,7 +81,7 @@ export function DisplayHeading({
           {...motionProps}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          {children as string}
+          {children}
         </motion.span>
       </span>
     </Tag>
