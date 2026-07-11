@@ -66,7 +66,7 @@ function CyclingWords({ words }: { words: string[] }) {
 
   if (reduce) {
     return (
-      <span className="block tracking-[0.02em]">
+      <span className="block tracking-[0.02em]" style={{ fontSize: "0.94em" }}>
         {words.map((word) => (
           <span key={word} className="block">
             {word}
@@ -77,7 +77,7 @@ function CyclingWords({ words }: { words: string[] }) {
   }
 
   return (
-    <span className="relative block tracking-[0.02em]">
+    <span className="relative block tracking-[0.02em]" style={{ fontSize: "0.94em" }}>
       {/* Invisible sizer: fixes the height to the longest word at any width. */}
       <span aria-hidden="true" className="invisible block">
         {longest}
@@ -150,7 +150,10 @@ export function Hero({ hero, locale }: HeroProps) {
               </span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="max-w-[52ch] text-body-l text-mute">
+            <motion.p
+              variants={fadeUp}
+              className="max-w-[52ch] text-[clamp(1.125rem,1.4vw,1.375rem)] leading-relaxed text-mute"
+            >
               {hero.subheadline}
             </motion.p>
 

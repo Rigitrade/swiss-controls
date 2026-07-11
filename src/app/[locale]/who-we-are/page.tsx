@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
 import { PageHeader } from "@/components/blocks/page-header"
+import { StorySection } from "@/components/blocks/story-section"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
 import { WhyChoose } from "@/components/blocks/why-choose"
 import { IndustriesGroups } from "@/components/blocks/industries-groups"
@@ -33,21 +34,7 @@ export default async function WhoWeArePage({
     <>
       <PageHeader {...frontmatter.pageHeader} centered />
 
-      <Section surface="stone" density="default">
-        <Container>
-          <SectionLabel label="OUR STORY" />
-          <Stack gap="3" className="mt-6 lg:mt-8">
-            {frontmatter.narrative.map((paragraph, i) => (
-              <p
-                key={i}
-                className="max-w-[68ch] text-body-l leading-relaxed text-ink/90"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </Stack>
-        </Container>
-      </Section>
+      <StorySection paragraphs={frontmatter.narrative} />
 
       <AtAGlance
         surface="paper"

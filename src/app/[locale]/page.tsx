@@ -42,17 +42,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           purpose (white) → services (white, gray blocks) → solutions (gray)
           → metrics (white) → why (gray) → delivery (white) → partners (gray)
           → footer (dark). */}
-      <ServicePillars content={c.services} surface="paper" />
-      <SolutionsGrid content={{ number: "02", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" density="tight" columns={4} />
-      <AtAGlance content={c.metrics} surface="paper" />
+      <ServicePillars content={{ ...c.services, number: "" }} surface="paper" />
+      <SolutionsGrid content={{ number: "", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" density="tight" columns={4} />
+      <AtAGlance content={{ ...c.metrics, number: "" }} surface="paper" />
       <WhyChoose
-        number={c.whyPartner.number}
+        number=""
         label={c.whyPartner.label}
         items={c.whyPartner.items}
         surface="stone"
       />
-      <DeliveryFramework content={c.deliveryFramework} surface="paper" />
-      <PartnerStrip content={c.partners} locale="en" surface="stone" />
+      <DeliveryFramework content={{ ...c.deliveryFramework, number: "" }} surface="paper" />
+      <PartnerStrip content={{ ...c.partners, number: "" }} locale="en" surface="stone" />
     </>
   )
 }
