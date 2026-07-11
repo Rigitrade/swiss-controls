@@ -40,6 +40,28 @@ function TitleWithSquareDots({ text }: { text: string }) {
   )
 }
 
+// Renders the intro. A multi-line intro (authored with line breaks) becomes
+// separate lines with a comfortable gap between them, rather than tight,
+// single-spaced rows; a single-line intro stays one paragraph.
+function IntroText({ text }: { text: string }) {
+  const lines = text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean)
+  if (lines.length <= 1) {
+    return <p className="max-w-[65ch] text-body-l text-ink/80">{text}</p>
+  }
+  return (
+    <div className="flex flex-col gap-3">
+      {lines.map((line, i) => (
+        <p key={i} className="max-w-[65ch] text-body-l text-ink/80">
+          {line}
+        </p>
+      ))}
+    </div>
+  )
+}
+
 type PageHeaderProps = {
   // `number` is accepted (content still carries it) but not rendered — a bare
   // eyebrow reads better on standalone pages than a meaningless "01".
@@ -141,9 +163,7 @@ export function PageHeader({
             {minimal || centered ? <TitleWithSquareDots text={title} /> : title}
           </DisplayHeading>
           {intro && !minimal ? (
-            <p className="max-w-[65ch] whitespace-pre-line text-body-l text-ink/80">
-              {intro}
-            </p>
+            <IntroText text={intro} />
           ) : null}
         </Stack>
         {minimal ? <Hairline className="mt-10 lg:mt-12" /> : null}
