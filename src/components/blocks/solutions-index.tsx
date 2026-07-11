@@ -44,14 +44,9 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
                   className="group grid grid-cols-1 items-center gap-8 border-b border-hairline py-10 lg:grid-cols-12 lg:gap-12"
                 >
                   <div className={cn("lg:col-span-7", flip && "lg:order-2")}>
-                    <div className="flex items-baseline gap-4">
-                      <span className="font-mono text-body-l font-medium tabular-nums text-red">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="text-h2 font-semibold text-ink transition-colors group-hover:text-red">
-                        {item.title}
-                      </h3>
-                    </div>
+                    <h3 className="text-h2 font-semibold text-ink transition-colors group-hover:text-red">
+                      {item.title}
+                    </h3>
                     <p className="mt-4 max-w-[60ch] text-body-l text-ink/70">{item.summary}</p>
                     <div className="mt-6 flex flex-wrap items-center gap-2">
                       {item.capabilities.slice(0, 3).map((cap) => (
