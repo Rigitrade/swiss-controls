@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils/cn"
 type Size = "display-2xl" | "display-xl" | "display-l" | "display-m" | "h1" | "h2"
 
 const sizeClasses: Record<Size, string> = {
-  "display-2xl": "text-display-2xl font-black",
-  "display-xl": "text-display-xl font-black",
-  "display-l": "text-display-l font-black",
-  "display-m": "text-display-m font-black",
-  h1: "text-h1 font-bold",
-  h2: "text-h2 font-bold",
+  "display-2xl": "text-display-2xl",
+  "display-xl": "text-display-xl",
+  "display-l": "text-display-l",
+  "display-m": "text-display-m",
+  h1: "text-h1",
+  h2: "text-h2",
 }
 
 type DisplayHeadingProps = {
@@ -45,7 +45,7 @@ export function DisplayHeading({
     return (
       <Tag
         className={cn(
-          "font-sans text-balance",
+          "font-sans font-bold text-balance",
           sizeClasses[size],
           className,
         )}
@@ -70,7 +70,7 @@ export function DisplayHeading({
   return (
     <Tag
       className={cn(
-        "font-sans text-balance",
+        "font-sans font-bold text-balance",
         sizeClasses[size],
         className,
       )}

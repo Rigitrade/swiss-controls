@@ -12,7 +12,7 @@ export function SectionLabel({ number, label, className, id }: SectionLabelProps
     <div
       id={id}
       className={cn(
-        "font-label text-body font-normal uppercase tracking-[0.12em] text-ink/70",
+        "font-mono text-body font-medium uppercase tracking-[0.08em] text-ink/70",
         className,
       )}
     >

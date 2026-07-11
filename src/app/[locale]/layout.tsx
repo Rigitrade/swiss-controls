@@ -4,7 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import { Analytics } from "@vercel/analytics/next"
 import { routing, type Locale } from "@/i18n/routing"
-import { bodyFont, labelFont, monoFont } from "@/lib/fonts"
+import { bodyFont, monoFont } from "@/lib/fonts"
 import { cn } from "@/lib/utils/cn"
 import { SiteHeader } from "@/components/interactive/site-header"
 import { SiteFooterGrid as SiteFooter } from "@/components/interactive/site-footer-grid"
@@ -68,7 +68,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={cn(bodyFont.variable, labelFont.variable, monoFont.variable)}
+      className={cn(bodyFont.variable, monoFont.variable)}
     >
       <body className="bg-paper text-ink antialiased">
         <script
