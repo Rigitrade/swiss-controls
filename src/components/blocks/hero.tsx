@@ -10,7 +10,6 @@ import {
 import { Container } from "@/components/primitives/container"
 import { Stack } from "@/components/primitives/stack"
 import { LinkButton } from "@/components/ui/link-button"
-import { heroFont } from "@/lib/fonts"
 import { cn } from "@/lib/utils/cn"
 import type { HomeContent } from "@/lib/content/schema"
 
@@ -63,12 +62,13 @@ function CyclingWords({ words }: { words: string[] }) {
   // copy of it reserves a stable slot — the cycling words are absolutely
   // positioned over that slot and never shift the layout around them.
   const longest = words.reduce((a, b) => (b.length > a.length ? b : a))
+  const wordClass = "block font-hero font-black"
 
   if (reduce) {
     return (
       <span className="block tracking-[0.02em]" style={{ fontSize: "0.94em" }}>
         {words.map((word) => (
-          <span key={word} className="block">
+          <span key={word} className={wordClass}>
             {word}
           </span>
         ))}
@@ -79,7 +79,7 @@ function CyclingWords({ words }: { words: string[] }) {
   return (
     <span className="relative block tracking-[0.02em]" style={{ fontSize: "0.94em" }}>
       {/* Invisible sizer: fixes the height to the longest word at any width. */}
-      <span aria-hidden="true" className="invisible block">
+      <span aria-hidden="true" className={cn(wordClass, "invisible")}>
         {longest}
       </span>
       {/* Animated words, layered over the reserved slot. */}
@@ -91,7 +91,7 @@ function CyclingWords({ words }: { words: string[] }) {
             animate={{ y: "0%", opacity: 1 }}
             exit={{ y: "-55%", opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="block"
+            className={wordClass}
           >
             {words[index]}
           </motion.span>
@@ -105,13 +105,7 @@ export function Hero({ hero, locale }: HeroProps) {
   const words = hero.rotatingWords
 
   return (
-    <section
-      className={cn(
-        heroFont.variable,
-        "relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink",
-      )}
-      style={{ fontFamily: "var(--font-hero-face), var(--font-sans)" }}
-    >
+    <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-paper text-ink">
       {/* Technical net — a faint blueprint grid that decorates the light hero
           and sets it apart from the plain body below. Faded toward the edges. */}
       <div

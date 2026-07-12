@@ -21,9 +21,11 @@ const surfaceClasses: Record<Surface, string> = {
 }
 
 const densityClasses: Record<Density, string> = {
-  tight: "py-section-tight",
-  default: "py-section-mobile lg:py-section",
-  loose: "py-section lg:py-section-loose",
+  // Top padding trimmed relative to bottom across the board — sections were
+  // reading as too much empty space before any content appeared.
+  tight: "pt-11 lg:pt-12 pb-section-tight",
+  default: "pt-13 lg:pt-18 pb-section-mobile lg:pb-section",
+  loose: "pt-17 lg:pt-27 pb-section lg:pb-section-loose",
   // Page-header rhythm: full top padding, minimal bottom — the following
   // section's top padding supplies the gap, avoiding a double-padded void.
   header: "pt-section-mobile pb-6 lg:pt-section lg:pb-8",

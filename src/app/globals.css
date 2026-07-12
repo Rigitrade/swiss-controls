@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Gotham Hero";
+  src: url("../assets/fonts/Gotham-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* =============================================================
    Rigitrade Design Tokens (Tailwind v4 @theme)
    See spec §5 — palette, typography, spacing, motion
@@ -25,9 +33,8 @@
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, monospace;
   --font-logo: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
-  /* Hero-only font trial (Gotham) — scoped via heroFont.variable on the Hero
-     wrapper, not on <html>, so only the hero renders in this family. */
-  --font-hero: var(--font-hero-face), var(--font-sans);
+  /* Hero cycling words only — Gotham Black via @font-face above. */
+  --font-hero: "Gotham Hero", var(--font-sans);
 
   /* Modular type scale — retuned for the v2 strategic-advisory content
      (taglines + prose). Display ceilings pulled in from the v1 one-word-hero

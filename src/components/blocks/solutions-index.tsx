@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
+import { GhostMark } from "@/components/typography/ghost-mark"
 import { ResponsiveImage } from "@/components/primitives/responsive-image"
 import { cn } from "@/lib/utils/cn"
 
@@ -28,9 +29,14 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
   return (
     <Section surface="paper">
       <Container>
-        <div className="mb-12 max-w-2xl">
-          <SectionLabel number={number} label={label} />
-          {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
+        <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+          <div className="max-w-2xl lg:col-span-8">
+            <SectionLabel number={number} label={label} />
+            {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
+          </div>
+          <div className="lg:col-span-4">
+            <GhostMark glyph="✓" size="clamp(5rem,10vw,8rem)" />
+          </div>
         </div>
 
         <ul className="border-t border-hairline">
@@ -38,7 +44,7 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
             const flip = i % 2 === 1
             return (
               <li key={item.slug}>
-                <div className="grid grid-cols-1 items-center gap-8 border-b border-hairline py-10 lg:grid-cols-12 lg:gap-20">
+                <div className="grid grid-cols-1 items-center gap-8 border-b border-hairline py-10 lg:grid-cols-12 lg:gap-24">
                   <div className={cn("lg:col-span-6", flip && "lg:order-2")}>
                     <h3 className="text-h2 font-semibold text-ink">
                       <Link
