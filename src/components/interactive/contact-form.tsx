@@ -188,7 +188,7 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
         {errors.consent?.message && <p className={errorClass}>{errors.consent.message}</p>}
 
         <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
-          <span className="text-caption font-bold uppercase tracking-[0.2em]">Submit</span>
+          <span className="text-body font-bold uppercase tracking-[0.2em]">Submit</span>
         </Button>
       </Stack>
     </form>
