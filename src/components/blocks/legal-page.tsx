@@ -11,7 +11,7 @@ import type { PrivacyPageContent } from "@/lib/content/schema"
 const mdxComponents = {
   h2: ({ children, ...props }: ComponentPropsWithoutRef<"h2">) => (
     <h2
-      className="mt-16 mb-6 border-b border-line pb-4 text-[1.5rem] font-semibold leading-tight tracking-[-0.01em] text-ink first:mt-0"
+      className="mt-16 mb-6 border-b border-line pb-4 text-[1.35rem] font-semibold leading-tight tracking-[-0.01em] text-ink first:mt-0"
       {...props}
     >
       {children}
@@ -19,7 +19,7 @@ const mdxComponents = {
   ),
   h3: ({ children, ...props }: ComponentPropsWithoutRef<"h3">) => (
     <h3
-      className="mt-10 mb-3 text-[1.25rem] font-semibold leading-snug text-ink"
+      className="mt-10 mb-3 text-[1.125rem] font-semibold leading-snug text-ink"
       {...props}
     >
       {children}
@@ -28,7 +28,7 @@ const mdxComponents = {
 }
 
 const articleClass = cn(
-  "mx-auto max-w-[68ch] text-body-l leading-relaxed text-ink/75",
+  "mx-auto max-w-[68ch] text-[1.0125rem] leading-relaxed text-ink/75",
   "[&>*:first-child]:mt-0",
   "[&_p]:my-4",
   "[&_strong]:font-semibold [&_strong]:text-ink",
