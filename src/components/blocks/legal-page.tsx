@@ -28,7 +28,7 @@ const mdxComponents = {
 }
 
 const articleClass = cn(
-  "mx-auto max-w-[68ch] text-[1.0125rem] leading-relaxed text-ink/75",
+  "mx-auto max-w-4xl text-[1.0125rem] leading-relaxed text-ink/75",
   "[&>*:first-child]:mt-0",
   "[&_p]:my-4",
   "[&_strong]:font-semibold [&_strong]:text-ink",
