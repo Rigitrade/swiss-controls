@@ -5,11 +5,8 @@ import { PageHeader } from "@/components/blocks/page-header"
 import type { PrivacyPageContent } from "@/lib/content/schema"
 
 type LegalPageProps = {
-  locale: string
   frontmatter: PrivacyPageContent
   body: string
-  /** Final breadcrumb crumb label for this page. */
-  breadcrumbLabel: string
 }
 
 /**
@@ -18,15 +15,12 @@ type LegalPageProps = {
  * article that styles the headings, lists and links used across these
  * long-form MDX documents.
  */
-export function LegalPage({ locale, frontmatter, body, breadcrumbLabel }: LegalPageProps) {
+export function LegalPage({ frontmatter, body }: LegalPageProps) {
   return (
     <>
       <PageHeader
-        number={frontmatter.pageHeader.number}
-        label={frontmatter.pageHeader.label}
         title={frontmatter.pageHeader.title}
         intro={frontmatter.pageHeader.intro}
-        breadcrumbs={[{ label: "Home", href: `/${locale}` }, { label: breadcrumbLabel }]}
       />
       <Section>
         <Container>

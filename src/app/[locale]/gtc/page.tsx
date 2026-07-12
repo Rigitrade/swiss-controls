@@ -25,12 +25,5 @@ export default async function GtcPage({
     privacyPageSchema,
   )
 
-  return (
-    <LegalPage
-      locale={locale}
-      frontmatter={frontmatter}
-      body={body}
-      breadcrumbLabel="Terms & Conditions"
-    />
-  )
+  return <LegalPage frontmatter={frontmatter} body={body} />
 }

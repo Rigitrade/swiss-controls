@@ -25,12 +25,5 @@ export default async function PrivacyPage({
     privacyPageSchema,
   )
 
-  return (
-    <LegalPage
-      locale={locale}
-      frontmatter={frontmatter}
-      body={body}
-      breadcrumbLabel="Legal Notice & Privacy Policy"
-    />
-  )
+  return <LegalPage frontmatter={frontmatter} body={body} />
 }

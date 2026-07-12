@@ -25,12 +25,5 @@ export default async function CookiesPage({
     privacyPageSchema,
   )
 
-  return (
-    <LegalPage
-      locale={locale}
-      frontmatter={frontmatter}
-      body={body}
-      breadcrumbLabel="Cookie Policy"
-    />
-  )
+  return <LegalPage frontmatter={frontmatter} body={body} />
 }
