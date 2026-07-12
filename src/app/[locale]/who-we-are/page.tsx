@@ -45,7 +45,7 @@ export default async function WhoWeArePage({
             { value: "20", suffix: "+", label: "Years Combined Leadership" },
             { value: "20", suffix: "+", label: "Countries Served" },
             { value: "20", suffix: "+", label: "Industry Sectors" },
-            { value: "4", label: "Regional Hubs" },
+            { value: "End-to-End", label: "Industrial Asset Lifecycle" },
           ],
         }}
       />
