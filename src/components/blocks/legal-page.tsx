@@ -2,7 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import type { ComponentPropsWithoutRef } from "react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
-import { PageHeader } from "@/components/blocks/page-header"
+import { DisplayHeading } from "@/components/typography/display-heading"
 import { cn } from "@/lib/utils/cn"
 import type { PrivacyPageContent } from "@/lib/content/schema"
 
@@ -45,23 +45,25 @@ type LegalPageProps = {
 
 /**
  * Shared layout for the site's legal documents (Legal Notice & Privacy Policy,
- * Terms & Conditions, Cookie Policy): a single centred column with typography
- * tuned for legal prose — sectioned headings, quiet body text.
+ * Terms & Conditions, Cookie Policy): a centred title over a single centred
+ * column of prose tuned for legal reading — sectioned headings, quiet body.
  */
 export function LegalPage({ frontmatter, body }: LegalPageProps) {
   return (
-    <>
-      <PageHeader
-        title={frontmatter.pageHeader.title}
-        intro={frontmatter.pageHeader.intro}
-      />
-      <Section>
-        <Container>
-          <article className={articleClass}>
-            <MDXRemote source={body} components={mdxComponents} />
-          </article>
-        </Container>
-      </Section>
-    </>
+    <Section>
+      <Container>
+        <DisplayHeading
+          as="h1"
+          size="display-xl"
+          mode="mount"
+          className="mx-auto max-w-4xl text-center"
+        >
+          {frontmatter.pageHeader.title}
+        </DisplayHeading>
+        <article className={cn(articleClass, "mt-12 lg:mt-16")}>
+          <MDXRemote source={body} components={mdxComponents} />
+        </article>
+      </Container>
+    </Section>
   )
 }
