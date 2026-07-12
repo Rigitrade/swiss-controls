@@ -25,9 +25,6 @@ export function LegalPage({ frontmatter, body }: LegalPageProps) {
       <Section>
         <Container>
           <article className="max-w-3xl space-y-6 text-body-l text-ink/80 [&_a]:text-red [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-h2 [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-h3 [&_h3]:font-semibold [&_h3]:text-ink [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-4 [&_strong]:font-semibold [&_strong]:text-ink [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6">
-            <p className="font-mono text-micro uppercase tracking-[0.08em] text-ink/50">
-              Last updated: {frontmatter.lastUpdated}
-            </p>
             <MDXRemote source={body} />
           </article>
         </Container>
