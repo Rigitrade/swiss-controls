@@ -114,9 +114,21 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
             <ColLabel>Locations</ColLabel>
             <ul className="space-y-1.5 text-body text-paper/80">
               {(content.locations ?? []).map((loc) => (
-                <li key={loc} className="flex items-center gap-2">
+                <li key={loc.name} className="flex items-center gap-2">
                   <span aria-hidden="true" className="h-1 w-1 shrink-0 rounded-full bg-red" />
-                  {loc}
+                  {loc.mapUrl ? (
+                    <a
+                      href={loc.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${loc.name} office location in Google Maps`}
+                      className="transition-colors hover:text-red"
+                    >
+                      {loc.name}
+                    </a>
+                  ) : (
+                    loc.name
+                  )}
                 </li>
               ))}
             </ul>
