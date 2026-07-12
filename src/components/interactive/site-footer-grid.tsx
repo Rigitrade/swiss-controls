@@ -76,6 +76,17 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
             <p className="whitespace-pre-line text-body leading-relaxed text-paper/80">
               {content.office.address}
             </p>
+            {content.office.mapUrl && (
+              <a
+                href={content.office.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the Swiss office location in Google Maps"
+                className="mt-3 inline-flex w-fit cursor-pointer items-center gap-1.5 text-body text-paper/80 transition-colors hover:text-red"
+              >
+                GPS Location
+              </a>
+            )}
           </div>
 
           {/* Contact */}

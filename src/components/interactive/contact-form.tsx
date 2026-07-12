@@ -12,10 +12,13 @@ import { Hairline } from "@/components/primitives/hairline"
 import { contactSchema, CONTACT_REASONS, type ContactFormData } from "@/lib/forms/contact-schema"
 
 const REASON_LABELS: Record<(typeof CONTACT_REASONS)[number], string> = {
-  general: "General inquiry",
-  technical: "Technical question",
-  press: "Press / media",
-  partnership: "Partnership",
+  general: "General Inquiry",
+  automation: "Automation & Control Systems",
+  electrical: "Electrical & Electrification",
+  digital: "Digital Transformation & Industry 4.0",
+  ai_monitoring: "AI Condition Monitoring & AI-PdM",
+  energy: "Energy, Marine & Industrial",
+  consulting: "Process Optimization & Consulting",
   other: "Other",
 }
 
@@ -185,8 +188,7 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
         {errors.consent?.message && <p className={errorClass}>{errors.consent.message}</p>}
 
         <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
-          <MessageCircle className="h-5 w-5" aria-hidden="true" />
-          <span className="text-caption font-bold uppercase tracking-[0.2em]">Send</span>
+          <span className="text-body font-bold uppercase tracking-[0.2em]">Submit</span>
         </Button>
       </Stack>
     </form>

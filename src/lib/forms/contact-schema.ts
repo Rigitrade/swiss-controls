@@ -2,9 +2,12 @@ import { z } from "zod"
 
 export const CONTACT_REASONS = [
   "general",
-  "technical",
-  "press",
-  "partnership",
+  "automation",
+  "electrical",
+  "digital",
+  "ai_monitoring",
+  "energy",
+  "consulting",
   "other",
 ] as const
 

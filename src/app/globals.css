@@ -179,6 +179,15 @@
     outline: 2px solid var(--color-red);
     outline-offset: 2px;
   }
+  /* Interactive elements always show the pointer (hand) cursor. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  label:has(input[type="checkbox"]),
+  select,
+  summary {
+    cursor: pointer;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

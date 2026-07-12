@@ -150,6 +150,7 @@ export const footerSchema = z.object({
     label: z.string().optional(),
     company: z.string(),
     address: z.string(),
+    mapUrl: z.string().url().optional(),
   }),
   contact: z.object({
     email: z.string().email(),
