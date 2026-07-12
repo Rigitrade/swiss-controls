@@ -82,7 +82,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open the Swiss office location in Google Maps"
-                className="mt-3 inline-flex w-fit cursor-pointer items-center gap-1.5 text-body text-paper/80 underline decoration-paper/40 underline-offset-4 transition-colors hover:text-red hover:decoration-red"
+                className="mt-3 inline-flex w-fit cursor-pointer items-center gap-1.5 text-body text-paper/80 transition-colors hover:text-red"
               >
                 GPS Location
               </a>
