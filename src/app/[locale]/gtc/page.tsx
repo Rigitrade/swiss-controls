@@ -6,12 +6,12 @@ import { privacyPageSchema } from "@/lib/content/schema"
 import type { Locale } from "@/i18n/routing"
 
 export const metadata: Metadata = {
-  title: "Legal Notice & Privacy Policy",
+  title: "Terms & Conditions",
   description:
-    "Legal notice and privacy policy for Swiss Controls, a brand of Rigitrade AG.",
+    "General Terms & Conditions of Swiss Controls, a brand of Rigitrade AG.",
 }
 
-export default async function PrivacyPage({
+export default async function GtcPage({
   params,
 }: {
   params: Promise<{ locale: string }>
@@ -21,7 +21,7 @@ export default async function PrivacyPage({
 
   const { frontmatter, body } = await loadPageContent(
     locale as Locale,
-    "privacy",
+    "gtc",
     privacyPageSchema,
   )
 

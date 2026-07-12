@@ -13,7 +13,8 @@ export type PageSlug =
   | "technology"
   | "contact"
   | "privacy"
-  | "imprint"
+  | "gtc"
+  | "cookies"
 
 export type LoadedContent<T> = {
   frontmatter: T
