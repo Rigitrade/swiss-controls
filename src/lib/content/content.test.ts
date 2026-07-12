@@ -20,7 +20,8 @@ describe("content loads and validates", () => {
   it("technology", async () => { await loadPageContent("en", "technology", technologySchema) })
   it("contact", async () => { await loadPageContent("en", "contact", contactPageSchema) })
   it("privacy", async () => { await loadPageContent("en", "privacy", privacyPageSchema) })
-  it("imprint", async () => { await loadPageContent("en", "imprint", privacyPageSchema) })
+  it("gtc", async () => { await loadPageContent("en", "gtc", privacyPageSchema) })
+  it("cookies", async () => { await loadPageContent("en", "cookies", privacyPageSchema) })
   it("nav + footer", async () => {
     await loadSharedContent("en", "nav", navSchema)
     await loadSharedContent("en", "footer", footerSchema)

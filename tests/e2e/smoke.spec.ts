@@ -13,7 +13,8 @@ const ROUTES = [
   "/en/technology/",
   "/en/contact/",
   "/en/privacy/",
-  "/en/imprint/",
+  "/en/gtc/",
+  "/en/cookies/",
 ] as const
 
 test.describe("smoke: pages load", () => {
