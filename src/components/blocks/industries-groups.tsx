@@ -3,11 +3,11 @@ import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
 
 type Group = { category: string; items: string[] }
-type Props = { number: string; label: string; intro: string; groups: Group[] }
+type Props = { number: string; label: string; intro: string; groups: Group[]; surface?: "paper" | "stone" }
 
-export function IndustriesGroups({ number, label, intro, groups }: Props) {
+export function IndustriesGroups({ number, label, intro, groups, surface = "paper" }: Props) {
   return (
-    <Section surface="paper" density="default">
+    <Section surface={surface} density="default">
       <Container>
         <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">

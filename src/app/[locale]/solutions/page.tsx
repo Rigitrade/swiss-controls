@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
 import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionsIndex } from "@/components/blocks/solutions-index"
-import { ProfessionalServices } from "@/components/blocks/professional-services"
+import { IndustriesFocus } from "@/components/blocks/industries-focus"
 import { loadPageContent } from "@/lib/content/load"
-import { solutionsIndexSchema, solutionDetailSchema } from "@/lib/content/schema"
+import { solutionsIndexSchema, solutionDetailSchema, whoWeAreSchema } from "@/lib/content/schema"
 import { SOLUTIONS } from "@/lib/content/solutions"
 import type { Locale } from "@/i18n/routing"
 
@@ -17,6 +17,21 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
   const { locale } = await params
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(locale as Locale, "solutions/index", solutionsIndexSchema)
+
+  // Industries We Serve reuses the same content as the About page (single source),
+  // enriched with a photo per group for the solutions "focus" cards.
+  const { frontmatter: about } = await loadPageContent(locale as Locale, "about", whoWeAreSchema)
+  const INDUSTRY_IMAGES: Record<string, string> = {
+    "Energy & Utilities": "/img/industries/energy-utilities.jpg",
+    "Process Industries": "/img/industries/process-industries.jpg",
+    "Heavy Industry": "/img/industries/heavy-industry.jpg",
+    "Logistics & Infrastructure": "/img/industries/logistics-infrastructure.jpg",
+    Manufacturing: "/img/industries/manufacturing.jpg",
+  }
+  const industryGroups = about.industries.map((g) => ({
+    ...g,
+    image: INDUSTRY_IMAGES[g.category] ?? "",
+  }))
 
   // Enrich each solution with a few capability tags pulled from its own content.
   const items = await Promise.all(
@@ -52,31 +67,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
         items={items}
         locale="en"
       />
-      <ProfessionalServices
-        heading="Professional Services: Commissioning & Lifecycle Management"
-        intro="Through disciplined engineering execution, we bridge the gap between complex industrial technologies and daily operation through testing, precise deployment, and continuous optimization."
-        items={[
-          {
-            title: "Factory & Site Acceptance Testing (FAT/SAT)",
-            detail:
-              "Verifying system functionality, safety loops, and logic integrity in controlled and live environments before handover.",
-          },
-          {
-            title: "Commissioning & Startup",
-            detail:
-              "Seamless integration of automation, motion, and networking layers into your production environment with minimal downtime.",
-          },
-          {
-            title: "Training & Knowledge Transfer",
-            detail:
-              "Empowering your internal teams with the specialized engineering insights needed to run, manage, and monitor the system effectively.",
-          },
-          {
-            title: "Support & Troubleshooting",
-            detail:
-              "Continuous technical review, performance tuning, and rapid fault resolution to maintain the long-term safety and availability of your infrastructure.",
-          },
-        ]}
+      <IndustriesFocus
+        label="INDUSTRIES WE SERVE"
+        heading="Deep domain expertise spanning the complete industrial landscape."
+        groups={industryGroups}
         surface="stone"
       />
     </>
