@@ -28,7 +28,7 @@ export function Wordmark({ size = "md", className, href, tone = "red" }: Wordmar
   const content = (
     <span
       className={cn(
-        "inline-flex items-start font-logo font-bold lowercase leading-none tracking-[-0.015em]",
+        "inline-flex items-start font-logo font-bold lowercase leading-none tracking-[0.03em]",
         tone === "red" ? "text-red" : "text-paper",
         sizeClasses[size],
         className,

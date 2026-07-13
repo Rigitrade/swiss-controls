@@ -157,7 +157,9 @@ export const footerSchema = z.object({
     phone: z.string(),
     website: z.string().optional(),
   }),
-  registry: z.object({ label: z.string(), value: z.string() }).optional(),
+  registry: z
+    .object({ label: z.string(), value: z.string(), url: z.string().url().optional() })
+    .optional(),
   locations: z
     .array(z.object({ name: z.string(), mapUrl: z.string().url().optional() }))
     .optional(),

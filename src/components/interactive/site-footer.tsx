@@ -95,7 +95,10 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
               {content.contact.email}
             </a>
             <a
-              href={`tel:${content.contact.phone.replace(/\s+/g, "")}`}
+              href={`https://wa.me/${content.contact.phone.replace(/[^\d]/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Message us on WhatsApp at ${content.contact.phone}`}
               className="mt-1 block font-mono text-body tabular-nums text-paper hover:text-red"
             >
               {content.contact.phone}

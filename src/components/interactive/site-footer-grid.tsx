@@ -16,7 +16,7 @@ const WHATSAPP_NUMBER = "41763666669"
 
 function ColLabel({ children }: { children: ReactNode }) {
   return (
-    <h3 className="mb-4 font-mono text-caption font-bold uppercase tracking-[0.12em] text-red">
+    <h3 className="mb-4 font-mono text-caption font-bold uppercase leading-none tracking-[0.12em] text-red">
       {children}
     </h3>
   )
@@ -58,7 +58,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:items-start md:gap-x-8">
+        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:items-baseline md:gap-x-8">
           {/* Identity */}
           <div className="md:col-span-4">
             <Wordmark size="xl" />
@@ -96,7 +96,10 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
             <ColLabel>Contact</ColLabel>
             <div className="space-y-2">
               <a
-                href={`tel:${content.contact.phone.replace(/\s+/g, "")}`}
+                href={`https://wa.me/${content.contact.phone.replace(/[^\d]/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Message us on WhatsApp at ${content.contact.phone}`}
                 className="block font-mono text-body tabular-nums text-paper transition-colors hover:text-red"
               >
                 {content.contact.phone}
@@ -154,7 +157,19 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
           <div>
             {content.registry && (
               <p className="font-mono text-micro uppercase tracking-[0.08em] text-paper/50">
-                {content.registry.label} · {content.registry.value}
+                {content.registry.label} ·{" "}
+                {content.registry.url ? (
+                  <a
+                    href={content.registry.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-red"
+                  >
+                    {content.registry.value}
+                  </a>
+                ) : (
+                  content.registry.value
+                )}
               </p>
             )}
           </div>
