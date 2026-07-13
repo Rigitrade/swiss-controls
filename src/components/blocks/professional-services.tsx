@@ -44,9 +44,9 @@ export function ProfessionalServices({ heading, intro, items, surface = "stone" 
                 {item.detail && <p className="mt-2 text-body text-mute">{item.detail}</p>}
               </div>
               {item.points && item.points.length > 0 && (
-                <ul className="space-y-2.5 border-t border-hairline pt-4">
+                <ul className="space-y-4 border-t border-hairline pt-4">
                   {item.points.map((point) => (
-                    <li key={point.label} className="flex items-start gap-2.5 text-body text-ink/80">
+                    <li key={point.label} className="flex items-start gap-2.5 text-body leading-relaxed text-ink/80">
                       <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 bg-red" />
                       <span>
                         <span className="font-semibold text-ink">{point.label}:</span> {point.text}

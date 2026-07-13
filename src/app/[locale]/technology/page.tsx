@@ -28,7 +28,11 @@ export default async function TechnologyPage({
 
   return (
     <>
-      <PageHeader {...frontmatter.pageHeader} centered />
+      <PageHeader
+        {...frontmatter.pageHeader}
+        centered
+        titleClassName="lg:max-w-none lg:whitespace-nowrap"
+      />
 
       <CoreTechnologies label="CORE TECHNOLOGIES" groups={frontmatter.coreTechnologies} />
 

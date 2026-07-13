@@ -1,4 +1,4 @@
-import { Montserrat, JetBrains_Mono } from "next/font/google"
+import { Open_Sans } from "next/font/google"
 
 // Site typography is provisional — the client will supply the licensed site
 // fonts (plus letter-spacing / spacing specs) later. Until then we keep the
@@ -11,15 +11,19 @@ import { Montserrat, JetBrains_Mono } from "next/font/google"
 // Gotham Black for the home hero cycling words is loaded via @font-face in
 // globals.css (--font-hero) so it stays scoped to that element only.
 
-export const bodyFont = Montserrat({
+export const bodyFont = Open_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
   preload: true,
 })
 
-export const monoFont = JetBrains_Mono({
+// The "mono" slot (uppercase eyebrows / labels) uses Open Sans Bold (700) —
+// loading only the 700 weight so every label renders bold regardless of the
+// element's font-weight class.
+export const monoFont = Open_Sans({
   subsets: ["latin"],
+  weight: "700",
   variable: "--font-mono-face",
   display: "swap",
   preload: false,

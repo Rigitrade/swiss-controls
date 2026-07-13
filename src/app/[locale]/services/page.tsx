@@ -79,6 +79,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         intro="We bridge the gap between complex industrial technologies and daily operation through disciplined engineering execution, testing, and continuous optimization, ensuring productivity, safety, and performance."
         centered
         introClassName="leading-loose"
+        titleClassName="lg:max-w-none lg:whitespace-nowrap"
       />
       <ProfessionalServices items={SERVICES} surface="stone" />
     </>

@@ -70,6 +70,8 @@ type PageHeaderProps = {
   intro?: string
   /** Extra classes for the intro paragraph(s) — e.g. a looser `leading-*`. */
   introClassName?: string
+  /** Extra classes for the title — e.g. force a one-line title on desktop. */
+  titleClassName?: string
   breadcrumbs?: Crumb[]
   /** Fixed full-height hero band with vertically-centred content. Used on the
    *  main inner pages so their first section is a consistent height. */
@@ -86,6 +88,7 @@ export function PageHeader({
   title,
   intro,
   introClassName,
+  titleClassName,
   breadcrumbs,
   fill = false,
   centered = false,
@@ -154,11 +157,12 @@ export function PageHeader({
             as="h1"
             size="display-l"
             mode="mount"
-            className={
+            className={cn(
               centered
                 ? "max-w-[34ch] text-[length:clamp(1.4rem,1.85vw,1.7rem)]"
-                : "max-w-[24ch]"
-            }
+                : "max-w-[24ch]",
+              titleClassName,
+            )}
           >
             {minimal || centered ? <TitleWithSquareDots text={title} /> : title}
           </DisplayHeading>
