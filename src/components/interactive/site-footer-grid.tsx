@@ -16,7 +16,7 @@ const WHATSAPP_NUMBER = "41763666669"
 
 function ColLabel({ children }: { children: ReactNode }) {
   return (
-    <h3 className="mb-4 font-mono text-[1rem] font-bold uppercase tracking-[0.12em] text-red">
+    <h3 className="mb-4 font-mono text-[0.95rem] font-bold uppercase tracking-[0.12em] text-red">
       {children}
     </h3>
   )
@@ -27,7 +27,7 @@ function ColDivider() {
   return (
     <span
       aria-hidden="true"
-      className="pointer-events-none absolute -left-4 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-paper/15 to-transparent md:block"
+      className="pointer-events-none absolute -left-6 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-paper/15 to-transparent md:block"
     />
   )
 }
@@ -60,7 +60,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
 
         <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:items-start md:gap-x-8">
           {/* Identity — wordmark nudged up so it sits on the label line */}
-          <div className="md:col-span-4 md:-mt-[1.75rem]">
+          <div className="md:col-span-4 md:-mt-[1.5rem]">
             <Wordmark size="xl" />
             {content.parentLine && (
               <p className="mt-5 max-w-[24ch] text-body-l font-medium leading-relaxed text-paper/90">
