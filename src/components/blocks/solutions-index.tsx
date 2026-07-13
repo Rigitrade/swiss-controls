@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
-import { GhostMark } from "@/components/typography/ghost-mark"
+import { NetworkGraph } from "@/components/interactive/network-graph"
 import { ResponsiveImage } from "@/components/primitives/responsive-image"
 import { cn } from "@/lib/utils/cn"
 
@@ -36,7 +36,7 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
             <SectionLabel number={number} label={label} />
             {intro ? <p className="mt-5 text-body-l font-semibold text-ink">{intro}</p> : null}
             {points && points.length > 0 ? (
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-6 space-y-4">
                 {points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
                     <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
@@ -47,7 +47,7 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
             ) : null}
           </div>
           <div className="lg:col-span-3">
-            <GhostMark glyph="✓" size="clamp(5rem,10vw,8rem)" />
+            <NetworkGraph className="ml-auto hidden aspect-square w-full max-w-[14rem] lg:block" />
           </div>
         </div>
 
@@ -67,11 +67,11 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
                       </Link>
                     </h3>
                     <p className="mt-4 text-body-l text-ink/70 text-justify">{item.summary}</p>
-                    <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <div className="mt-6 flex flex-wrap items-start gap-x-5 gap-y-3">
                       {item.capabilities.slice(0, 3).map((cap) => (
-                        <span key={cap} className="inline-flex items-center gap-2 text-body-l text-ink/70">
-                          <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-red" />
-                          {cap}
+                        <span key={cap} className="flex items-start gap-2 text-body-l text-ink/70">
+                          <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 bg-red" />
+                          <span>{cap}</span>
                         </span>
                       ))}
                     </div>
