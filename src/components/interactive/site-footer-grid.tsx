@@ -73,19 +73,20 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
           <div className="relative md:col-span-3">
             <ColDivider />
             <ColLabel>{content.office.label ?? "Headquarter"}</ColLabel>
-            <p className="whitespace-pre-line text-body leading-relaxed text-paper/80">
-              {content.office.address}
-            </p>
-            {content.office.mapUrl && (
+            {content.office.mapUrl ? (
               <a
                 href={content.office.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open the Swiss office location in Google Maps"
-                className="mt-3 inline-flex w-fit cursor-pointer items-center gap-1.5 text-body text-paper/80 transition-colors hover:text-red"
+                className="block w-fit cursor-pointer whitespace-pre-line text-body leading-relaxed text-paper/80 transition-colors hover:text-red"
               >
-                GPS Location
+                {content.office.address}
               </a>
+            ) : (
+              <p className="whitespace-pre-line text-body leading-relaxed text-paper/80">
+                {content.office.address}
+              </p>
             )}
           </div>
 
