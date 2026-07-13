@@ -16,7 +16,7 @@ const WHATSAPP_NUMBER = "41763666669"
 
 function ColLabel({ children }: { children: ReactNode }) {
   return (
-    <h3 className="mb-4 font-mono text-[0.9rem] font-bold uppercase tracking-[0.12em] text-red">
+    <h3 className="mb-4 font-mono text-[1rem] font-bold uppercase tracking-[0.12em] text-red">
       {children}
     </h3>
   )
