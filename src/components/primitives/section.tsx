@@ -15,8 +15,8 @@ type SectionProps = {
 }
 
 const surfaceClasses: Record<Surface, string> = {
-  paper: "bg-paper text-ink border-t border-hairline",
-  stone: "bg-stone text-ink border-t border-hairline",
+  paper: "bg-paper text-ink",
+  stone: "bg-stone text-ink",
   ink: "bg-ink text-paper",
 }
 
