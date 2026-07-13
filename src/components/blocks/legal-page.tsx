@@ -6,25 +6,30 @@ import { DisplayHeading } from "@/components/typography/display-heading"
 import { cn } from "@/lib/utils/cn"
 import type { PrivacyPageContent } from "@/lib/content/schema"
 
-// A top-level section is a bold heading over a hairline rule; clause
-// sub-headings stay quiet.
-const mdxComponents = {
-  h2: ({ children, ...props }: ComponentPropsWithoutRef<"h2">) => (
-    <h2
-      className="mt-16 mb-6 border-b border-line pb-4 text-[1.35rem] font-semibold leading-tight tracking-[-0.01em] text-ink first:mt-0"
-      {...props}
-    >
-      {children}
-    </h2>
-  ),
-  h3: ({ children, ...props }: ComponentPropsWithoutRef<"h3">) => (
-    <h3
-      className="mt-10 mb-3 text-[1.125rem] font-semibold leading-snug text-ink"
-      {...props}
-    >
-      {children}
-    </h3>
-  ),
+// A top-level section is a bold heading; by default it sits over a hairline
+// rule, but `plainHeadings` drops the rule. Clause sub-headings stay quiet.
+function makeMdxComponents(plainHeadings: boolean) {
+  return {
+    h2: ({ children, ...props }: ComponentPropsWithoutRef<"h2">) => (
+      <h2
+        className={cn(
+          "mt-16 mb-6 text-[1.35rem] font-semibold leading-tight tracking-[-0.01em] text-ink first:mt-0",
+          !plainHeadings && "border-b border-line pb-4",
+        )}
+        {...props}
+      >
+        {children}
+      </h2>
+    ),
+    h3: ({ children, ...props }: ComponentPropsWithoutRef<"h3">) => (
+      <h3
+        className="mt-10 mb-3 text-[1.125rem] font-semibold leading-snug text-ink"
+        {...props}
+      >
+        {children}
+      </h3>
+    ),
+  }
 }
 
 const articleClass = cn(
@@ -41,6 +46,10 @@ const articleClass = cn(
 type LegalPageProps = {
   frontmatter: PrivacyPageContent
   body: string
+  /** Extra classes for the title — e.g. a smaller size or uppercase variant. */
+  titleClassName?: string
+  /** Drop the hairline rule under each section heading. */
+  plainHeadings?: boolean
 }
 
 /**
@@ -48,7 +57,8 @@ type LegalPageProps = {
  * Terms & Conditions, Cookie Policy): a centred title over a single centred
  * column of prose tuned for legal reading — sectioned headings, quiet body.
  */
-export function LegalPage({ frontmatter, body }: LegalPageProps) {
+export function LegalPage({ frontmatter, body, titleClassName, plainHeadings = false }: LegalPageProps) {
+  const mdxComponents = makeMdxComponents(plainHeadings)
   return (
     <Section>
       <Container>
@@ -56,7 +66,7 @@ export function LegalPage({ frontmatter, body }: LegalPageProps) {
           as="h1"
           size="display-xl"
           mode="mount"
-          className="mx-auto max-w-4xl text-center"
+          className={cn("mx-auto max-w-4xl text-center", titleClassName)}
         >
           {frontmatter.pageHeader.title}
         </DisplayHeading>
