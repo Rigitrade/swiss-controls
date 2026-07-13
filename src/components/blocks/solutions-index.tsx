@@ -19,13 +19,15 @@ type Props = {
   number: string
   label: string
   intro?: string
+  /** Optional summary bullets shown beneath the intro line. */
+  points?: string[]
   items: Item[]
   locale: "en"
 }
 
 // Editorial index: each solution is a full-width row (number + title + summary
 // + capability tags on one side, a compact image on the other, alternating).
-export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
+export function SolutionsIndex({ number, label, intro, points, items, locale }: Props) {
   return (
     <Section surface="paper">
       <Container>
@@ -33,6 +35,16 @@ export function SolutionsIndex({ number, label, intro, items, locale }: Props) {
           <div className="max-w-2xl lg:col-span-8">
             <SectionLabel number={number} label={label} />
             {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
+            {points && points.length > 0 ? (
+              <ul className="mt-5 space-y-2">
+                {points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
+                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
           <div className="lg:col-span-4">
             <GhostMark glyph="✓" size="clamp(5rem,10vw,8rem)" />

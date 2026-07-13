@@ -41,7 +41,11 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
       <SolutionsIndex
         number=""
         label="OUR SOLUTIONS"
-        intro="Four integrated solutions across the full industrial asset lifecycle delivered vendor-independently, from modernizing the assets you run today to derisking the capital you commit next."
+        intro="Integrated solutions across the full industrial asset lifecycle"
+        points={[
+          "Modernizing Today's Assets",
+          "Minimizing Tomorrow's Investment Risks through precise engineering decisions",
+        ]}
         items={items}
         locale="en"
       />
