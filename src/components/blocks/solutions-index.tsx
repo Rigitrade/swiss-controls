@@ -36,7 +36,7 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
             <SectionLabel number={number} label={label} />
             {intro ? <p className="mt-5 text-body-l font-semibold text-ink">{intro}</p> : null}
             {points && points.length > 0 ? (
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-5 space-y-2">
                 {points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
                     <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
