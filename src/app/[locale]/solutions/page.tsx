@@ -37,10 +37,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
 
   return (
     <>
-      <PageHeader {...frontmatter.pageHeader} centered />
+      <PageHeader {...frontmatter.pageHeader} centered introClassName="leading-loose" />
       <SolutionsIndex
         number=""
-        label="OUR SOLUTIONS"
+        label=""
         intro="Integrated solutions across the full industrial asset lifecycle"
         points={[
           "Modernizing Today's Assets",

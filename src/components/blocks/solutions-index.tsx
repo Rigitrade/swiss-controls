@@ -32,22 +32,26 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
     <Section surface="paper">
       <Container>
         <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
-          <div className="lg:col-span-9">
-            <SectionLabel number={number} label={label} />
-            {intro ? <p className="mt-5 text-body-l font-semibold text-ink">{intro}</p> : null}
+          <div className="lg:col-span-8">
+            {label ? <SectionLabel number={number} label={label} /> : null}
+            {intro ? (
+              <p className={cn("max-w-[60ch] text-body-l font-semibold text-ink", label && "mt-5")}>
+                {intro}
+              </p>
+            ) : null}
             {points && points.length > 0 ? (
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-5 max-w-[60ch] space-y-2">
                 {points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
                     <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
-                    <span className="xl:whitespace-nowrap">{point}</span>
+                    <span>{point}</span>
                   </li>
                 ))}
               </ul>
             ) : null}
           </div>
-          <div className="lg:col-span-3">
-            <NetworkGraph className="ml-auto hidden aspect-square w-full max-w-[14rem] lg:block" />
+          <div className="lg:col-span-4">
+            <NetworkGraph className="mx-auto hidden aspect-square w-full max-w-[18rem] lg:block" />
           </div>
         </div>
 

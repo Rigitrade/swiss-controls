@@ -5,6 +5,7 @@ import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
 import { DisplayHeading } from "@/components/typography/display-heading"
 import { Hairline } from "@/components/primitives/hairline"
+import { cn } from "@/lib/utils/cn"
 
 type Crumb = { label: string; href?: string }
 
@@ -39,18 +40,18 @@ function TitleWithSquareDots({ text }: { text: string }) {
 // Renders the intro. A multi-line intro (authored with line breaks) becomes
 // separate lines with a comfortable gap between them, rather than tight,
 // single-spaced rows; a single-line intro stays one paragraph.
-function IntroText({ text }: { text: string }) {
+function IntroText({ text, className }: { text: string; className?: string }) {
   const lines = text
     .split("\n")
     .map((l) => l.trim())
     .filter(Boolean)
   if (lines.length <= 1) {
-    return <p className="max-w-[65ch] text-body-l text-ink/80">{text}</p>
+    return <p className={cn("max-w-[65ch] text-body-l text-ink/80", className)}>{text}</p>
   }
   return (
     <div className="flex flex-col gap-5 ">
       {lines.map((line, i) => (
-        <p key={i} className="max-w-[65ch] text-body-l text-ink/80">
+        <p key={i} className={cn("max-w-[65ch] text-body-l text-ink/80", className)}>
           {line}
         </p>
       ))}
@@ -67,6 +68,8 @@ type PageHeaderProps = {
   label?: string
   title: string
   intro?: string
+  /** Extra classes for the intro paragraph(s) — e.g. a looser `leading-*`. */
+  introClassName?: string
   breadcrumbs?: Crumb[]
   /** Fixed full-height hero band with vertically-centred content. Used on the
    *  main inner pages so their first section is a consistent height. */
@@ -82,6 +85,7 @@ export function PageHeader({
   label,
   title,
   intro,
+  introClassName,
   breadcrumbs,
   fill = false,
   centered = false,
@@ -159,7 +163,7 @@ export function PageHeader({
             {minimal || centered ? <TitleWithSquareDots text={title} /> : title}
           </DisplayHeading>
           {intro && !minimal ? (
-            <IntroText text={intro} />
+            <IntroText text={intro} className={introClassName} />
           ) : null}
         </Stack>
         {minimal ? <Hairline className="mt-10 lg:mt-12" /> : null}
