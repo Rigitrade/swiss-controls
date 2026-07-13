@@ -76,8 +76,9 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     <>
       <PageHeader
         title="Commissioning & Lifecycle Management"
-        intro="We bridge the gap between complex industrial technologies and daily operation through disciplined engineering execution, testing, and continuous optimization — ensuring productivity, long-term reliability, safety, and performance."
+        intro="We bridge the gap between complex industrial technologies and daily operation through disciplined engineering execution, testing, and continuous optimization, ensuring productivity, safety, and performance."
         centered
+        introClassName="leading-loose"
       />
       <ProfessionalServices items={SERVICES} surface="stone" />
     </>

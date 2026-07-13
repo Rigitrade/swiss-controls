@@ -1,22 +1,18 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
 import { PageHeader } from "@/components/blocks/page-header"
-import { StorySection } from "@/components/blocks/story-section"
-import { AtAGlance } from "@/components/blocks/at-a-glance"
-import { WhyChoose } from "@/components/blocks/why-choose"
-import { IndustriesGroups } from "@/components/blocks/industries-groups"
+import { ProfessionalServices } from "@/components/blocks/professional-services"
 import { Section } from "@/components/primitives/section"
 import { Container } from "@/components/primitives/container"
-import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
 import { loadPageContent } from "@/lib/content/load"
-import { whoWeAreSchema } from "@/lib/content/schema"
+import { aboutSchema } from "@/lib/content/schema"
 import type { Locale } from "@/i18n/routing"
 
 export const metadata: Metadata = {
   title: "About us",
   description:
-    "Swiss Controls — an independent engineering brand built by industrial leaders, combining executive experience, Swiss engineering values, and regional execution power.",
+    "Swiss Controls — the specialized industrial engineering unit of Rigitrade AG. Independent, vendor-neutral engineering led by a founding team with over a century of industrial leadership.",
 }
 
 export default async function AboutPage({
@@ -24,83 +20,36 @@ export default async function AboutPage({
 }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const { frontmatter } = await loadPageContent(
-    locale as Locale,
-    "about",
-    whoWeAreSchema,
-  )
+  const { frontmatter } = await loadPageContent(locale as Locale, "about", aboutSchema)
+
+  const beliefs = frontmatter.beliefs.map((b) => ({ title: b.title, detail: b.body }))
+  const profiles = frontmatter.leadership.profiles.map((p) => ({
+    title: p.role,
+    points: p.points,
+  }))
 
   return (
     <>
       <PageHeader {...frontmatter.pageHeader} centered />
 
-      <StorySection paragraphs={frontmatter.narrative} />
+      <ProfessionalServices heading="What We Believe In" items={beliefs} surface="stone" />
 
-      <AtAGlance
+      <ProfessionalServices
+        heading="Our Big 4"
+        intro={frontmatter.leadership.intro}
+        items={profiles}
         surface="paper"
-        content={{
-          number: "",
-          label: "AT A GLANCE",
-          items: [
-            { value: "20", suffix: "+", label: "Years Combined Leadership" },
-            { value: "20", suffix: "+", label: "Countries Served" },
-            { value: "20", suffix: "+", label: "Industry Sectors" },
-            { value: "End-to-End", label: "Industrial Asset Lifecycle" },
-          ],
-        }}
-      />
-
-      <WhyChoose
-        number=""
-        label="OUR FOUNDATIONAL PILLARS"
-        items={frontmatter.pillars}
-      />
-
-      <IndustriesGroups
-        number=""
-        label="INDUSTRIES WE SERVE"
-        intro="Deep domain expertise spanning the complete industrial landscape."
-        groups={frontmatter.industries}
       />
 
       <Section surface="stone" density="default">
         <Container>
-          <SectionLabel label="EXECUTIVE LEADERSHIP" />
-          <Stack gap="3" className="mt-6 lg:mt-8">
-            {frontmatter.executiveLeadership.map((paragraph, i) => (
-              <p
-                key={i}
-                className="max-w-[68ch] text-body-l leading-relaxed text-ink/90"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </Stack>
-        </Container>
-      </Section>
-
-      <Section surface="paper" density="default">
-        <Container>
-          <div className="mb-12 max-w-2xl">
-            <SectionLabel label="MISSION & VISION" />
-          </div>
-          <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
-            <div className="flex flex-col gap-4 bg-paper p-8 border-t-2 border-red">
-              <span className="font-mono text-micro uppercase tracking-[0.08em] text-red">
-                Vision
-              </span>
-              <p className="text-h3 font-medium leading-snug text-ink">
-                {frontmatter.vision}
-              </p>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <SectionLabel label="OUR LEGAL IDENTITY" />
             </div>
-            <div className="flex flex-col gap-4 bg-paper p-8 border-t-2 border-red">
-              <span className="font-mono text-micro uppercase tracking-[0.08em] text-red">
-                Mission
-              </span>
-              <p className="text-h3 font-medium leading-snug text-ink">
-                {frontmatter.mission}
-              </p>
-            </div>
+            <p className="max-w-[65ch] text-body-l leading-relaxed text-ink/80 lg:col-span-8">
+              {frontmatter.legalIdentity}
+            </p>
           </div>
         </Container>
       </Section>

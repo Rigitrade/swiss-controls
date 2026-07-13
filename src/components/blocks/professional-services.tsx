@@ -4,7 +4,7 @@ import { Section } from "@/components/primitives/section"
 type ServicePoint = { label: string; text: string }
 type ServiceItem = {
   title: string
-  detail: string
+  detail?: string
   /** Optional labelled sub-points shown beneath the item description. */
   points?: ServicePoint[]
 }
@@ -41,7 +41,7 @@ export function ProfessionalServices({ heading, intro, items, surface = "stone" 
             >
               <div>
                 <h3 className="text-h3 font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-body text-mute">{item.detail}</p>
+                {item.detail && <p className="mt-2 text-body text-mute">{item.detail}</p>}
               </div>
               {item.points && item.points.length > 0 && (
                 <ul className="space-y-2.5 border-t border-hairline pt-4">

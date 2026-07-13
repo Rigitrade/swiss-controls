@@ -3,7 +3,7 @@ import {
   homeSchema,
   solutionsIndexSchema,
   solutionDetailSchema,
-  whoWeAreSchema,
+  aboutSchema,
   technologySchema,
   contactPageSchema,
 } from "./schema"
@@ -134,42 +134,36 @@ describe("solutionDetailSchema", () => {
   })
 })
 
-describe("whoWeAreSchema", () => {
+describe("aboutSchema", () => {
   const base = {
-    pageHeader: { number: "01", label: "WHO WE ARE", title: "T", intro: "i" },
-    narrative: ["More Than Engineers. Trusted Industrial Advisors."],
-    executiveLeadership: ["100+ years combined leadership across Schneider Electric, ABB, Siemens."],
-    mission: "Our mission statement.",
-    vision: "Our vision statement.",
+    pageHeader: { number: "01", label: "", title: "About Us", intro: "i" },
+    legalIdentity: "Backed by Rigitrade AG (UID CHE-199.884.159).",
   }
 
-  it("requires pillars", () => {
-    const bad = whoWeAreSchema.safeParse({
-      ...base,
-      industries: [{ category: "Energy & Utilities", items: ["Power Generation"] }],
-    })
-    expect(bad.success).toBe(false)
-  })
-
-  it("requires industries", () => {
-    const bad = whoWeAreSchema.safeParse({
-      ...base,
-      pillars: [{ title: "Precision", detail: "detail" }],
-    })
+  it("requires beliefs and leadership", () => {
+    const bad = aboutSchema.safeParse(base)
     expect(bad.success).toBe(false)
   })
 
   it("accepts a full valid object", () => {
-    const ok = whoWeAreSchema.safeParse({
+    const ok = aboutSchema.safeParse({
       ...base,
-      pillars: [
-        { title: "Precision", detail: "detail" },
-        { title: "Independence", detail: "detail" },
+      beliefs: [
+        { title: "Swiss Precision", body: "Some belief body." },
+        { title: "Zero Bureaucracy", body: "Another belief body." },
       ],
-      industries: [
-        { category: "Energy & Utilities", items: ["Power Generation", "Renewables"] },
-        { category: "Process Industries", items: ["Chemical", "Water"] },
-      ],
+      leadership: {
+        intro: "An elite executive task force.",
+        profiles: [
+          {
+            role: "Chief Technology Visionary",
+            points: [
+              { label: "The Authority", text: "Over 44 years of mastery." },
+              { label: "The Track Record", text: "Rescued a $100M vessel." },
+            ],
+          },
+        ],
+      },
     })
     expect(ok.success).toBe(true)
   })

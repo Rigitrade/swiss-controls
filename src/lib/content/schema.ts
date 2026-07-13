@@ -37,13 +37,6 @@ const deliveryStepSchema = z.object({
   detail: z.string(),
 })
 
-const pillarSchema = z.object({ title: z.string(), detail: z.string() })
-
-const industryGroupSchema = z.object({
-  category: z.string(),
-  items: z.array(z.string()).min(1),
-})
-
 export const homeSchema = z.object({
   hero: heroSchema,
   purpose: z.object({ heading: z.string(), body: z.string() }),
@@ -96,14 +89,21 @@ export const solutionDetailSchema = z.object({
   capabilities: z.array(z.string()).min(1),
 })
 
-export const whoWeAreSchema = z.object({
+const beliefSchema = z.object({ title: z.string(), body: z.string() })
+
+const leaderProfileSchema = z.object({
+  role: z.string(),
+  points: z.array(z.object({ label: z.string(), text: z.string() })).min(1),
+})
+
+export const aboutSchema = z.object({
   pageHeader: pageHeaderSchema,
-  narrative: z.array(z.string()).min(1),
-  pillars: z.array(pillarSchema).min(1),
-  industries: z.array(industryGroupSchema).min(1),
-  executiveLeadership: z.array(z.string()).min(1),
-  mission: z.string(),
-  vision: z.string(),
+  beliefs: z.array(beliefSchema).min(1),
+  leadership: z.object({
+    intro: z.string(),
+    profiles: z.array(leaderProfileSchema).min(1),
+  }),
+  legalIdentity: z.string(),
 })
 
 export const technologySchema = z.object({
@@ -179,7 +179,7 @@ export type CtaContent = z.infer<typeof ctaSchema>
 export type HomeContent = z.infer<typeof homeSchema>
 export type SolutionsIndexContent = z.infer<typeof solutionsIndexSchema>
 export type SolutionDetailContent = z.infer<typeof solutionDetailSchema>
-export type WhoWeAreContent = z.infer<typeof whoWeAreSchema>
+export type AboutContent = z.infer<typeof aboutSchema>
 export type TechnologyContent = z.infer<typeof technologySchema>
 export type ContactPageContent = z.infer<typeof contactPageSchema>
 export type PrivacyPageContent = z.infer<typeof privacyPageSchema>
