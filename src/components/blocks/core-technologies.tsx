@@ -33,7 +33,7 @@ export function CoreTechnologies({ label, groups, surface = "paper" }: Props) {
                 <article
                   tabIndex={0}
                   aria-labelledby={titleId}
-                  className="group relative aspect-[4/5] overflow-hidden bg-ink"
+                  className="group relative aspect-[1/1] overflow-hidden bg-ink"
                 >
                   <ResponsiveImage
                     src={group.image}
