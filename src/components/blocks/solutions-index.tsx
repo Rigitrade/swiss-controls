@@ -34,7 +34,7 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
         <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
           <div className="lg:col-span-9">
             <SectionLabel number={number} label={label} />
-            {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
+            {intro ? <p className="mt-5 text-body-l font-semibold text-ink">{intro}</p> : null}
             {points && points.length > 0 ? (
               <ul className="mt-5 space-y-2">
                 {points.map((point) => (
