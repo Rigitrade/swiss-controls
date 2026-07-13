@@ -44,8 +44,9 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     const RED = "218,41,28"
-    const LINK = 0.25 // link reach as a fraction of the radius
+    const LINK = 0.34 // link reach as a fraction of the radius
     const SPEED = 0.52
+    const FILL = 0.1 // fraction of points spread inside the disc to close gaps
 
     let width = 0
     let height = 0
@@ -74,24 +75,41 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
 
       cx = width / 2
       cy = height / 2
-      const R = Math.min(width, height) / 2 - 3
+      const R = Math.min(width, height) / 2
       scale = (2 * R) / VIEWBOX
 
       const total = path.getTotalLength()
-      // ~210 particles at the on-page size; scale with area for other sizes.
-      const n = Math.round(Math.min(240, Math.max(120, (width * height) / 395)))
-      nodes = Array.from({ length: n }, (_, i) => {
-        const pt = path.getPointAtLength((total * i) / n)
-        return {
-          ax: pt.x,
-          ay: pt.y,
+      // ~125 particles at the on-page size; scale with area for other sizes.
+      const n = Math.round(Math.min(200, Math.max(80, (width * height) / 431)))
+      const fillN = Math.round(n * FILL)
+      const pathN = n - fillN
+      const C = VIEWBOX / 2
+      const Rvb = VIEWBOX / 2 - 0.3
+      const golden = Math.PI * (3 - Math.sqrt(5))
+      nodes = []
+      const pushNode = (ax: number, ay: number) => {
+        const k = nodes.length
+        nodes.push({
+          ax,
+          ay,
           x: 0,
           y: 0,
-          phase: (i * 2.399963) % (Math.PI * 2),
-          amp: 0.12 + ((i * 0.618) % 1) * 0.2, // viewBox units
+          phase: (k * 2.399963) % (Math.PI * 2),
+          amp: 0.12 + ((k * 0.618) % 1) * 0.2, // viewBox units
           r: 1,
-        }
-      })
+        })
+      }
+      // On-path points trace senergic's lattice.
+      for (let i = 0; i < pathN; i++) {
+        const pt = path.getPointAtLength((total * i) / Math.max(1, pathN))
+        pushNode(pt.x, pt.y)
+      }
+      // Interior points (sunflower spread) fill the empty gaps between strokes.
+      for (let k = 0; k < fillN; k++) {
+        const r = Rvb * Math.sqrt((k + 0.5) / fillN)
+        const th = k * golden
+        pushNode(C + r * Math.cos(th), C + r * Math.sin(th))
+      }
 
       // Link spatially-near neighbours (following the lattice), edges fixed so
       // the mesh stays stable rather than flickering.
@@ -128,7 +146,7 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
         n.y = py(n.ay + jy)
       }
 
-      ctx.lineWidth = 0.9
+      ctx.lineWidth = 1.05
       for (const { a, b, alpha } of edges) {
         ctx.strokeStyle = `rgba(${RED},${alpha})`
         ctx.beginPath()
@@ -139,7 +157,7 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
 
       const bubbleDist = Math.min(width, height) * 0.28
       for (const n of nodes) {
-        let target = 2.1
+        let target = 1
         if (pointer.active) {
           const d = Math.hypot(n.x - pointer.x, n.y - pointer.y)
           if (d < bubbleDist) target += (1 - d / bubbleDist) * 2.8

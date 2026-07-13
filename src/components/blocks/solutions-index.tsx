@@ -31,8 +31,8 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
   return (
     <Section surface="paper">
       <Container>
-        <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
-          <div className="lg:col-span-8">
+        <div className="mb-20 grid grid-cols-1 items-center gap-8 lg:max-w-[64rem] lg:grid-cols-[1fr_auto] lg:gap-24">
+          <div>
             {label ? <SectionLabel number={number} label={label} /> : null}
             {intro ? (
               <p className={cn("max-w-[60ch] text-body-l font-semibold text-ink", label && "mt-5")}>
@@ -50,8 +50,8 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
               </ul>
             ) : null}
           </div>
-          <div className="lg:col-span-4">
-            <NetworkGraph className="mx-auto hidden aspect-square w-full max-w-[18rem] lg:block" />
+          <div>
+            <NetworkGraph className="mx-auto hidden aspect-square w-[16rem] lg:block" />
           </div>
         </div>
 
