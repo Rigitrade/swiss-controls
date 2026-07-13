@@ -58,13 +58,8 @@ export function IndustriesFocus({ label, heading, groups, surface = "stone" }: P
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/85 to-transparent"
                     />
-                    <span className="relative flex flex-col gap-1.5">
-                      <span className="font-mono text-micro uppercase tracking-[0.12em] text-red">
-                        Industry
-                      </span>
-                      <span className="text-[1.5rem] font-bold uppercase leading-tight tracking-[0.1em] text-paper">
-                        {group.category}
-                      </span>
+                    <span className="relative text-[1.5rem] font-bold uppercase leading-tight tracking-[0.1em] text-paper">
+                      {group.category}
                     </span>
                   </div>
 

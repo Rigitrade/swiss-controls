@@ -177,16 +177,11 @@ describe("whoWeAreSchema", () => {
 
 describe("technologySchema", () => {
   const base = {
-    pageHeader: { number: "01", label: "TECHNOLOGY", title: "T", intro: "i" },
-    flow: ["Automation", "Power", "Motion", "Industrial Software", "Networks", "Digital"],
-    commissioning: {
-      heading: "Precision Is Our Standard",
-      body: "Some body text.",
-      items: ["Factory Acceptance Testing (FAT) & Site Acceptance Testing (SAT)"],
-    },
+    pageHeader: { number: "01", label: "", title: "T", intro: "i" },
+    openEcosystem: { heading: "Open Ecosystem", body: "Some body text." },
   }
 
-  it("requires categories", () => {
+  it("requires coreTechnologies", () => {
     const bad = technologySchema.safeParse(base)
     expect(bad.success).toBe(false)
   })
@@ -194,9 +189,9 @@ describe("technologySchema", () => {
   it("accepts a full valid object", () => {
     const ok = technologySchema.safeParse({
       ...base,
-      categories: [
-        { category: "Automation Platforms", items: ["PLC", "SCADA", "DCS", "RTU", "HMI", "Industrial IoT"] },
-        { category: "Motion & Drives", items: ["VFD", "VSD", "Servo"] },
+      coreTechnologies: [
+        { group: "Hardware", subtitle: "Automation, Power & Motion", image: "/img/services/automation.jpg", items: ["PLC", "DCS"] },
+        { group: "Software", subtitle: "Connectivity & Intelligence Layer", image: "/img/services/digital-transformation.jpg", items: ["SCADA & HMI Software"] },
       ],
     })
     expect(ok.success).toBe(true)

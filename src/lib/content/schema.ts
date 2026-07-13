@@ -44,11 +44,6 @@ const industryGroupSchema = z.object({
   items: z.array(z.string()).min(1),
 })
 
-const technologyCategorySchema = z.object({
-  category: z.string(),
-  items: z.array(z.string()).min(1),
-})
-
 export const homeSchema = z.object({
   hero: heroSchema,
   purpose: z.object({ heading: z.string(), body: z.string() }),
@@ -113,12 +108,19 @@ export const whoWeAreSchema = z.object({
 
 export const technologySchema = z.object({
   pageHeader: pageHeaderSchema,
-  flow: z.array(z.string()).min(1),
-  categories: z.array(technologyCategorySchema).min(1),
-  commissioning: z.object({
-    heading: z.string().optional(),
+  coreTechnologies: z
+    .array(
+      z.object({
+        group: z.string(),
+        subtitle: z.string(),
+        image: z.string(),
+        items: z.array(z.string()).min(1),
+      }),
+    )
+    .min(1),
+  openEcosystem: z.object({
+    heading: z.string(),
     body: z.string(),
-    items: z.array(z.string()).min(1),
   }),
 })
 
