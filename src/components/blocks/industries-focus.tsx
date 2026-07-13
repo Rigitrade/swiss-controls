@@ -25,9 +25,11 @@ export function IndustriesFocus({ label, heading, groups, surface = "stone" }: P
   return (
     <Section surface={surface} density="default">
       <Container>
-        <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-baseline lg:gap-6">
+        <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
           <SectionLabel label={label} className="shrink-0" />
-          <h2 className="text-h2 font-semibold text-ink">{heading}</h2>
+          <h2 className="text-h2 font-semibold text-ink lg:whitespace-nowrap lg:text-right">
+            {heading}
+          </h2>
         </div>
         <ul className="grid grid-cols-1 gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => {
@@ -60,27 +62,25 @@ export function IndustriesFocus({ label, heading, groups, surface = "stone" }: P
                       <span className="font-mono text-micro uppercase tracking-[0.12em] text-red">
                         Industry
                       </span>
-                      <span className="text-h3 font-bold uppercase leading-tight tracking-[0.04em] text-paper">
+                      <span className="text-[1.5rem] font-bold uppercase leading-tight tracking-[0.1em] text-paper">
                         {group.category}
                       </span>
                     </span>
                   </div>
 
                   {/* Reveal face — light panel with the sub-items */}
-                  <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 bg-paper/92 px-6 py-8 opacity-0 backdrop-blur-md transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
+                  <div className="absolute inset-0 z-10 flex flex-col justify-center gap-3 overflow-y-auto bg-paper/92 px-6 py-6 opacity-0 backdrop-blur-md transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
                     <h3
                       id={titleId}
-                      className="text-h3 font-bold uppercase tracking-[0.04em] text-ink"
+                      className="text-h3 font-bold uppercase tracking-[0.1em] text-ink"
                     >
                       {group.category}
                     </h3>
-                    <ul className="flex flex-wrap gap-2">
+                    <ul className="space-y-2">
                       {group.items.map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-full border border-ink/15 px-3 py-1 text-caption text-ink/80"
-                        >
-                          {item}
+                        <li key={item} className="flex items-start gap-2.5 text-body text-ink/80">
+                          <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 bg-red" />
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>

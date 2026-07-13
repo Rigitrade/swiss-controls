@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionsIndex } from "@/components/blocks/solutions-index"
 import { IndustriesFocus } from "@/components/blocks/industries-focus"
 import { loadPageContent } from "@/lib/content/load"
-import { solutionsIndexSchema, solutionDetailSchema, whoWeAreSchema } from "@/lib/content/schema"
+import { solutionsIndexSchema, solutionDetailSchema } from "@/lib/content/schema"
 import { SOLUTIONS } from "@/lib/content/solutions"
 import type { Locale } from "@/i18n/routing"
 
@@ -13,25 +13,43 @@ export const metadata: Metadata = {
   description: "Four integrated engineering solutions across the full industrial asset lifecycle.",
 }
 
+// Industries We Serve — grouped focus areas (photo cards) for the Solutions page.
+const INDUSTRIES = [
+  {
+    category: "Energy & Utilities",
+    image: "/img/industries/energy-utilities.jpg",
+    items: [
+      "Power Generation & Distribution",
+      "Renewables & Energy Transition",
+      "Oil & Gas, Hydrogen, and Utilities",
+    ],
+  },
+  {
+    category: "Process Industries",
+    image: "/img/industries/process-industries.jpg",
+    items: ["Chemical & Petrochemical", "Water & Wastewater Treatment", "Food & Beverage, Pharmaceutical"],
+  },
+  {
+    category: "Heavy Industry",
+    image: "/img/industries/heavy-industry.jpg",
+    items: ["Mining, Steel, Cement, and Metal Processing"],
+  },
+  {
+    category: "Logistics & Infrastructure",
+    image: "/img/industries/logistics-infrastructure.jpg",
+    items: ["Ports, Marine, and Transportation", "Airports and Railways", "Data Centres & Smart Infrastructure"],
+  },
+  {
+    category: "Manufacturing",
+    image: "/img/industries/manufacturing.jpg",
+    items: ["Automotive and Machine Builders", "OEMs and Industrial Equipment"],
+  },
+]
+
 export default async function SolutionsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(locale as Locale, "solutions/index", solutionsIndexSchema)
-
-  // Industries We Serve reuses the same content as the About page (single source),
-  // enriched with a photo per group for the solutions "focus" cards.
-  const { frontmatter: about } = await loadPageContent(locale as Locale, "about", whoWeAreSchema)
-  const INDUSTRY_IMAGES: Record<string, string> = {
-    "Energy & Utilities": "/img/industries/energy-utilities.jpg",
-    "Process Industries": "/img/industries/process-industries.jpg",
-    "Heavy Industry": "/img/industries/heavy-industry.jpg",
-    "Logistics & Infrastructure": "/img/industries/logistics-infrastructure.jpg",
-    Manufacturing: "/img/industries/manufacturing.jpg",
-  }
-  const industryGroups = about.industries.map((g) => ({
-    ...g,
-    image: INDUSTRY_IMAGES[g.category] ?? "",
-  }))
 
   // Enrich each solution with a few capability tags pulled from its own content.
   const items = await Promise.all(
@@ -70,7 +88,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
       <IndustriesFocus
         label="INDUSTRIES WE SERVE"
         heading="Deep domain expertise spanning the complete industrial landscape."
-        groups={industryGroups}
+        groups={INDUSTRIES}
         surface="stone"
       />
     </>
