@@ -44,8 +44,8 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     const RED = "218,41,28"
-    const LINK = 0.17 // link reach as a fraction of the radius
-    const SPEED = 0.22
+    const LINK = 0.25 // link reach as a fraction of the radius
+    const SPEED = 0.52
 
     let width = 0
     let height = 0
@@ -78,8 +78,8 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
       scale = (2 * R) / VIEWBOX
 
       const total = path.getTotalLength()
-      // Particle count scaled to size (senergic uses ~200 on a large hero).
-      const n = Math.round(Math.min(240, Math.max(120, (width * height) / 260)))
+      // ~210 particles at the on-page size; scale with area for other sizes.
+      const n = Math.round(Math.min(240, Math.max(120, (width * height) / 395)))
       nodes = Array.from({ length: n }, (_, i) => {
         const pt = path.getPointAtLength((total * i) / n)
         return {
@@ -88,7 +88,7 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
           x: 0,
           y: 0,
           phase: (i * 2.399963) % (Math.PI * 2),
-          amp: 0.12 + ((i * 0.618) % 1) * 0.22, // viewBox units
+          amp: 0.12 + ((i * 0.618) % 1) * 0.2, // viewBox units
           r: 1,
         }
       })
@@ -110,7 +110,7 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
           const dy = ays - py(b.ay)
           const d2 = dx * dx + dy * dy
           if (d2 < ld2) {
-            e.push({ a, b, alpha: 0.5 * (1 - Math.sqrt(d2) / linkDist) })
+            e.push({ a, b, alpha: 0.8 * (1 - Math.sqrt(d2) / linkDist) })
           }
         }
       }
@@ -128,7 +128,7 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
         n.y = py(n.ay + jy)
       }
 
-      ctx.lineWidth = 0.8
+      ctx.lineWidth = 0.9
       for (const { a, b, alpha } of edges) {
         ctx.strokeStyle = `rgba(${RED},${alpha})`
         ctx.beginPath()
@@ -139,7 +139,7 @@ export function NetworkGraph({ className }: NetworkGraphProps) {
 
       const bubbleDist = Math.min(width, height) * 0.28
       for (const n of nodes) {
-        let target = 1.2
+        let target = 2.1
         if (pointer.active) {
           const d = Math.hypot(n.x - pointer.x, n.y - pointer.y)
           if (d < bubbleDist) target += (1 - d / bubbleDist) * 2.8
