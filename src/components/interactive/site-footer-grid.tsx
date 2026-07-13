@@ -60,7 +60,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
 
         <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:items-start md:gap-x-8">
           {/* Identity — wordmark nudged up so it sits on the label line */}
-          <div className="md:col-span-4 md:-mt-2.5">
+          <div className="md:col-span-4 md:-mt-3">
             <Wordmark size="xl" />
             {content.parentLine && (
               <p className="mt-5 max-w-[24ch] text-body-l font-medium leading-relaxed text-paper/90">
@@ -79,14 +79,22 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open the Swiss office location in Google Maps"
-                className="block w-fit cursor-pointer whitespace-pre-line text-body leading-relaxed text-paper/80 transition-colors hover:text-red"
+                className="block w-fit cursor-pointer space-y-2 text-body text-paper/80 transition-colors hover:text-red"
               >
-                {content.office.address}
+                {content.office.address.split("\n").map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
               </a>
             ) : (
-              <p className="whitespace-pre-line text-body leading-relaxed text-paper/80">
-                {content.office.address}
-              </p>
+              <div className="space-y-2 text-body text-paper/80">
+                {content.office.address.split("\n").map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
 
