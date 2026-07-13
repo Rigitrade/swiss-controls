@@ -16,7 +16,7 @@ import { SOLUTION_SLUGS } from "./solutions"
 describe("content loads and validates", () => {
   it("home", async () => { await loadPageContent("en", "home", homeSchema) })
   it("solutions index", async () => { await loadPageContent("en", "solutions/index", solutionsIndexSchema) })
-  it("who we are", async () => { await loadPageContent("en", "who-we-are", whoWeAreSchema) })
+  it("about", async () => { await loadPageContent("en", "about", whoWeAreSchema) })
   it("technology", async () => { await loadPageContent("en", "technology", technologySchema) })
   it("contact", async () => { await loadPageContent("en", "contact", contactPageSchema) })
   it("privacy", async () => { await loadPageContent("en", "privacy", privacyPageSchema) })

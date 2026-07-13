@@ -63,7 +63,7 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
                   href={`/${locale}${link.href}`}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "font-mono text-micro uppercase tracking-[0.08em] underline-offset-[6px] transition-colors",
+                    "font-mono text-[0.8125rem] uppercase tracking-[0.08em] underline-offset-[6px] transition-colors",
                     active
                       ? "text-red underline decoration-red decoration-2"
                       : "text-ink hover:text-red",

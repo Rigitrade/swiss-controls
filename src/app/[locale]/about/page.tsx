@@ -14,19 +14,19 @@ import { whoWeAreSchema } from "@/lib/content/schema"
 import type { Locale } from "@/i18n/routing"
 
 export const metadata: Metadata = {
-  title: "Who We Are",
+  title: "About us",
   description:
     "Swiss Controls — an independent engineering brand built by industrial leaders, combining executive experience, Swiss engineering values, and regional execution power.",
 }
 
-export default async function WhoWeArePage({
+export default async function AboutPage({
   params,
 }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
   const { frontmatter } = await loadPageContent(
     locale as Locale,
-    "who-we-are",
+    "about",
     whoWeAreSchema,
   )
 

@@ -9,7 +9,7 @@ const CONTENT_ROOT = path.join(process.cwd(), "content")
 export type PageSlug =
   | "home"
   | "solutions/index"
-  | "who-we-are"
+  | "about"
   | "technology"
   | "contact"
   | "privacy"
