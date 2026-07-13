@@ -41,17 +41,26 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
             ) : null}
             {points && points.length > 0 ? (
               <ul className="mt-5 max-w-[60ch] space-y-2">
-                {points.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
-                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
-                    <span>{point}</span>
-                  </li>
-                ))}
+                {points.map((point) => {
+                  // A leading "Term: …" gets its term emphasized for scannability.
+                  const idx = point.indexOf(": ")
+                  const term = idx > -1 ? point.slice(0, idx + 1) : null
+                  const rest = idx > -1 ? point.slice(idx + 2) : point
+                  return (
+                    <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
+                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
+                      <span>
+                        {term ? <span className="font-semibold text-ink">{term} </span> : null}
+                        {rest}
+                      </span>
+                    </li>
+                  )
+                })}
               </ul>
             ) : null}
           </div>
           <div>
-            <NetworkGraph className="mx-auto hidden aspect-square w-[16rem] lg:block" />
+            <NetworkGraph className="mx-auto hidden aspect-square w-[20rem] lg:block" />
           </div>
         </div>
 

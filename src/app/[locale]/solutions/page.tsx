@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
 import { PageHeader } from "@/components/blocks/page-header"
 import { SolutionsIndex } from "@/components/blocks/solutions-index"
+import { ProfessionalServices } from "@/components/blocks/professional-services"
 import { loadPageContent } from "@/lib/content/load"
 import { solutionsIndexSchema, solutionDetailSchema } from "@/lib/content/schema"
 import { SOLUTIONS } from "@/lib/content/solutions"
@@ -43,11 +44,40 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
         label=""
         intro="Integrated solutions across the full industrial asset lifecycle"
         points={[
-          "Modernizing Today's Assets",
-          "Minimizing Tomorrow's Investment Risks through precise engineering decisions",
+          "Modernization: Systematically auditing and migrating legacy systems to extend asset life.",
+          "Energy Transition: Designing robust electrical infrastructure to reduce costs and ensure power quality.",
+          "Digitalization: Integrating advanced IoT frameworks to transform field data into actionable intelligence.",
+          "Strategic Advisory: Providing independent technical due diligence and master planning to de-risk capital investments.",
         ]}
         items={items}
         locale="en"
+      />
+      <ProfessionalServices
+        heading="Professional Services: Commissioning & Lifecycle Management"
+        intro="Through disciplined engineering execution, we bridge the gap between complex industrial technologies and daily operation through testing, precise deployment, and continuous optimization."
+        items={[
+          {
+            title: "Factory & Site Acceptance Testing (FAT/SAT)",
+            detail:
+              "Verifying system functionality, safety loops, and logic integrity in controlled and live environments before handover.",
+          },
+          {
+            title: "Commissioning & Startup",
+            detail:
+              "Seamless integration of automation, motion, and networking layers into your production environment with minimal downtime.",
+          },
+          {
+            title: "Training & Knowledge Transfer",
+            detail:
+              "Empowering your internal teams with the specialized engineering insights needed to run, manage, and monitor the system effectively.",
+          },
+          {
+            title: "Support & Troubleshooting",
+            detail:
+              "Continuous technical review, performance tuning, and rapid fault resolution to maintain the long-term safety and availability of your infrastructure.",
+          },
+        ]}
+        surface="stone"
       />
     </>
   )
