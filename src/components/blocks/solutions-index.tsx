@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { SectionLabel } from "@/components/typography/section-label"
-import { GhostMark } from "@/components/typography/ghost-mark"
+import { NetworkGraph } from "@/components/interactive/network-graph"
 import { ResponsiveImage } from "@/components/primitives/responsive-image"
 import { cn } from "@/lib/utils/cn"
 
@@ -31,23 +31,27 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
   return (
     <Section surface="paper">
       <Container>
-        <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
-          <div className="lg:col-span-9">
-            <SectionLabel number={number} label={label} />
-            {intro ? <p className="mt-5 text-body-l font-semibold text-ink">{intro}</p> : null}
+        <div className="mb-20 grid grid-cols-1 items-center gap-8 lg:max-w-[64rem] lg:grid-cols-[1fr_auto] lg:gap-24">
+          <div>
+            {label ? <SectionLabel number={number} label={label} /> : null}
+            {intro ? (
+              <p className={cn("max-w-[60ch] text-body-l font-semibold text-ink", label && "mt-5")}>
+                {intro}
+              </p>
+            ) : null}
             {points && points.length > 0 ? (
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-5 max-w-[60ch] space-y-2">
                 {points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
                     <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
-                    <span className="xl:whitespace-nowrap">{point}</span>
+                    <span>{point}</span>
                   </li>
                 ))}
               </ul>
             ) : null}
           </div>
-          <div className="lg:col-span-3">
-            <GhostMark glyph="✓" size="clamp(5rem,10vw,8rem)" />
+          <div>
+            <NetworkGraph className="mx-auto hidden aspect-square w-[16rem] lg:block" />
           </div>
         </div>
 
@@ -67,11 +71,11 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
                       </Link>
                     </h3>
                     <p className="mt-4 text-body-l text-ink/70 text-justify">{item.summary}</p>
-                    <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <div className="mt-6 flex flex-wrap items-start gap-x-5 gap-y-3">
                       {item.capabilities.slice(0, 3).map((cap) => (
-                        <span key={cap} className="inline-flex items-center gap-2 text-body-l text-ink/70">
-                          <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-red" />
-                          {cap}
+                        <span key={cap} className="flex items-start gap-2 text-body-l text-ink/70">
+                          <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 bg-red" />
+                          <span>{cap}</span>
                         </span>
                       ))}
                     </div>
