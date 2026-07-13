@@ -32,7 +32,7 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
     <Section surface="paper">
       <Container>
         <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
-          <div className="max-w-2xl lg:col-span-8">
+          <div className="lg:col-span-9">
             <SectionLabel number={number} label={label} />
             {intro ? <p className="mt-5 text-body-l text-ink/80">{intro}</p> : null}
             {points && points.length > 0 ? (
@@ -40,13 +40,13 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
                 {points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-body-l text-ink/80">
                     <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-red" />
-                    <span>{point}</span>
+                    <span className="xl:whitespace-nowrap">{point}</span>
                   </li>
                 ))}
               </ul>
             ) : null}
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <GhostMark glyph="✓" size="clamp(5rem,10vw,8rem)" />
           </div>
         </div>
