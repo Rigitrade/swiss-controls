@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { MessageCircle } from "lucide-react"
+import { MessageCircle, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
@@ -23,12 +23,17 @@ const REASON_LABELS: Record<(typeof CONTACT_REASONS)[number], string> = {
 }
 
 const inputClass =
-  "flex h-12 w-full border-b border-hairline bg-transparent px-0 py-2 font-sans text-body text-ink placeholder:text-ink/40 focus-visible:border-red focus-visible:outline-none"
+  "flex h-12 w-full border-b border-hairline bg-transparent px-0 py-2 font-sans text-[15px] text-ink placeholder:text-ink/40 focus-visible:border-red focus-visible:outline-none"
+
+// Native <select> renders its value/options in the OS font, which looks bigger
+// than the inputs — `appearance-none` drops the native control so it uses our
+// font at 15px; a custom chevron replaces the removed arrow (pr-8 leaves room).
+const selectClass = `${inputClass} appearance-none pr-8`
 
 const textareaClass =
-  "flex w-full border border-hairline bg-transparent px-3 py-3 font-sans text-body text-ink placeholder:text-ink/40 focus-visible:border-red focus-visible:outline-none resize-y"
+  "flex w-full border border-hairline bg-transparent px-3 py-3 font-sans text-[15px] text-ink placeholder:text-ink/40 focus-visible:border-red focus-visible:outline-none resize-y"
 
-const labelClass = "block font-mono text-micro uppercase tracking-[0.08em] text-ink/70 mb-2"
+const labelClass = "block font-mono text-[15px] uppercase tracking-[0.08em] text-ink/70 mb-2"
 const errorClass = "mt-1 text-caption text-red"
 
 type ContactFormProps = {
@@ -145,13 +150,19 @@ export function ContactForm({ whatsappNumber }: ContactFormProps) {
             <label htmlFor="reason" className={labelClass}>
               Topic
             </label>
-            <select id="reason" className={inputClass} {...register("reason")}>
-              {CONTACT_REASONS.map((r) => (
-                <option key={r} value={r}>
-                  {REASON_LABELS[r]}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select id="reason" className={selectClass} {...register("reason")}>
+                {CONTACT_REASONS.map((r) => (
+                  <option key={r} value={r} className="pl-3 text-[0.9rem]">
+                    {REASON_LABELS[r]}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                aria-hidden="true"
+                className="pointer-events-none absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/50"
+              />
+            </div>
           </div>
         </div>
 
