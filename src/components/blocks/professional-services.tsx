@@ -33,20 +33,20 @@ export function ProfessionalServices({ heading, intro, items, surface = "stone" 
             {intro && <p className="mt-6 text-body-l text-ink/80">{intro}</p>}
           </div>
         )}
-        <ul className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-x-12 gap-y-6 bg-paper md:grid-cols-2">
           {items.map((item) => (
             <li
               key={item.title}
-              className="flex flex-col gap-4 border-t-2 border-red bg-paper p-6 sm:p-8"
+              className="flex flex-col gap-4 border-t-[3px] border-red bg-paper py-6 pl-6 sm:py-8 sm:pl-8 md:[&:nth-child(even)]:pl-3 md:[&:nth-child(even)]:pr-8"
             >
               <div>
-                <h3 className="text-h3 font-semibold text-ink">{item.title}</h3>
-                {item.detail && <p className="mt-2 text-body text-mute">{item.detail}</p>}
+                <h3 className="text-[1.0625rem] font-semibold leading-snug text-ink">{item.title}</h3>
+                {item.detail && <p className="mt-2 text-body leading-[1.8] text-mute">{item.detail}</p>}
               </div>
               {item.points && item.points.length > 0 && (
-                <ul className="space-y-4 border-t border-hairline pt-4">
+                <ul className="space-y-4 pt-2">
                   {item.points.map((point) => (
-                    <li key={point.label} className="flex items-start gap-2.5 text-body leading-relaxed text-ink/80">
+                    <li key={point.label} className="flex items-start gap-2.5 text-body leading-[1.8] text-ink/80">
                       <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 bg-red" />
                       <span>
                         <span className="font-semibold text-ink">{point.label}:</span> {point.text}
