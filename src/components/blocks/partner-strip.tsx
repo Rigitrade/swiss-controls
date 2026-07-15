@@ -14,7 +14,7 @@ export function PartnerStrip({ content, locale, surface = "paper" }: Props) {
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-16">
           <div className="max-w-sm">
             <SectionLabel number={content.number} label={content.label} />
-            <p className="mt-4 text-body-l text-ink/80">{content.statement}</p>
+            <p className="mt-4 whitespace-pre-line text-body-l text-ink/80">{content.statement}</p>
             <Link
               href={`/${locale}${content.cta.href}`}
               className="mt-5 inline-flex items-center gap-1.5 font-mono text-micro uppercase tracking-[0.08em] text-red transition-colors hover:text-ink"

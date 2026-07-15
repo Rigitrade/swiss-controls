@@ -24,7 +24,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <>
       <PageHeader {...frontmatter.pageHeader} centered />
-      <Section>
+      <Section className="pt-2 lg:pt-4">
         <Container>
           <div className="mx-auto max-w-2xl">
             <ContactForm whatsappNumber={whatsappNumber} />
