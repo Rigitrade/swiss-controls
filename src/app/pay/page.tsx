@@ -6,7 +6,7 @@ import Image from "next/image"
 // generic and contains none of the sensitive values.
 export default function PayPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 py-16">
+    <main className="flex min-h-screen flex-col items-center px-6 pt-14 pb-16">
       <div className="flex w-full max-w-[560px] flex-col items-center text-center">
         <h1 className="text-display-l font-bold tracking-tight text-ink">
           Payment Details
