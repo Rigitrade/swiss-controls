@@ -23,10 +23,6 @@ export default function PayPage() {
           priority
           className="mt-8 h-auto w-full rounded-2xl"
         />
-
-        <p className="mt-6 max-w-[42ch] text-body text-mute">
-          Please include your invoice number as the payment reference.
-        </p>
       </div>
     </main>
   )
