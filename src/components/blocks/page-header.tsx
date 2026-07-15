@@ -47,12 +47,12 @@ function IntroText({ text, className }: { text: string; className?: string }) {
     .map((l) => l.trim())
     .filter(Boolean)
   if (lines.length <= 1) {
-    return <p className={cn("max-w-[65ch] text-body-l text-ink/80", className)}>{text}</p>
+    return <p className={cn("max-w-[65ch] text-[1.2375rem] leading-[1.85] tracking-[0.02em] text-ink/80", className)}>{text}</p>
   }
   return (
     <div className="flex flex-col gap-5 ">
       {lines.map((line, i) => (
-        <p key={i} className={cn("max-w-[65ch] text-body-l text-ink/80", className)}>
+        <p key={i} className={cn("max-w-[65ch] text-[1.2375rem] leading-[1.85] tracking-[0.02em] text-ink/80", className)}>
           {line}
         </p>
       ))}

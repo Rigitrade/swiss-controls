@@ -71,7 +71,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
 
   return (
     <>
-      <PageHeader {...frontmatter.pageHeader} centered introClassName="leading-loose" />
+      <PageHeader {...frontmatter.pageHeader} centered />
       <SolutionsIndex
         number=""
         label=""
