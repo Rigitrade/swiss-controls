@@ -30,7 +30,7 @@ export default async function AboutPage({
 
   return (
     <>
-      <PageHeader {...frontmatter.pageHeader} centered />
+      <PageHeader {...frontmatter.pageHeader} centered introClassName="leading-loose" />
 
       <ProfessionalServices heading="What We Believe In" items={beliefs} surface="stone" />
 

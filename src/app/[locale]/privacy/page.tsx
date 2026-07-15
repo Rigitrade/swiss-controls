@@ -26,12 +26,6 @@ export default async function PrivacyPage({
   )
 
   return (
-    <LegalPage
-      frontmatter={frontmatter}
-      body={body}
-      // 30% smaller than display-xl, uppercase (keeps display-xl's leading/tracking).
-      titleClassName="text-[clamp(1.32rem,2.63vw,1.97rem)] uppercase leading-[1.05] tracking-[0.12em]"
-      plainHeadings
-    />
+    <LegalPage frontmatter={frontmatter} body={body} plainHeadings />
   )
 }

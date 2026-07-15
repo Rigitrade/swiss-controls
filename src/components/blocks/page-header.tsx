@@ -4,6 +4,7 @@ import { Section } from "@/components/primitives/section"
 import { Stack } from "@/components/primitives/stack"
 import { SectionLabel } from "@/components/typography/section-label"
 import { DisplayHeading } from "@/components/typography/display-heading"
+import { PAGE_TITLE_CLASS } from "@/lib/typography"
 import { Hairline } from "@/components/primitives/hairline"
 import { cn } from "@/lib/utils/cn"
 
@@ -158,9 +159,8 @@ export function PageHeader({
             size="display-l"
             mode="mount"
             className={cn(
-              centered
-                ? "max-w-[34ch] text-[length:clamp(1.4rem,1.85vw,1.7rem)]"
-                : "max-w-[24ch]",
+              PAGE_TITLE_CLASS,
+              centered ? "max-w-[34ch]" : "max-w-[24ch]",
               titleClassName,
             )}
           >

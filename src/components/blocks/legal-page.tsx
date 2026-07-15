@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef } from "react"
 import { Container } from "@/components/primitives/container"
 import { Section } from "@/components/primitives/section"
 import { DisplayHeading } from "@/components/typography/display-heading"
+import { PAGE_TITLE_CLASS } from "@/lib/typography"
 import { cn } from "@/lib/utils/cn"
 import type { PrivacyPageContent } from "@/lib/content/schema"
 
@@ -66,7 +67,7 @@ export function LegalPage({ frontmatter, body, titleClassName, plainHeadings = f
           as="h1"
           size="display-xl"
           mode="mount"
-          className={cn("mx-auto max-w-4xl text-center", titleClassName)}
+          className={cn("mx-auto max-w-4xl text-center", PAGE_TITLE_CLASS, titleClassName)}
         >
           {frontmatter.pageHeader.title}
         </DisplayHeading>
