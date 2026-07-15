@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
 import { Hero } from "@/components/blocks/hero"
 import { AtAGlance } from "@/components/blocks/at-a-glance"
-import { WhyChoose } from "@/components/blocks/why-choose"
+import { ProfessionalServices } from "@/components/blocks/professional-services"
 import { ServicePillars } from "@/components/blocks/service-pillars"
 import { DeliveryFramework } from "@/components/blocks/delivery-framework"
 import { SolutionsGrid } from "@/components/blocks/solutions-grid"
@@ -45,7 +45,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <ServicePillars content={{ ...c.services, number: "" }} surface="paper" />
       <SolutionsGrid content={{ number: "", label: "OUR SOLUTIONS", items: solutions }} locale="en" surface="stone" density="tight" columns={4} />
       <AtAGlance content={{ ...c.metrics, number: "" }} surface="paper" />
-      <WhyChoose
+      <ProfessionalServices
         number=""
         label={c.whyPartner.label}
         items={c.whyPartner.items}
