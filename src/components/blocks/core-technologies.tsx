@@ -52,11 +52,11 @@ export function CoreTechnologies({ label, groups, surface = "paper" }: Props) {
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/85 to-transparent"
                     />
-                    <span className="relative flex flex-col gap-1.5">
-                      <span className="text-[2.6rem] font-bold uppercase leading-tight tracking-[0.1em] text-paper">
+                    <span className="relative flex flex-col gap-2">
+                      <span className="text-[2rem] font-bold uppercase leading-tight tracking-[0.08em] text-paper">
                         {group.group}
                       </span>
-                      <span className="font-mono text-micro uppercase tracking-[0.12em] text-red">
+                      <span className="font-mono text-caption uppercase tracking-[0.12em] text-red">
                         {group.subtitle}
                       </span>
                     </span>
