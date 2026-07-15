@@ -162,24 +162,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
 
         {/* Bottom bar */}
         <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-3">
-            {content.registry && (
-              <p className="font-mono text-micro uppercase tracking-[0.08em] text-paper/50">
-                {content.registry.label} ·{" "}
-                {content.registry.url ? (
-                  <a
-                    href={content.registry.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-red"
-                  >
-                    {content.registry.value}
-                  </a>
-                ) : (
-                  content.registry.value
-                )}
-              </p>
-            )}
+          <div className="flex items-center gap-2">
             {/* Swiss flag → payment details (/pay). Standalone route outside the
                 locale tree; plain next/link Link (no locale prefix added). */}
             <Link
@@ -200,6 +183,23 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
                 />
               </svg>
             </Link>
+            {content.registry && (
+              <p className="font-mono text-micro uppercase tracking-[0.08em] text-paper/50">
+                {content.registry.label} ·{" "}
+                {content.registry.url ? (
+                  <a
+                    href={content.registry.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-red"
+                  >
+                    {content.registry.value}
+                  </a>
+                ) : (
+                  content.registry.value
+                )}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center gap-6">
