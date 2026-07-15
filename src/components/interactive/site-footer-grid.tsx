@@ -168,7 +168,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
             <Link
               href="/pay/"
               aria-label="Payment details"
-              className="inline-flex shrink-0 opacity-80"
+              className="relative -top-px inline-flex shrink-0 opacity-80"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
