@@ -15,7 +15,8 @@
     "test:e2e": "playwright test --project=smoke-chromium",
     "test:visual": "playwright test --project=visual",
     "test:visual:update": "playwright test --project=visual --update-snapshots",
-    "optimize:images": "tsx scripts/optimize-images.ts"
+    "optimize:images": "tsx scripts/optimize-images.ts",
+    "gen:pay-image": "tsx scripts/generate-pay-image.ts"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
