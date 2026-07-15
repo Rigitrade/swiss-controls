@@ -75,7 +75,8 @@
   --text-body-l--line-height: 1.6;
 
   --text-body: 1rem;        /* 16 */
-  --text-body--line-height: 1.65;
+  --text-body--line-height: 1.75;
+  --text-body--letter-spacing: 0.01em;
 
   --text-caption: 0.875rem; /* 14 */
   --text-caption--line-height: 1.55;
@@ -169,7 +170,9 @@
   body {
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.65;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
   }
   ::selection {
     background-color: var(--color-red);
