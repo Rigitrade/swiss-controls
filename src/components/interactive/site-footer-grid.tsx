@@ -63,7 +63,7 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
           <div className="md:col-span-4 md:-mt-[1.5rem]">
             <Wordmark size="xl" />
             {content.parentLine && (
-              <p className="mt-5 max-w-[24ch] text-body-l font-medium leading-relaxed text-paper/90">
+              <p className=" max-w-[24ch] text-body-l font-medium leading-loose text-paper/90">
                 {content.parentLine}
               </p>
             )}
