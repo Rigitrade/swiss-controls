@@ -33,8 +33,7 @@ const INK = "#141414"
 const MUTE = "#6e6e73"
 const LINE = "#e4e4e2"
 const RED = "#da291c"
-const SANS = `system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`
-const MONO = `ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace`
+const SANS = `"Open Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`
 
 const rows = DETAILS.map(
   (d) => `
@@ -44,8 +43,17 @@ const rows = DETAILS.map(
     </div>`,
 ).join("")
 
+// Two font sizes only, a ~20% step apart (per design direction):
+//   SMALL — eyebrow + field labels;  LARGE — title + values.
+const SMALL = "15px"
+const LARGE = "18px"
+
 const html = `<!doctype html>
-<html><head><meta charset="utf-8"><style>
+<html><head><meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: transparent; font-family: ${SANS}; }
   .card {
@@ -58,19 +66,19 @@ const html = `<!doctype html>
   .seam { height: 4px; background: ${RED}; }
   .body { padding: 40px 44px 44px; }
   .eyebrow {
-    font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+    font-size: ${SMALL}; font-weight: 700; letter-spacing: 0.14em;
     text-transform: uppercase; color: ${RED}; margin-bottom: 6px;
   }
-  .title { font-size: 26px; font-weight: 700; color: ${INK}; letter-spacing: -0.01em; }
+  .title { font-size: ${LARGE}; font-weight: 700; color: ${INK}; letter-spacing: -0.01em; }
   .rows { margin-top: 30px; }
   .row { padding: 14px 0; border-top: 1px solid ${LINE}; }
   .row:first-child { border-top: 0; padding-top: 0; }
   .label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    font-size: ${SMALL}; font-weight: 700; letter-spacing: 0.08em;
     text-transform: uppercase; color: ${MUTE}; margin-bottom: 5px;
   }
-  .value { font-size: 18px; font-weight: 600; color: ${INK}; line-height: 1.35; }
-  .value.mono { font-family: ${MONO}; letter-spacing: 0.03em; font-weight: 600; }
+  .value { font-size: ${LARGE}; font-weight: 600; color: ${INK}; line-height: 1.35; }
+  .value.mono { letter-spacing: 0.02em; font-feature-settings: "tnum"; }
 </style></head>
 <body>
   <div class="card" id="card">
