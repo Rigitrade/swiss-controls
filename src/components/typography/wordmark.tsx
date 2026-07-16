@@ -37,7 +37,7 @@ export function Wordmark({ size = "md", className, href, tone = "red" }: Wordmar
       {WORD}
       <span
         aria-hidden="true"
-        className="-ml-[0.05em] mt-[0.2em] text-[0.4em] font-normal leading-none"
+        className="-ml-[0.28em] mt-[0.52em] text-[0.4em] font-normal leading-none"
       >
         ©
       </span>
