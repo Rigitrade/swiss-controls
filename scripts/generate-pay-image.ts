@@ -10,10 +10,19 @@
  * To change the details, edit the DETAILS object below and re-run.
  */
 import { chromium } from "@playwright/test"
-import { mkdir } from "node:fs/promises"
+import { mkdir, readFile } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
 
 const OUT_PATH = resolve(process.cwd(), "public/pay/bank-details.png")
+
+// Self-hosted Open Sans (from the @fontsource/open-sans package) embedded as
+// base64 so rendering is fully offline and deterministic — the image is ALWAYS
+// Open Sans, never a network-dependent fallback.
+const FONT_DIR = resolve(process.cwd(), "node_modules/@fontsource/open-sans/files")
+async function fontFace(weight: number): Promise<string> {
+  const b64 = (await readFile(resolve(FONT_DIR, `open-sans-latin-${weight}-normal.woff2`))).toString("base64")
+  return `@font-face{font-family:"Open Sans";font-style:normal;font-weight:${weight};font-display:block;src:url(data:font/woff2;base64,${b64}) format("woff2");}`
+}
 
 // --- Source of truth for the rendered image ------------------------------------
 const DETAILS: Array<{ label: string; value: string; mono?: boolean }> = [
@@ -48,12 +57,10 @@ const rows = DETAILS.map(
 const SMALL = "15px"
 const LARGE = "18px"
 
-const html = `<!doctype html>
+const buildHtml = (fontCss: string) => `<!doctype html>
 <html><head><meta charset="utf-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+  ${fontCss}
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: transparent; font-family: ${SANS}; }
   .card {
@@ -92,10 +99,59 @@ const html = `<!doctype html>
 </body></html>`
 
 async function main() {
+  // Embed the self-hosted Open Sans weights straight into the page CSS.
+  const fontCss = (await Promise.all([fontFace(400), fontFace(600), fontFace(700)])).join("\n")
+  const html = buildHtml(fontCss)
+
   const browser = await chromium.launch()
   const page = await browser.newPage({ deviceScaleFactor: 3 })
   await page.setContent(html, { waitUntil: "networkidle" })
-  await page.evaluate(() => document.fonts.ready)
+  // Force the embedded weights to finish decoding, then assert Open Sans is
+  // live. With the font baked into the page as base64 this needs no network and
+  // must always succeed — the assertion is a guard against ever shipping a
+  // fallback font (e.g. if the @fontsource package is missing).
+  await page.evaluate(async () => {
+    await Promise.all([
+      document.fonts.load('400 18px "Open Sans"'),
+      document.fonts.load('600 18px "Open Sans"'),
+      document.fonts.load('700 18px "Open Sans"'),
+    ])
+    await document.fonts.ready
+  })
+  const openSansLive = await page.evaluate(() => document.fonts.check('700 18px "Open Sans"'))
+  if (!openSansLive) {
+    throw new Error(
+      "Open Sans failed to load — aborting so the image is never rendered in a fallback font. " +
+        "Ensure @fontsource/open-sans is installed (npm install).",
+    )
+  }
+
+  // Ground-truth check via Chrome DevTools protocol: ask the renderer which
+  // font ACTUALLY painted the glyphs of every text node (not what CSS
+  // requested). Abort unless every glyph was painted by Open Sans.
+  const cdp = await page.context().newCDPSession(page)
+  await cdp.send("DOM.enable")
+  await cdp.send("CSS.enable")
+  const { root } = await cdp.send("DOM.getDocument")
+  const { nodeIds } = await cdp.send("DOM.querySelectorAll", {
+    nodeId: root.nodeId,
+    selector: ".eyebrow, .title, .label, .value",
+  })
+  const painted = new Set<string>()
+  for (const nodeId of nodeIds) {
+    const { fonts } = await cdp.send("CSS.getPlatformFontsForNode", { nodeId })
+    for (const f of fonts) painted.add(f.familyName)
+  }
+  const paintedList = [...painted].sort()
+  // Face names include the style (e.g. "Open Sans SemiBold" for the 600 face) —
+  // all are faces of the Open Sans family.
+  if (paintedList.some((f) => !f.startsWith("Open Sans"))) {
+    throw new Error(
+      `Renderer painted glyphs with non-Open Sans font(s): ${paintedList.join(", ")} — aborting.`,
+    )
+  }
+  console.log(`Renderer-verified: all glyphs painted with [${paintedList.join(", ")}]`)
+
   const card = page.locator("#card")
   await mkdir(dirname(OUT_PATH), { recursive: true })
   await card.screenshot({ path: OUT_PATH })
