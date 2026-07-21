@@ -20,7 +20,7 @@ export const SOLUTIONS: SolutionMeta[] = [
     title: "Energy Transition & Infrastructure Reliability",
     icon: "Zap",
     summary:
-      "Design robust electrical infrastructure and intelligent drive systems to radically reduce energy costs and ensure power quality.",
+      "Design a reliable electrical network and smart power systems that advance decarbonization, energy efficiency, and industrial electrification.",
     image: "/img/solutions/energy-transition.jpg",
   },
   {
