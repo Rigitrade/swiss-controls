@@ -104,10 +104,8 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
             <ColLabel>Contact</ColLabel>
             <div className="space-y-2">
               <a
-                href={`https://wa.me/${content.contact.phone.replace(/[^\d]/g, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Message us on WhatsApp at ${content.contact.phone}`}
+                href={`tel:${content.contact.phone.replace(/\s+/g, "")}`}
+                aria-label={`Call us at ${content.contact.phone}`}
                 className="block font-mono text-body tabular-nums text-paper transition-colors hover:text-red"
               >
                 {content.contact.phone}

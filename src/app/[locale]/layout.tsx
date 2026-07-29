@@ -61,7 +61,7 @@ export default async function LocaleLayout({
       "@type": "ContactPoint",
       contactType: "Sales",
       email: "info@swiss-controls.com",
-      telephone: "+41 76 366 66 69",
+      telephone: "+41 58 513 99 96",
     },
   }
 
