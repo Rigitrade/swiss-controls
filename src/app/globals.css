@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Photo cards (services, technologies, industries) reveal their details on
+   hover. Where hover isn't available (touch) or the card is too narrow for the
+   overlay, "stacked" lays the card out as photo + title on top, details below. */
+@custom-variant stacked {
+  @media (hover: none) {
+    @slot;
+  }
+  @media (max-width: 639.98px) {
+    @slot;
+  }
+}
+
 @font-face {
   font-family: "Gotham Hero";
   src: url("/fonts/Gotham/Gotham-Black.otf") format("opentype");

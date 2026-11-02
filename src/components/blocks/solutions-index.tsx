@@ -79,7 +79,7 @@ export function SolutionsIndex({ number, label, intro, points, items, locale }: 
                         {item.title}
                       </Link>
                     </h3>
-                    <p className="mt-4 text-body-l text-ink/70 text-justify">{item.summary}</p>
+                    <p className="mt-4 text-body-l text-ink/70 lg:text-justify">{item.summary}</p>
                     <div className="mt-6 flex flex-wrap items-start gap-x-5 gap-y-3">
                       {item.capabilities.slice(0, 3).map((cap) => (
                         <span key={cap} className="flex items-start gap-2 text-body-l text-ink/70">

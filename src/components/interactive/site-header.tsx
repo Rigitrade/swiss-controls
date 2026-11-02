@@ -49,7 +49,12 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
   }, [])
 
   return (
-    <header className="sticky top-0 z-40 bg-paper/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40">
+      {/* The frosted background lives on its own layer: a backdrop-filter on
+          the <header> itself would become the containing block for the fixed
+          mobile drawer below, shrinking it to header height and letting the
+          closed drawer widen the page (horizontal scroll on phones). */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-paper/95 backdrop-blur-sm" />
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Wordmark size="lg" href={`/${locale}`} />
@@ -114,8 +119,10 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
         aria-label="Mobile navigation"
         className={cn(
           "fixed right-0 top-0 z-50 h-full w-[85vw] max-w-sm bg-paper p-6 shadow-2xl lg:hidden",
-          "transition-transform duration-300 ease-out",
-          open ? "translate-x-0" : "translate-x-full",
+          "transition-[transform,visibility] duration-300 ease-out",
+          // invisible when closed: no shadow bleeding at the edge, and its
+          // links drop out of the tab order.
+          open ? "visible translate-x-0" : "invisible translate-x-full",
         )}
       >
         <div className="mb-8 flex items-center justify-between">
@@ -129,7 +136,7 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
             <X className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <nav className="flex flex-col gap-6" aria-label="Mobile">
+        <nav className="flex flex-col gap-2" aria-label="Mobile">
           {links.map((link) => {
             const active = isActive(link.href)
             return (
@@ -139,7 +146,7 @@ export function SiteHeader({ locale, links, cta }: SiteHeaderProps) {
                 onClick={() => setOpen(false)}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "font-sans text-h3",
+                  "block py-2.5 font-sans text-h2",
                   active ? "text-red" : "text-ink hover:text-red",
                 )}
               >

@@ -39,35 +39,40 @@ export function IndustriesFocus({ label, heading, groups, surface = "stone" }: P
                 <article
                   tabIndex={0}
                   aria-labelledby={titleId}
-                  className="group relative aspect-[3/4] overflow-hidden bg-ink"
+                  className="group relative aspect-[3/4] overflow-hidden bg-ink stacked:aspect-auto stacked:bg-paper"
                 >
-                  <ResponsiveImage
-                    src={group.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover saturate-[0.7] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                  />
-
-                  {/* Default face — bottom scrim + group name */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 z-10 flex items-end p-6 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 [@media(hover:none)]:opacity-0"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/85 to-transparent"
+                  {/* Photo + group-name face. Fills the card on hover devices;
+                      on touch / narrow screens it becomes the card's top band. */}
+                  <div className="absolute inset-0 stacked:relative stacked:aspect-[16/10] stacked:overflow-hidden">
+                    <ResponsiveImage
+                      src={group.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover saturate-[0.7] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
-                    <span className="relative text-[1.5rem] font-bold uppercase leading-tight tracking-[0.1em] text-paper">
-                      {group.category}
-                    </span>
+
+                    {/* Default face — bottom scrim + group name */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 z-10 flex items-end p-6 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 stacked:opacity-100!"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/85 to-transparent"
+                      />
+                      <span className="relative text-[1.5rem] font-bold uppercase leading-tight tracking-[0.1em] text-paper">
+                        {group.category}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Reveal face — light panel with the sub-items */}
-                  <div className="absolute inset-0 z-10 flex flex-col justify-center gap-3 overflow-y-auto bg-paper/92 px-6 py-6 opacity-0 backdrop-blur-md transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
+                  {/* Reveal face — light panel with the sub-items.
+                      Stacked: a normal block below the photo. */}
+                  <div className="absolute inset-0 z-10 flex flex-col justify-center gap-3 overflow-y-auto bg-paper/92 px-6 py-6 opacity-0 backdrop-blur-md transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100 stacked:relative stacked:overflow-visible stacked:bg-paper stacked:opacity-100 stacked:backdrop-blur-none">
                     <h3
                       id={titleId}
-                      className="text-h3 font-bold uppercase tracking-[0.1em] text-ink"
+                      className="text-h3 font-bold uppercase tracking-[0.1em] text-ink stacked:sr-only"
                     >
                       {group.category}
                     </h3>

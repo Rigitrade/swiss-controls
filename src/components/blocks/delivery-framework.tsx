@@ -12,7 +12,7 @@ export function DeliveryFramework({ content, surface = "stone" }: Props) {
         <div className="mb-12 max-w-2xl">
           <SectionLabel number={content.number} label={content.label} />
         </div>
-        <ol className="grid grid-cols-2 gap-px bg-line md:grid-cols-4">
+        <ol className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
           {content.steps.map((s, i) => (
             <li key={s.step} className="bg-paper p-6">
               <div className="flex items-baseline gap-3">

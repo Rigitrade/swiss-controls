@@ -42,7 +42,7 @@ export function ProfessionalServices({ heading, intro, label, number, items, sur
           {items.map((item) => (
             <li
               key={item.title}
-              className="flex flex-col gap-4 border-t-[3px] border-red bg-paper py-6 pl-6 sm:py-8 sm:pl-8 md:[&:nth-child(even)]:pl-3 md:[&:nth-child(even)]:pr-8"
+              className="flex flex-col gap-4 border-t-[3px] border-red bg-paper py-6 pl-6 pr-6 sm:py-8 sm:pl-8 sm:pr-8 md:pr-0 md:[&:nth-child(even)]:pl-3 md:[&:nth-child(even)]:pr-8"
             >
               <div>
                 <h3 className="text-[1.0625rem] font-semibold leading-snug text-ink">{item.title}</h3>

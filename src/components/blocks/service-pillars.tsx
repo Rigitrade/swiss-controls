@@ -49,38 +49,42 @@ export function ServicePillars({ content, surface = "paper" }: Props) {
                 <article
                   tabIndex={0}
                   aria-labelledby={titleId}
-                  className="group relative aspect-[16/10] overflow-hidden bg-ink"
+                  className="group relative aspect-[16/10] overflow-hidden bg-ink stacked:aspect-auto stacked:bg-paper"
                 >
-                  {/* Photo — subtly zooms on hover */}
-                  {pillar.image ? (
-                    <ResponsiveImage
-                      src={pillar.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 640px) 50vw, 100vw"
-                      className="object-cover saturate-[0.65]"
-                    />
-                  ) : null}
+                  {/* Photo + title face. Fills the card on hover devices; on
+                      touch / narrow screens it becomes the card's top band. */}
+                  <div className="absolute inset-0 stacked:relative stacked:aspect-[16/10]">
+                    {pillar.image ? (
+                      <ResponsiveImage
+                        src={pillar.image}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 50vw, 100vw"
+                        className="object-cover saturate-[0.65]"
+                      />
+                    ) : null}
 
-                  {/* Default face — uniform fade veil + bottom scrim for the title */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 z-10 flex items-center justify-center bg-ink/50 p-6 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 sm:p-8 [@media(hover:none)]:opacity-0"
-                  >
-                    <span
+                    {/* Default face — uniform fade veil + bottom scrim for the title */}
+                    <div
                       aria-hidden="true"
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/80 to-transparent"
-                    />
-                    <span className="relative text-center text-[1.22rem] font-extrabold uppercase leading-tight tracking-[0.06em] text-paper">
-                      {pillar.title}
-                    </span>
+                      className="absolute inset-0 z-10 flex items-center justify-center bg-ink/50 p-6 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 sm:p-8 stacked:opacity-100!"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/80 to-transparent"
+                      />
+                      <span className="relative text-center text-[1.22rem] font-extrabold uppercase leading-tight tracking-[0.06em] text-paper">
+                        {pillar.title}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Reveal face — translucent light panel with explanation + points */}
-                  <div className="absolute inset-0 z-10 flex translate-y-2 flex-col justify-center gap-4 bg-paper/90 px-6 py-8 opacity-0 backdrop-blur-md transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:px-8 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100">
+                  {/* Reveal face — translucent light panel with explanation + points.
+                      Stacked: a normal block below the photo. */}
+                  <div className="absolute inset-0 z-10 flex translate-y-2 flex-col justify-center gap-4 bg-paper/90 px-6 py-8 opacity-0 backdrop-blur-md transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:px-8 stacked:relative stacked:translate-y-0 stacked:bg-paper stacked:py-6 stacked:opacity-100 stacked:backdrop-blur-none">
                     <h3
                       id={titleId}
-                      className="text-h2 font-bold uppercase tracking-[0.06em] text-ink"
+                      className="text-h2 font-bold uppercase tracking-[0.06em] text-ink stacked:sr-only"
                     >
                       {pillar.title}
                     </h3>

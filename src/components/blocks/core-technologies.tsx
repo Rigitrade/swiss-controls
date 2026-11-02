@@ -33,38 +33,43 @@ export function CoreTechnologies({ label, groups, surface = "paper" }: Props) {
                 <article
                   tabIndex={0}
                   aria-labelledby={titleId}
-                  className="group relative aspect-[1/1] overflow-hidden bg-ink"
+                  className="group relative aspect-[1/1] overflow-hidden bg-ink stacked:aspect-auto stacked:bg-paper"
                 >
-                  <ResponsiveImage
-                    src={group.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover saturate-[0.7] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                  />
-
-                  {/* Default face — bottom scrim + layer name */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 z-10 flex items-end p-6 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 sm:p-8 [@media(hover:none)]:opacity-0"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/85 to-transparent"
+                  {/* Photo + layer-name face. Fills the card on hover devices;
+                      on touch / narrow screens it becomes the card's top band. */}
+                  <div className="absolute inset-0 stacked:relative stacked:aspect-[16/10] stacked:overflow-hidden">
+                    <ResponsiveImage
+                      src={group.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover saturate-[0.7] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
-                    <span className="relative flex flex-col gap-2">
-                      <span className="text-[2rem] font-bold uppercase leading-tight tracking-[0.08em] text-paper">
-                        {group.group}
+
+                    {/* Default face — bottom scrim + layer name */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 z-10 flex items-end p-6 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0 group-focus-within:opacity-0 sm:p-8 stacked:opacity-100!"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/85 to-transparent"
+                      />
+                      <span className="relative flex flex-col gap-2">
+                        <span className="text-[2rem] font-bold uppercase leading-tight tracking-[0.08em] text-paper stacked:text-[1.6rem]">
+                          {group.group}
+                        </span>
+                        <span className="font-mono text-caption uppercase tracking-[0.12em] text-red">
+                          {group.subtitle}
+                        </span>
                       </span>
-                      <span className="font-mono text-caption uppercase tracking-[0.12em] text-red">
-                        {group.subtitle}
-                      </span>
-                    </span>
+                    </div>
                   </div>
 
-                  {/* Reveal face — light panel listing the technologies */}
-                  <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 overflow-y-auto bg-paper/92 px-6 py-6 opacity-0 backdrop-blur-md transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100 sm:px-8 [@media(hover:none)]:opacity-100">
-                    <div>
+                  {/* Reveal face — light panel listing the technologies.
+                      Stacked: a normal block below the photo. */}
+                  <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 overflow-y-auto bg-paper/92 px-6 py-6 opacity-0 backdrop-blur-md transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100 sm:px-8 stacked:relative stacked:overflow-visible stacked:bg-paper stacked:opacity-100 stacked:backdrop-blur-none">
+                    <div className="stacked:sr-only">
                       <h3 id={titleId} className="text-h2 font-bold uppercase tracking-[0.1em] text-ink">
                         {group.group}
                       </h3>
