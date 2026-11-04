@@ -49,6 +49,21 @@ export default async function AboutPage({
             </div>
             <p className="max-w-[65ch] text-body-l leading-relaxed text-ink/80 lg:col-span-8">
               {frontmatter.legalIdentity}
+              {frontmatter.registration && (
+                <>
+                  {" "}
+                  UID:{" "}
+                  <a
+                    href={frontmatter.registration.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-red underline underline-offset-2 transition-colors hover:text-red-dark"
+                  >
+                    {frontmatter.registration.uid}
+                  </a>
+                  .
+                </>
+              )}
             </p>
           </div>
         </Container>

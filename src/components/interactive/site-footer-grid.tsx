@@ -67,6 +67,9 @@ export function SiteFooterGrid({ locale, content }: SiteFooterGridProps) {
                 {content.parentLine}
               </p>
             )}
+            {content.parentTagline && (
+              <p className="mt-1 text-body font-medium text-paper/60">{content.parentTagline}</p>
+            )}
           </div>
 
           {/* Headquarter */}

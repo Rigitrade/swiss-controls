@@ -46,6 +46,8 @@ export default async function LocaleLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Swiss Controls",
+    legalName: "Swiss Controls GmbH",
+    identifier: "CHE-158.275.460",
     url: baseUrl,
     logo: `${baseUrl}/og-default.png`,
     address: {

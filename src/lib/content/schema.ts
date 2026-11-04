@@ -104,6 +104,8 @@ export const aboutSchema = z.object({
     profiles: z.array(leaderProfileSchema).min(1),
   }),
   legalIdentity: z.string(),
+  /** Commercial-register UID, linked to its official register entry. */
+  registration: z.object({ uid: z.string(), url: z.string().url() }).optional(),
 })
 
 export const technologySchema = z.object({
@@ -148,6 +150,8 @@ export const footerSchema = z.object({
   tagline: z.string(),
   technologyTag: z.string(),
   parentLine: z.string().optional(),
+  /** Smaller line under parentLine, e.g. the business areas. */
+  parentTagline: z.string().optional(),
   office: z.object({
     label: z.string().optional(),
     company: z.string(),
