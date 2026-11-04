@@ -26,13 +26,13 @@ async function fontFace(weight: number): Promise<string> {
 
 // --- Source of truth for the rendered image ------------------------------------
 const DETAILS: Array<{ label: string; value: string; mono?: boolean }> = [
-  { label: "Beneficiary / Account Holder", value: "Rigitrade AG" },
-  { label: "Beneficiary Address", value: "Tannenstrasse 16, 8424 Embrach, Switzerland" },
+  { label: "Beneficiary / Account Holder", value: "Swiss Controls GmbH" },
+  { label: "Beneficiary Address", value: "Schaffhauserstrasse 550, 8052 Zurich, Switzerland" },
   { label: "Bank Name", value: "UBS Switzerland AG" },
-  { label: "Bank Address", value: "Postfach, 8001 Zürich, Switzerland" },
+  { label: "Bank Address", value: "P.O. Box, 8098 Zurich, Switzerland" },
   { label: "Currency", value: "CHF (Swiss Francs)" },
-  { label: "IBAN", value: "CH65 0020 7207 1135 9501 Q", mono: true },
-  { label: "BIC / SWIFT", value: "UBSWCHZH80A", mono: true },
+  { label: "IBAN", value: "CH17 0026 3263 1484 0801 F", mono: true },
+  { label: "BIC / SWIFT", value: "UBSWCHZH39A", mono: true },
   { label: "Payment Reference", value: "Please include your invoice number" },
 ]
 // -------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ const buildHtml = (fontCss: string) => `<!doctype html>
   <div class="card" id="card">
     <div class="seam"></div>
     <div class="body">
-      <div class="eyebrow">Rigitrade AG</div>
+      <div class="eyebrow">Swiss Controls GmbH</div>
       <div class="title">Bank Payment Details</div>
       <div class="rows">${rows}</div>
     </div>
