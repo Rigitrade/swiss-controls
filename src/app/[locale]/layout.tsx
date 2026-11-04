@@ -15,11 +15,11 @@ import { footerSchema, navSchema } from "@/lib/content/schema"
 export const metadata: Metadata = {
   title: { default: "Swiss Controls", template: "%s · Swiss Controls" },
   description:
-    "Independent Swiss engineering for industrial automation, electrification, and digital transformation—advancing decarbonization, energy efficiency, and a reliable electrical network through smart power, energy management, and asset performance monitoring. An engineering brand of RIGITRADE AG.",
+    "Independent Swiss engineering for industrial automation, electrification, and digital transformation—advancing decarbonization, energy efficiency, and a reliable electrical network through smart power, energy management, and asset performance monitoring.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   openGraph: { type: "website", siteName: "Swiss Controls", locale: "en" },
   robots: { index: true, follow: true },
-  authors: [{ name: "RIGITRADE AG" }],
+  authors: [{ name: "Swiss Controls" }],
 }
 
 export function generateStaticParams() {
@@ -48,7 +48,6 @@ export default async function LocaleLayout({
     name: "Swiss Controls",
     url: baseUrl,
     logo: `${baseUrl}/og-default.png`,
-    parentOrganization: { "@type": "Organization", name: "RIGITRADE AG" },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Schaffhauserstrasse 550",

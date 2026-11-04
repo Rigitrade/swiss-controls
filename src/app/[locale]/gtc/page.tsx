@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/routing"
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
-    "General Terms & Conditions of Swiss Controls, a brand of Rigitrade AG.",
+    "General Terms & Conditions of Swiss Controls.",
 }
 
 export default async function GtcPage({

@@ -12,7 +12,7 @@ import type { Locale } from "@/i18n/routing"
 export const metadata: Metadata = {
   title: "About us",
   description:
-    "Swiss Controls — the specialized industrial engineering unit of Rigitrade AG. Independent, vendor-neutral engineering led by a founding team with over a century of industrial leadership.",
+    "Swiss Controls — an independent Swiss industrial engineering company. Vendor-neutral engineering led by a founding team with over a century of industrial leadership.",
 }
 
 export default async function AboutPage({

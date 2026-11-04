@@ -10,7 +10,7 @@ import {
 
 const validHome = {
   hero: {
-    eyebrow: "A Brand by RIGITRADE AG",
+    eyebrow: "Independent Swiss Engineering",
     wordmark: "SWISS CONTROLS",
     headline: "Engineering Leadership. Swiss Precision. Industrial Transformation.",
     subheadline: "Some subheadline paragraph.",
@@ -137,7 +137,7 @@ describe("solutionDetailSchema", () => {
 describe("aboutSchema", () => {
   const base = {
     pageHeader: { number: "01", label: "", title: "About Us", intro: "i" },
-    legalIdentity: "Backed by Rigitrade AG (UID CHE-199.884.159).",
+    legalIdentity: "Swiss Controls is registered in the Swiss Trading Registry.",
   }
 
   it("requires beliefs and leadership", () => {

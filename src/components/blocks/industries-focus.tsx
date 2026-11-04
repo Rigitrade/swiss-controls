@@ -13,7 +13,7 @@ type Props = {
 }
 
 /**
- * INDUSTRIES WE SERVE — photo cards, one per industry group (rigitrade
+ * INDUSTRIES WE SERVE — photo cards, one per industry group (classic
  * "Application Focus" style). Each card shows its photo with the group name
  * over a scrim by default and, on hover/focus, crossfades to a light panel
  * revealing the group's sub-items. Pure-CSS reveal (static-export safe):

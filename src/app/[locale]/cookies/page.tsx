@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/routing"
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
-    "How Swiss Controls, a brand of Rigitrade AG, uses cookies and similar technologies.",
+    "How Swiss Controls uses cookies and similar technologies.",
 }
 
 export default async function CookiesPage({

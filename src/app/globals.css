@@ -21,7 +21,7 @@
 }
 
 /* =============================================================
-   Rigitrade Design Tokens (Tailwind v4 @theme)
+   Swiss Controls Design Tokens (Tailwind v4 @theme)
    See spec §5 — palette, typography, spacing, motion
    ============================================================= */
 
@@ -104,7 +104,7 @@
   --spacing-section-loose: 10rem;       /* 160 */
 
   /* Layout */
-  --container-rigitrade: 80rem;         /* 1280 */
+  --container-site: 80rem;         /* 1280 */
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);

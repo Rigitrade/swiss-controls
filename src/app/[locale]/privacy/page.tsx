@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/routing"
 export const metadata: Metadata = {
   title: "Legal Notice & Privacy Policy",
   description:
-    "Legal notice and privacy policy for Swiss Controls, a brand of Rigitrade AG.",
+    "Legal notice and privacy policy for Swiss Controls.",
 }
 
 export default async function PrivacyPage({

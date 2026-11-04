@@ -19,7 +19,7 @@
     "invalidEmail": "Please enter a valid business email",
     "consentRequired": "Consent is required to submit",
     "errors": {
-      "submission": "Submission failed. Please try again or email info@rigitrade.com directly."
+      "submission": "Submission failed. Please try again or email info@swiss-controls.com directly."
     },
     "success": {
       "label": "Request Received",

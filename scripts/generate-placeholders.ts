@@ -19,7 +19,7 @@ const PLACEHOLDERS: Placeholder[] = [
     width: 2400,
     height: 1600,
     bg: { r: 11, g: 15, b: 20 },
-    label: "RIGITRADE  ·  SUPERALLOYS",
+    label: "SWISS CONTROLS",
     variant: "gradient",
   },
   // Core capabilities — image-led cards (taller portrait orientation)

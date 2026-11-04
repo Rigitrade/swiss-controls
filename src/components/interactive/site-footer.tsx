@@ -39,7 +39,7 @@ export function SiteFooter({ locale, content }: SiteFooterProps) {
         <div className="mb-8 flex items-center justify-between gap-4 border-b border-paper/10 pb-8">
           <span className="inline-flex items-center gap-2 font-mono text-micro uppercase tracking-[0.16em] text-paper/70">
             <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-red" />
-            A RIGITRADE AG Brand
+            Independent Swiss Engineering
           </span>
           <a
             href="#main"

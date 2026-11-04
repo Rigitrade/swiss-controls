@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import { Hero } from "./hero"
 
 const hero = {
-  eyebrow: "A Brand by RIGITRADE AG",
+  eyebrow: "Independent Swiss Engineering",
   wordmark: "SWISS CONTROLS",
   headline: "Engineering Leadership. Swiss Precision. Industrial Transformation.",
   subheadline: "We are an independent engineering advisory firm.",

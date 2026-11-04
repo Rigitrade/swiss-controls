@@ -14,7 +14,7 @@ const pageHeaderSchema = z.object({
 })
 
 const heroSchema = z.object({
-  eyebrow: z.string(),          // "A Brand by RIGITRADE AG"
+  eyebrow: z.string(),          // "Independent Swiss Engineering"
   wordmark: z.string(),         // "SWISS CONTROLS"
   headline: z.string(),         // accessible H1 text (also the reduced-motion fallback)
   // Big words cycled in/out as the hero's animated focal point.
